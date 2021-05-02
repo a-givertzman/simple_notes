@@ -111,3 +111,11 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
+
+// Future<void> signIn({
+//   @required String email,
+//   @required String password,
+// }) async {
+//   signIn(email: 'password', password: 'email@site.com');
+// }

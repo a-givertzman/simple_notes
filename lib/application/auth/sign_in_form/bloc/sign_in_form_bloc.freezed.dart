@@ -823,7 +823,7 @@ class _$SignInFormStateTearOff {
       required Password password,
       required bool isSubmiting,
       required bool showErrorMessages,
-      required Option<Either<Failure, String>> authFailureOrSuccessOption}) {
+      required Option<Reply> authFailureOrSuccessOption}) {
     return _SignInFormState(
       emailAddress: emailAddress,
       password: password,
@@ -843,7 +843,7 @@ mixin _$SignInFormState {
   Password get password => throw _privateConstructorUsedError;
   bool get isSubmiting => throw _privateConstructorUsedError;
   bool get showErrorMessages => throw _privateConstructorUsedError;
-  Option<Either<Failure, String>> get authFailureOrSuccessOption =>
+  Option<Reply> get authFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -861,7 +861,7 @@ abstract class $SignInFormStateCopyWith<$Res> {
       Password password,
       bool isSubmiting,
       bool showErrorMessages,
-      Option<Either<Failure, String>> authFailureOrSuccessOption});
+      Option<Reply> authFailureOrSuccessOption});
 }
 
 /// @nodoc
@@ -901,7 +901,7 @@ class _$SignInFormStateCopyWithImpl<$Res>
       authFailureOrSuccessOption: authFailureOrSuccessOption == freezed
           ? _value.authFailureOrSuccessOption
           : authFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<Failure, String>>,
+              as Option<Reply>,
     ));
   }
 }
@@ -918,7 +918,7 @@ abstract class _$SignInFormStateCopyWith<$Res>
       Password password,
       bool isSubmiting,
       bool showErrorMessages,
-      Option<Either<Failure, String>> authFailureOrSuccessOption});
+      Option<Reply> authFailureOrSuccessOption});
 }
 
 /// @nodoc
@@ -960,7 +960,7 @@ class __$SignInFormStateCopyWithImpl<$Res>
       authFailureOrSuccessOption: authFailureOrSuccessOption == freezed
           ? _value.authFailureOrSuccessOption
           : authFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<Failure, String>>,
+              as Option<Reply>,
     ));
   }
 }
@@ -984,7 +984,7 @@ class _$_SignInFormState implements _SignInFormState {
   @override
   final bool showErrorMessages;
   @override
-  final Option<Either<Failure, String>> authFailureOrSuccessOption;
+  final Option<Reply> authFailureOrSuccessOption;
 
   @override
   String toString() {
@@ -1035,8 +1035,7 @@ abstract class _SignInFormState implements SignInFormState {
       required Password password,
       required bool isSubmiting,
       required bool showErrorMessages,
-      required Option<Either<Failure, String>>
-          authFailureOrSuccessOption}) = _$_SignInFormState;
+      required Option<Reply> authFailureOrSuccessOption}) = _$_SignInFormState;
 
   @override
   EmailAddress get emailAddress => throw _privateConstructorUsedError;
@@ -1047,7 +1046,7 @@ abstract class _SignInFormState implements SignInFormState {
   @override
   bool get showErrorMessages => throw _privateConstructorUsedError;
   @override
-  Option<Either<Failure, String>> get authFailureOrSuccessOption =>
+  Option<Reply> get authFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)

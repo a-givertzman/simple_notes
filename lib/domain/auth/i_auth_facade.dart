@@ -6,13 +6,13 @@ import 'package:flutter/foundation.dart';
 
 abstract class IAuthFacade {
   Future<Reply> registerWithEmailAndPassword({
-    @required EmailAddress emailAddress,
-    @required Password password,
+    required EmailAddress emailAddress,
+    required Password password,
   });
 
   Future<Reply> signInWithEmailAndPassword({
-    @required EmailAddress emailAddress,
-    @required Password password,
+    required EmailAddress emailAddress,
+    required Password password,
   });
 
   Future<Reply> signInWithGoogle();

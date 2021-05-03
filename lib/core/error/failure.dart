@@ -54,10 +54,10 @@ class AuthFailureOnServerSide extends Failure {
 
 //
 // Registration error Email already in use
-class EmailAlreadyInUse extends Failure {
+class EmailAlreadyInUseFailure extends Failure {
   final dynamic message;
 
-  EmailAlreadyInUse(this.message);
+  EmailAlreadyInUseFailure(this.message);
 
   @override
   List<Object> get props => [message];
@@ -65,10 +65,10 @@ class EmailAlreadyInUse extends Failure {
 
 //
 // Sign in error Invalid Email & password combination
-class InvalidEmailAndPassword extends Failure {
+class InvalidEmailAndPasswordFailure extends Failure {
   final dynamic message;
 
-  InvalidEmailAndPassword(this.message);
+  InvalidEmailAndPasswordFailure(this.message);
 
   @override
   List<Object> get props => [message];

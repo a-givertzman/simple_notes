@@ -1,6 +1,9 @@
+import 'package:auth_app/injection.dart';
 import 'package:flutter/material.dart';
+import 'package:injectable/injectable.dart';
 
 void main() {
+  configureInjection(Environment.prod);
   runApp(MyApp());
 }
 
@@ -111,11 +114,3 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-
-
-// Future<void> signIn({
-//   @required String email,
-//   @required String password,
-// }) async {
-//   signIn(email: 'password', password: 'email@site.com');
-// }

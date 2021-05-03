@@ -16,7 +16,7 @@ class EmailFailure extends Failure {
   EmailFailure(this.message);
 
   @override
-  List<Object> get props => [message];
+  List<Object> get props => [message] as List<Object>;
 }
 
 //
@@ -27,7 +27,7 @@ class PasswordFailure extends Failure {
   PasswordFailure(this.message);
 
   @override
-  List<Object> get props => [message];
+  List<Object> get props => [message] as List<Object>;
 }
 
 //
@@ -38,7 +38,7 @@ class AuthCanceledByUserFailure extends Failure {
   AuthCanceledByUserFailure(this.message);
 
   @override
-  List<Object> get props => [message];
+  List<Object> get props => [message] as List<Object>;
 }
 
 //
@@ -49,7 +49,7 @@ class AuthFailureOnServerSide extends Failure {
   AuthFailureOnServerSide(this.message);
 
   @override
-  List<Object> get props => [message];
+  List<Object> get props => [message] as List<Object>;
 }
 
 //
@@ -60,7 +60,7 @@ class EmailAlreadyInUseFailure extends Failure {
   EmailAlreadyInUseFailure(this.message);
 
   @override
-  List<Object> get props => [message];
+  List<Object> get props => [message] as List<Object>;
 }
 
 //
@@ -71,5 +71,5 @@ class InvalidEmailAndPasswordFailure extends Failure {
   InvalidEmailAndPasswordFailure(this.message);
 
   @override
-  List<Object> get props => [message];
+  List<Object> get props => [message] as List<Object>;
 }

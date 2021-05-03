@@ -1,0 +1,9 @@
+# Code analysis rules
+
+include: package:lint/analysis_options.yaml
+
+analyser:
+  errors:
+    missing_required_param: error
+    missing_return: error
+    must_be_imutable: error

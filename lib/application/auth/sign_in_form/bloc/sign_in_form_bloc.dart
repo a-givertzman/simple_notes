@@ -4,7 +4,7 @@
 
 import 'dart:async';
 
-import 'package:auth_app/core/error/failure.dart';
+import 'package:auth_app/domain/core/error/failure.dart';
 import 'package:auth_app/domain/auth/email_address.dart';
 import 'package:auth_app/domain/auth/i_auth_repository.dart';
 import 'package:auth_app/domain/auth/password.dart';

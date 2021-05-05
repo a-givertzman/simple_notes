@@ -1,4 +1,5 @@
-import 'package:auth_app/core/error/failure.dart';
+import 'package:auth_app/domain/auth/domain_user.dart';
+import 'package:auth_app/domain/core/error/failure.dart';
 import 'package:auth_app/domain/auth/email_address.dart';
 import 'package:auth_app/domain/auth/i_auth_repository.dart';
 import 'package:auth_app/domain/auth/password.dart';
@@ -7,9 +8,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
+import 'firebase_user_mapper.dart';
 
 //
-// implementing of domain/auth/i_auth_facade.dart interface
+// implementing of domain/auth/i_auth_repository.dart interface
 //
 @LazySingleton(as: IAuthRepositiry)
 class FirebaseAuthRepository implements IAuthRepositiry {
@@ -20,6 +22,12 @@ class FirebaseAuthRepository implements IAuthRepositiry {
     this._firebaseAuth, 
     this._googleSignIn,
   );
+
+  @override
+  Option<DomainUser> currentUser() {
+    final User? firebaseUser = _firebaseAuth.currentUser;
+    return optionOf(firebaseUser?.toDomainUser());
+  }
 
   @override
   Future<Either<Failure, String>> registerWithEmailAndPassword({
@@ -69,8 +77,9 @@ class FirebaseAuthRepository implements IAuthRepositiry {
         email: emailStr, 
         password: passwordStr,
       );
+      // TODO "OK" reply from server has to be implemented
+      // TODO .then((value) => value.user.uid)
       return const Right('OK');
-      // TODO "OK" reply from server has to be defined
     } on PlatformException catch (e) {
       if (e.code == 'invalid-email' ||
           e.code == 'user-disabled' ||
@@ -117,4 +126,10 @@ class FirebaseAuthRepository implements IAuthRepositiry {
     }
 
   }
+
+  @override
+  Future<void> signOut() => Future.wait([
+      _googleSignIn.signOut(),
+      _firebaseAuth.signOut(),
+  ]);
 }

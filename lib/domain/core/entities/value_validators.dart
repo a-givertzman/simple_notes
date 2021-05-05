@@ -1,4 +1,4 @@
-import 'package:auth_app/core/error/failure.dart';
+import 'package:auth_app/domain/core/error/failure.dart';
 import 'package:dartz/dartz.dart';
 
 

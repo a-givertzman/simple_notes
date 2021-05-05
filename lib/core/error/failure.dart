@@ -3,9 +3,9 @@ import 'package:equatable/equatable.dart';
 //
 // General Failures
 abstract class Failure extends Equatable {
-  Failure([List properties = const <dynamic>[]]) : super();
+  const Failure() : super();
 
-  List get properties => <dynamic>[];
+  List<Object?> get properties => <dynamic>[];
 }
 
 //
@@ -13,10 +13,10 @@ abstract class Failure extends Equatable {
 class EmailFailure extends Failure {
   final dynamic message;
 
-  EmailFailure(this.message);
+  const EmailFailure(this.message);
 
   @override
-  List<Object> get props => [message] as List<Object>;
+  List<Object?> get props => [message];
 }
 
 //
@@ -24,10 +24,10 @@ class EmailFailure extends Failure {
 class PasswordFailure extends Failure {
   final dynamic message;
 
-  PasswordFailure(this.message);
+  const PasswordFailure(this.message);
 
   @override
-  List<Object> get props => [message] as List<Object>;
+  List<Object?> get props => [message];
 }
 
 //
@@ -35,10 +35,10 @@ class PasswordFailure extends Failure {
 class AuthCanceledByUserFailure extends Failure {
   final dynamic message;
 
-  AuthCanceledByUserFailure(this.message);
+  const AuthCanceledByUserFailure(this.message);
 
   @override
-  List<Object> get props => [message] as List<Object>;
+  List<Object?> get props => [message];
 }
 
 //
@@ -46,10 +46,10 @@ class AuthCanceledByUserFailure extends Failure {
 class AuthFailureOnServerSide extends Failure {
   final dynamic message;
 
-  AuthFailureOnServerSide(this.message);
+  const AuthFailureOnServerSide(this.message);
 
   @override
-  List<Object> get props => [message] as List<Object>;
+  List<Object?> get props => [message];
 }
 
 //
@@ -57,10 +57,10 @@ class AuthFailureOnServerSide extends Failure {
 class EmailAlreadyInUseFailure extends Failure {
   final dynamic message;
 
-  EmailAlreadyInUseFailure(this.message);
+  const EmailAlreadyInUseFailure(this.message);
 
   @override
-  List<Object> get props => [message] as List<Object>;
+  List<Object?> get props => [message];
 }
 
 //
@@ -68,8 +68,8 @@ class EmailAlreadyInUseFailure extends Failure {
 class InvalidEmailAndPasswordFailure extends Failure {
   final dynamic message;
 
-  InvalidEmailAndPasswordFailure(this.message);
+  const InvalidEmailAndPasswordFailure(this.message);
 
   @override
-  List<Object> get props => [message] as List<Object>;
+  List<Object?> get props => [message];
 }

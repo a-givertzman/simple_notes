@@ -1,28 +1,28 @@
-import 'package:auth_app/core/error/errors.dart';
 import 'package:auth_app/core/error/failure.dart';
 import 'package:auth_app/domain/auth/email_address.dart';
-import 'package:auth_app/core/reply/reply.dart';
-import 'package:auth_app/domain/auth/i_auth_facade.dart';
+import 'package:auth_app/domain/auth/i_auth_repository.dart';
 import 'package:auth_app/domain/auth/password.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:injectable/injectable.dart';
 
 //
 // implementing of domain/auth/i_auth_facade.dart interface
-class FirebaseAuthFacade implements IAuthFacade {
+//
+@LazySingleton(as: IAuthRepositiry)
+class FirebaseAuthRepository implements IAuthRepositiry {
   final FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignIn;
 
-  FirebaseAuthFacade(
+  const FirebaseAuthRepository(
     this._firebaseAuth, 
     this._googleSignIn,
   );
 
   @override
-  Future<Reply> registerWithEmailAndPassword({
+  Future<Either<Failure, String>> registerWithEmailAndPassword({
     required EmailAddress emailAddress, 
     required Password password,
   }) async {
@@ -36,27 +36,27 @@ class FirebaseAuthFacade implements IAuthFacade {
         password: passwordStr,
       );
       // TODO "OK" reply from server has to be defined
-      return Right('OK') as Reply;
+      return const Right('OK');
     } on PlatformException catch (e) {
       switch (e.code) {
         case 'email-already-in-use':
-          return Left(EmailAlreadyInUseFailure('Firebase: Email already in use')) as Reply;
+          return const Left( EmailAlreadyInUseFailure('Firebase: Email already in use'));
         // break;
         case 'invalid-email':
-          return Left(InvalidEmailAndPasswordFailure('Firebase: invalid email')) as Reply;
+          return const Left(InvalidEmailAndPasswordFailure('Firebase: invalid email'));
         // break;
         case 'weak-password':
-          return Left(AuthFailureOnServerSide('Firebase: The password is not strong enough')) as Reply;
+          return const Left(AuthFailureOnServerSide('Firebase: The password is not strong enough'));
         // break;
         default: { // 'operation-not-allowed' or whatewer
-          return Left(AuthFailureOnServerSide('Firebase: Operation not allowed')) as Reply;
+          return const Left(AuthFailureOnServerSide('Firebase: Operation not allowed'));
         }
       }
     }
   }
   
   @override
-  Future<Reply> signInWithEmailAndPassword({
+  Future<Either<Failure, String>> signInWithEmailAndPassword({
     required EmailAddress emailAddress, 
     required Password password,
   }) async {
@@ -69,27 +69,26 @@ class FirebaseAuthFacade implements IAuthFacade {
         email: emailStr, 
         password: passwordStr,
       );
-      return Right('OK') as Reply;
+      return const Right('OK');
       // TODO "OK" reply from server has to be defined
     } on PlatformException catch (e) {
       if (e.code == 'invalid-email' ||
           e.code == 'user-disabled' ||
           e.code == 'user-not-found') {
-          return Left(InvalidEmailAndPasswordFailure('Firebase: Wrong email or password')) as Reply;
+          return const Left(InvalidEmailAndPasswordFailure('Firebase: Wrong email or password'));
       } else { // 'wrong-password' or whatewer
-          return Left(AuthFailureOnServerSide('Firebase: Authorization error')) as Reply;
+          return const Left(AuthFailureOnServerSide('Firebase: Authorization error'));
       }
     }  
   }
 
   @override
-  Future<Reply> signInWithGoogle() async {
+  Future<Either<Failure, String>> signInWithGoogle() async {
     try {
-
       // Starts the interactive sign-in process.
       final googleUser =await _googleSignIn.signIn();
       if (googleUser == null) {
-        return Left(AuthCanceledByUserFailure('Google: Authorization canceled')) as Reply;
+        return const Left(AuthCanceledByUserFailure('Google: Authorization canceled'));
       }
 
       // Get specific [GoogleSignInAuthentication] for the account.
@@ -105,15 +104,15 @@ class FirebaseAuthFacade implements IAuthFacade {
       // now sign in with firebase credential
       final authResult = await _firebaseAuth.signInWithCredential(authCredintal);
       
-      return Right(authResult) as Reply;
+      return Right(authResult.toString());
     } on PlatformException catch (e) {
       // TODO All authentication errors should be logged herer
       if (e.code == 'invalid-credential' ||
           e.code == 'user-disabled' ||
           e.code == 'user-not-found') {
-          return Left(InvalidEmailAndPasswordFailure('Firebase: Wrong credintals')) as Reply;
+          return const Left(InvalidEmailAndPasswordFailure('Firebase: Wrong credintals'));
       } else { // 'all ather errors
-          return Left(AuthFailureOnServerSide('Firebase: Authorization error')) as Reply;
+          return const Left(AuthFailureOnServerSide('Firebase: Authorization error'));
       }
     }
 

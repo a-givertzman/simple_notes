@@ -5,10 +5,10 @@ import 'package:auth_app/core/value_validator/value_validators.dart';
 
 
 class Password extends ValueObject<String>{
+  @override
   final Either<Failure, String> value;
 
   factory Password(String input) {
-    assert(input != '');
     return Password._(
       validdatePassword(input),
     );

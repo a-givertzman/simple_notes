@@ -5,10 +5,10 @@ import 'package:dartz/dartz.dart';
 
 
 class EmailAddress extends ValueObject<String>{
+  @override
   final Either<Failure, String> value;
 
   factory EmailAddress(String input) {
-    assert(input != '');
     return EmailAddress._(
       validdateEmailAddress(input),
     );

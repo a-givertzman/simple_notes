@@ -4,12 +4,13 @@
 
 import 'dart:async';
 
-import 'package:auth_app/core/reply/reply.dart';
+import 'package:auth_app/core/error/failure.dart';
 import 'package:auth_app/domain/auth/email_address.dart';
-import 'package:auth_app/domain/auth/i_auth_facade.dart';
+import 'package:auth_app/domain/auth/i_auth_repository.dart';
 import 'package:auth_app/domain/auth/password.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
@@ -20,11 +21,10 @@ part 'sign_in_form_bloc.freezed.dart';
 
 @injectable
 class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
-  final IAuthFacade _authFacade;
+  final IAuthRepositiry _authFacade;
   
   SignInFormBloc(this._authFacade) : super(SignInFormState.initial());
 
-  @override
   SignInFormState get initialState => SignInFormState.initial();
 
   @override
@@ -73,7 +73,7 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
         }
 
         yield state.copyWith(
-          showErrorMessages: true,
+          showErrorMessages: AutovalidateMode.always,
           authFailureOrSuccessOption: none(),
         );
       }, 
@@ -101,7 +101,7 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
         }
 
         yield state.copyWith(
-          showErrorMessages: true,
+          showErrorMessages: AutovalidateMode.always,
           authFailureOrSuccessOption: none(),
         );      }, 
       //

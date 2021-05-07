@@ -120,3 +120,8 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
     );
   }
 }
+
+// 
+// run builder
+// flutter pub run build_runner watch --delete-conflicting-outputs
+// flutter pub run build_runner build --delete-conflicting-outputs

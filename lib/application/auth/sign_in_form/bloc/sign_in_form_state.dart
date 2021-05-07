@@ -18,3 +18,8 @@ abstract class SignInFormState with _$SignInFormState {
     authFailureOrSuccessOption: none(),  
   );
 }
+
+// 
+// run builder
+// flutter pub run build_runner watch --delete-conflicting-outputs
+// flutter pub run build_runner build --delete-conflicting-outputs

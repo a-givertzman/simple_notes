@@ -13,18 +13,23 @@ class InitialPage extends StatelessWidget {
       listener: (context, state) {
         state.map(
           initial: (_) {
-            print("Initial Page: initial");
+            // debugger(message: "Initial Page: initial");
           }, 
           signed: (_) {
-            print("Initial Page: Autonticated");
-            AutoRouter.of(context).push(HomePageRoute());
+            // debugger(message: "Initial Page: Autonticated");
+            AutoRouter.of(context).push(const HomePageRoute());
           }, 
           unSigned: (_) {
-            print("Initial Page: Un autonticated");
-            context.router.push(SignInPageRoute());
+            // debugger(message: "Initial Page: Un autonticated");
+            context.router.push(const SignInPageRoute());
           },
         );
       },
+      child: const Scaffold(
+        body: Center(
+          child: CircularProgressIndicator(),
+        ),
+      ),
     );
   }
 }

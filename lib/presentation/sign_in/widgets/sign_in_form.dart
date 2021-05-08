@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SignInForm extends StatelessWidget {
   // const SignInForm({Key key}) : super(key: key);
+  static const double paddingValue = 8.0;
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +20,7 @@ class SignInForm extends StatelessWidget {
                 message: failure.props[0].toString(),
               ).show(context);
             }, 
-            (r) {
-              // TODO navigate to home page
-            },
+            (r) {},
           ),
         ),
       },
@@ -29,13 +28,18 @@ class SignInForm extends StatelessWidget {
         return Form(
           autovalidateMode: state.showErrorMessages,
           child: ListView(
+            padding: const EdgeInsets.all(paddingValue),
             children: [
+              if(state.isSubmiting) ...[
+                const LinearProgressIndicator(),
+                const SizedBox(height: paddingValue,),
+              ],
               const Text(
                 'Hello,\nWelcome!',
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 40),
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: paddingValue),
               TextFormField(
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.email),
@@ -53,11 +57,15 @@ class SignInForm extends StatelessWidget {
                       (r) => null,
                     ),
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: paddingValue),
               TextFormField(
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.lock),
                   labelText: 'Password',
+                  errorStyle: TextStyle(
+                    height: 1.1,
+                  ),
+                  errorMaxLines: 5,
                 ),
                 autocorrect: false,
                 obscureText: true,
@@ -72,7 +80,7 @@ class SignInForm extends StatelessWidget {
                     (r) => null,
                   ),
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: paddingValue),
               Row(children: [
                 Expanded(child:
                   TextButton( // Sign In Button

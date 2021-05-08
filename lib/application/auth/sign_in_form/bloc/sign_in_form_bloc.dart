@@ -37,6 +37,7 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
       // On email changed
       emailChanged: (e) async* {
         yield state.copyWith(
+          isSubmiting: false,
           emailAddress: EmailAddress(e.emailStr),
           authFailureOrSuccessOption: none(),
         );
@@ -45,6 +46,7 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
       // On password changed
       passwordChanged: (e) async* {
         yield state.copyWith(
+          isSubmiting: false,
           password: Password(e.passwordStr),
           authFailureOrSuccessOption: none(),
         );
@@ -101,9 +103,11 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
         }
 
         yield state.copyWith(
+          isSubmiting: false,
           showErrorMessages: AutovalidateMode.always,
           authFailureOrSuccessOption: none(),
-        );      }, 
+        );
+      }, 
       //
       // Signing in with Google
       signInWithGooglePressed: (e) async* {

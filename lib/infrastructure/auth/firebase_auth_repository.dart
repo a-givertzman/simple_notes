@@ -5,6 +5,7 @@ import 'package:auth_app/domain/auth/i_auth_repository.dart';
 import 'package:auth_app/domain/auth/password.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
@@ -132,4 +133,37 @@ class FirebaseAuthRepository implements IAuthRepositiry {
       _googleSignIn.signOut(),
       _firebaseAuth.signOut(),
   ]);
+
+  @override
+  Future<Either<Failure, String>> resetPassword({
+    required EmailAddress emailAddress, 
+  }) async {
+    final emailStr = emailAddress.getOrCrush();
+    try {
+      await _firebaseAuth.sendPasswordResetEmail(email: emailStr);
+      return Right('Email was sent to $emailStr');
+    } catch (e) {
+      // TODO All authentication errors should be logged herer
+      return const Left(AuthFailureOnServerSide("Firebase: something's wrong"));
+    }
+  }
+
+  @override
+  Future<Either<Failure, String>> updatePassword({
+    required Password password
+  }) async {
+    final User? _firebaseUser = _firebaseAuth.currentUser;
+    if (_firebaseUser == null) {
+          return const Left(InvalidEmailAndPasswordFailure('Firebase: Wrong email'));
+    } else {
+      try {
+        await _firebaseUser.updatePassword(password.getOrCrush());
+        return const Right('Successfully changed password');
+      } on PlatformException catch (e) {
+        return Left(
+          AuthFailureOnServerSide("Firebase: Password can't be changed ${e.message}")
+        );
+      }
+    }
+  }
 }

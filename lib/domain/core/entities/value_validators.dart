@@ -25,12 +25,7 @@ Either<Failure, String> validdatePassword(String input) {
   if (RegExp(emailRegexp).hasMatch(input)) {
     return Right(input);
   } else {
-    _message = '''
-      A password contains at least eight characters,\n
-      including at least one number and includes both\n
-      lower and uppercase letters and special characters, 
-      for example #, ?, !
-      ''';
+    _message = "A password contains at least eight characters, including at least one number and includes both lower and uppercase letters and special characters, for example #, ?, !";
   }
 
   return Left(EmailFailure(_message));

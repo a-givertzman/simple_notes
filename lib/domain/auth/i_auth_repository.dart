@@ -18,6 +18,14 @@ abstract class IAuthRepositiry {
   });
 
   Future<Either<Failure, String>> signInWithGoogle();
-  
+
   Future<void> signOut();
+
+  Future<Either<Failure, String>> resetPassword({
+    required EmailAddress emailAddress,
+  });
+
+  Future<Either<Failure, String>> updatePassword({
+    required Password password,
+  });
 }

@@ -16,9 +16,14 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$DomainUserTearOff {
   const _$DomainUserTearOff();
 
-  _DomainUser call({required UniqueId id}) {
+  _DomainUser call(
+      {required UniqueId id,
+      required UserName userName,
+      required UserPhotoURL userPhotoURL}) {
     return _DomainUser(
       id: id,
+      userName: userName,
+      userPhotoURL: userPhotoURL,
     );
   }
 }
@@ -29,6 +34,8 @@ const $DomainUser = _$DomainUserTearOff();
 /// @nodoc
 mixin _$DomainUser {
   UniqueId get id => throw _privateConstructorUsedError;
+  UserName get userName => throw _privateConstructorUsedError;
+  UserPhotoURL get userPhotoURL => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $DomainUserCopyWith<DomainUser> get copyWith =>
@@ -40,7 +47,7 @@ abstract class $DomainUserCopyWith<$Res> {
   factory $DomainUserCopyWith(
           DomainUser value, $Res Function(DomainUser) then) =
       _$DomainUserCopyWithImpl<$Res>;
-  $Res call({UniqueId id});
+  $Res call({UniqueId id, UserName userName, UserPhotoURL userPhotoURL});
 }
 
 /// @nodoc
@@ -54,12 +61,22 @@ class _$DomainUserCopyWithImpl<$Res> implements $DomainUserCopyWith<$Res> {
   @override
   $Res call({
     Object? id = freezed,
+    Object? userName = freezed,
+    Object? userPhotoURL = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as UniqueId,
+      userName: userName == freezed
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
+              as UserName,
+      userPhotoURL: userPhotoURL == freezed
+          ? _value.userPhotoURL
+          : userPhotoURL // ignore: cast_nullable_to_non_nullable
+              as UserPhotoURL,
     ));
   }
 }
@@ -70,7 +87,7 @@ abstract class _$DomainUserCopyWith<$Res> implements $DomainUserCopyWith<$Res> {
           _DomainUser value, $Res Function(_DomainUser) then) =
       __$DomainUserCopyWithImpl<$Res>;
   @override
-  $Res call({UniqueId id});
+  $Res call({UniqueId id, UserName userName, UserPhotoURL userPhotoURL});
 }
 
 /// @nodoc
@@ -86,12 +103,22 @@ class __$DomainUserCopyWithImpl<$Res> extends _$DomainUserCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
+    Object? userName = freezed,
+    Object? userPhotoURL = freezed,
   }) {
     return _then(_DomainUser(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as UniqueId,
+      userName: userName == freezed
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
+              as UserName,
+      userPhotoURL: userPhotoURL == freezed
+          ? _value.userPhotoURL
+          : userPhotoURL // ignore: cast_nullable_to_non_nullable
+              as UserPhotoURL,
     ));
   }
 }
@@ -99,14 +126,19 @@ class __$DomainUserCopyWithImpl<$Res> extends _$DomainUserCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_DomainUser implements _DomainUser {
-  const _$_DomainUser({required this.id});
+  const _$_DomainUser(
+      {required this.id, required this.userName, required this.userPhotoURL});
 
   @override
   final UniqueId id;
+  @override
+  final UserName userName;
+  @override
+  final UserPhotoURL userPhotoURL;
 
   @override
   String toString() {
-    return 'DomainUser(id: $id)';
+    return 'DomainUser(id: $id, userName: $userName, userPhotoURL: $userPhotoURL)';
   }
 
   @override
@@ -114,12 +146,21 @@ class _$_DomainUser implements _DomainUser {
     return identical(this, other) ||
         (other is _DomainUser &&
             (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)));
+                const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.userName, userName) ||
+                const DeepCollectionEquality()
+                    .equals(other.userName, userName)) &&
+            (identical(other.userPhotoURL, userPhotoURL) ||
+                const DeepCollectionEquality()
+                    .equals(other.userPhotoURL, userPhotoURL)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(id);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(userName) ^
+      const DeepCollectionEquality().hash(userPhotoURL);
 
   @JsonKey(ignore: true)
   @override
@@ -128,10 +169,17 @@ class _$_DomainUser implements _DomainUser {
 }
 
 abstract class _DomainUser implements DomainUser {
-  const factory _DomainUser({required UniqueId id}) = _$_DomainUser;
+  const factory _DomainUser(
+      {required UniqueId id,
+      required UserName userName,
+      required UserPhotoURL userPhotoURL}) = _$_DomainUser;
 
   @override
   UniqueId get id => throw _privateConstructorUsedError;
+  @override
+  UserName get userName => throw _privateConstructorUsedError;
+  @override
+  UserPhotoURL get userPhotoURL => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$DomainUserCopyWith<_DomainUser> get copyWith =>

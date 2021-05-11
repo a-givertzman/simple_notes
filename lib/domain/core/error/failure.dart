@@ -31,6 +31,17 @@ class PasswordFailure extends Failure {
 }
 
 //
+// General User Name failure
+class UserNameFailure extends Failure {
+  final dynamic message;
+
+  const UserNameFailure(this.message);
+
+  @override
+  List<Object?> get props => [message];
+}
+
+//
 // Autentication/registration canceled by user
 class AuthCanceledByUserFailure extends Failure {
   final dynamic message;

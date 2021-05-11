@@ -1,20 +1,18 @@
 import 'package:another_flushbar/flushbar_helper.dart';
-import 'package:auth_app/application/auth/sign_in_form/bloc/sign_in_form_bloc.dart';
+import 'package:auth_app/application/user_profile/user_profile_bloc.dart';
 import 'package:auth_app/domain/core/error/failure.dart';
-import 'package:auth_app/presentation/routes/app_router.gr.dart';
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class SignInForm extends StatelessWidget {
+class HomeForm extends StatelessWidget {
   // const SignInForm({Key key}) : super(key: key);
   static const double paddingValue = 8.0;
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<SignInFormBloc, SignInFormState>(
+    return BlocConsumer<UserProfileBloc, UserProfileState>(
       listener: (context, state) => {
-        state.authFailureOrSuccessOption.fold(
+        state.applyFailureOrSuccessOption.fold(
           () {},   // if Option is none()
           (either) => either.fold(
             (failure) {
@@ -22,9 +20,7 @@ class SignInForm extends StatelessWidget {
                 message: failure.props[0].toString(),
               ).show(context);
             }, 
-            (r) {
-              AutoRouter.of(context).push(const HomePageRoute());
-            },
+            (r) {},
           ),
         ),
       },
@@ -39,9 +35,27 @@ class SignInForm extends StatelessWidget {
                 const SizedBox(height: paddingValue,),
               ],
               const Text(
-                'Hello,\nWelcome!',
+                'your home,\npage!',
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 40),
+                style: TextStyle(fontSize: 30),
+              ),
+              const SizedBox(height: paddingValue),
+              TextFormField(
+                decoration: const InputDecoration(
+                  prefixIcon: Icon(Icons.person),
+                  labelText: 'Display name',
+                ),
+                autocorrect: false,
+                onChanged: (value) => context
+                  .read<UserProfileBloc>()
+                  .add(UserProfileEvent.nameChanged(value)),
+                  validator: (value) => context
+                    .read<UserProfileBloc>().state.userName.value.fold(
+                      (l) {
+                        return l is Failure ? l.props[0].toString() : null;  // Invalid Email
+                      }, 
+                      (r) => null,
+                    ),
               ),
               const SizedBox(height: paddingValue),
               TextFormField(
@@ -51,10 +65,10 @@ class SignInForm extends StatelessWidget {
                 ),
                 autocorrect: false,
                 onChanged: (value) => context
-                  .read<SignInFormBloc>()
-                  .add(SignInFormEvent.emailChanged(value)),
+                  .read<UserProfileBloc>()
+                  .add(UserProfileEvent.emailChanged(value)),
                   validator: (value) => context
-                    .read<SignInFormBloc>().state.emailAddress.value.fold(
+                    .read<UserProfileBloc>().state.emailAddress.value.fold(
                       (l) {
                         return l is Failure ? l.props[0].toString() : null;  // Invalid Email
                       }, 
@@ -74,10 +88,10 @@ class SignInForm extends StatelessWidget {
                 autocorrect: false,
                 obscureText: true,
                 onChanged: (value) => context
-                  .read<SignInFormBloc>()
-                  .add(SignInFormEvent.passwordChanged(value)),
+                  .read<UserProfileBloc>()
+                  .add(UserProfileEvent.passwordChanged(value)),
                 validator: (value) => context
-                  .read<SignInFormBloc>().state.password.value.fold(
+                  .read<UserProfileBloc>().state.password.value.fold(
                     (l) {
                       return l is Failure ? l.props[0].toString() : null; // Invalid Password
                     }, 
@@ -87,60 +101,26 @@ class SignInForm extends StatelessWidget {
               const SizedBox(height: paddingValue),
               Row(children: [
                 Expanded(child:
-                  TextButton( // Sign In Button
+                  TextButton( // Cancel button
                     onPressed: () {
-                      context.read<SignInFormBloc>().add(
-                        const SignInFormEvent.signInWithEmailAndPasswordPressed()
+                      context.read<UserProfileBloc>().add(
+                        const UserProfileEvent.applyPressed()
                       );
                     },
-                    child: const Text('Sign in'),
+                    child: const Text('Cancel'),
                   ),
                 ),
                 Expanded(child:
-                  TextButton( // Register Button
+                  TextButton( // Apply button
                     onPressed: () {
-                      context.read<SignInFormBloc>().add(
-                        const SignInFormEvent.registerWithEmailAndPasswordPressed()
+                      context.read<UserProfileBloc>().add(
+                        const UserProfileEvent.goBackPressed()
                       );
                     },
-                    child: const Text('Register'),
+                    child: const Text('Apply'),
                   ),
                 ),
               ],),
-              ElevatedButton(
-                onPressed: () {
-                  context.read<SignInFormBloc>().add(
-                    const SignInFormEvent.signInWithGooglePressed()
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.lightBlue,
-                ),
-                child: const Text(
-                  'Sign in with Google',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  context.read<SignInFormBloc>().add(
-                    const SignInFormEvent.signInWithFacebookPressed()
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.lightBlue,
-                ),
-                child: const Text(
-                  'Sign in with Facebook',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
             ],
           ),
         );

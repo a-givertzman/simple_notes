@@ -1,7 +1,3 @@
-// run this command in project folder in terminal to reconfigure Bloc
-// flutter pub run build_runner watch --delete-conflicting-outputs
-// flutter pub run build_runner build
-
 import 'dart:async';
 
 import 'package:auth_app/domain/core/error/failure.dart';
@@ -19,11 +15,18 @@ part 'sign_in_form_state.dart';
 
 part 'sign_in_form_bloc.freezed.dart';
 
+// 
+// run builder
+// flutter pub run build_runner watch --delete-conflicting-outputs
+// flutter pub run build_runner build --delete-conflicting-outputs
+//
+// State maneger Bloc for Sign In form
+//
 @injectable
 class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
-  final IAuthRepositiry _authFacade;
+  final IAuthRepository _authRepository;
   
-  SignInFormBloc(this._authFacade) : super(SignInFormState.initial());
+  SignInFormBloc(this._authRepository) : super(SignInFormState.initial());
 
   SignInFormState get initialState => SignInFormState.initial();
 
@@ -64,7 +67,7 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
             authFailureOrSuccessOption: none(),
           );
 
-          final failureOrSUccess = await _authFacade.registerWithEmailAndPassword(
+          final failureOrSUccess = await _authRepository.registerWithEmailAndPassword(
             emailAddress: state.emailAddress, 
             password: state.password,
           );
@@ -92,7 +95,7 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
             authFailureOrSuccessOption: none(),
           );
 
-          final failureOrSUccess = await _authFacade.registerWithEmailAndPassword(
+          final failureOrSUccess = await _authRepository.registerWithEmailAndPassword(
             emailAddress: state.emailAddress, 
             password: state.password,
           );
@@ -115,7 +118,20 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
           isSubmiting: true,
           authFailureOrSuccessOption: none(),
         );
-        final failureOrSuccess = await _authFacade.signInWithGoogle();
+        final failureOrSuccess = await _authRepository.signInWithGoogle();
+        yield state.copyWith(
+          isSubmiting: false,
+          authFailureOrSuccessOption: some(failureOrSuccess),
+        );
+      },
+      //
+      // Signing in with Facebook
+      signInWithFacebookPressed: (e) async* {
+        yield state.copyWith(
+          isSubmiting: true,
+          authFailureOrSuccessOption: none(),
+        );
+        final failureOrSuccess = await _authRepository.signInWithFacebook();
         yield state.copyWith(
           isSubmiting: false,
           authFailureOrSuccessOption: some(failureOrSuccess),
@@ -124,8 +140,3 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
     );
   }
 }
-
-// 
-// run builder
-// flutter pub run build_runner watch --delete-conflicting-outputs
-// flutter pub run build_runner build --delete-conflicting-outputs

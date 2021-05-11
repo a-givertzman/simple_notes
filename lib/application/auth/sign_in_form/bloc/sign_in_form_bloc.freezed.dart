@@ -39,6 +39,10 @@ class _$SignInFormEventTearOff {
   _SignInWithGooglePressed signInWithGooglePressed() {
     return const _SignInWithGooglePressed();
   }
+
+  _SignInWithFacebookPressed signInWithFacebookPressed() {
+    return const _SignInWithFacebookPressed();
+  }
 }
 
 /// @nodoc
@@ -53,6 +57,7 @@ mixin _$SignInFormEvent {
     required TResult Function() registerWithEmailAndPasswordPressed,
     required TResult Function() signInWithEmailAndPasswordPressed,
     required TResult Function() signInWithGooglePressed,
+    required TResult Function() signInWithFacebookPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -62,6 +67,7 @@ mixin _$SignInFormEvent {
     TResult Function()? registerWithEmailAndPasswordPressed,
     TResult Function()? signInWithEmailAndPasswordPressed,
     TResult Function()? signInWithGooglePressed,
+    TResult Function()? signInWithFacebookPressed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -75,6 +81,8 @@ mixin _$SignInFormEvent {
         signInWithEmailAndPasswordPressed,
     required TResult Function(_SignInWithGooglePressed value)
         signInWithGooglePressed,
+    required TResult Function(_SignInWithFacebookPressed value)
+        signInWithFacebookPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -86,6 +94,8 @@ mixin _$SignInFormEvent {
     TResult Function(_SignInWithEmailAndPasswordPressed value)?
         signInWithEmailAndPasswordPressed,
     TResult Function(_SignInWithGooglePressed value)? signInWithGooglePressed,
+    TResult Function(_SignInWithFacebookPressed value)?
+        signInWithFacebookPressed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -179,6 +189,7 @@ class _$_EmailChanged implements _EmailChanged {
     required TResult Function() registerWithEmailAndPasswordPressed,
     required TResult Function() signInWithEmailAndPasswordPressed,
     required TResult Function() signInWithGooglePressed,
+    required TResult Function() signInWithFacebookPressed,
   }) {
     return emailChanged(emailStr);
   }
@@ -191,6 +202,7 @@ class _$_EmailChanged implements _EmailChanged {
     TResult Function()? registerWithEmailAndPasswordPressed,
     TResult Function()? signInWithEmailAndPasswordPressed,
     TResult Function()? signInWithGooglePressed,
+    TResult Function()? signInWithFacebookPressed,
     required TResult orElse(),
   }) {
     if (emailChanged != null) {
@@ -210,6 +222,8 @@ class _$_EmailChanged implements _EmailChanged {
         signInWithEmailAndPasswordPressed,
     required TResult Function(_SignInWithGooglePressed value)
         signInWithGooglePressed,
+    required TResult Function(_SignInWithFacebookPressed value)
+        signInWithFacebookPressed,
   }) {
     return emailChanged(this);
   }
@@ -224,6 +238,8 @@ class _$_EmailChanged implements _EmailChanged {
     TResult Function(_SignInWithEmailAndPasswordPressed value)?
         signInWithEmailAndPasswordPressed,
     TResult Function(_SignInWithGooglePressed value)? signInWithGooglePressed,
+    TResult Function(_SignInWithFacebookPressed value)?
+        signInWithFacebookPressed,
     required TResult orElse(),
   }) {
     if (emailChanged != null) {
@@ -313,6 +329,7 @@ class _$_PasswordChanged implements _PasswordChanged {
     required TResult Function() registerWithEmailAndPasswordPressed,
     required TResult Function() signInWithEmailAndPasswordPressed,
     required TResult Function() signInWithGooglePressed,
+    required TResult Function() signInWithFacebookPressed,
   }) {
     return passwordChanged(passwordStr);
   }
@@ -325,6 +342,7 @@ class _$_PasswordChanged implements _PasswordChanged {
     TResult Function()? registerWithEmailAndPasswordPressed,
     TResult Function()? signInWithEmailAndPasswordPressed,
     TResult Function()? signInWithGooglePressed,
+    TResult Function()? signInWithFacebookPressed,
     required TResult orElse(),
   }) {
     if (passwordChanged != null) {
@@ -344,6 +362,8 @@ class _$_PasswordChanged implements _PasswordChanged {
         signInWithEmailAndPasswordPressed,
     required TResult Function(_SignInWithGooglePressed value)
         signInWithGooglePressed,
+    required TResult Function(_SignInWithFacebookPressed value)
+        signInWithFacebookPressed,
   }) {
     return passwordChanged(this);
   }
@@ -358,6 +378,8 @@ class _$_PasswordChanged implements _PasswordChanged {
     TResult Function(_SignInWithEmailAndPasswordPressed value)?
         signInWithEmailAndPasswordPressed,
     TResult Function(_SignInWithGooglePressed value)? signInWithGooglePressed,
+    TResult Function(_SignInWithFacebookPressed value)?
+        signInWithFacebookPressed,
     required TResult orElse(),
   }) {
     if (passwordChanged != null) {
@@ -426,6 +448,7 @@ class _$_RegisterWithEmailAndPasswordPressed
     required TResult Function() registerWithEmailAndPasswordPressed,
     required TResult Function() signInWithEmailAndPasswordPressed,
     required TResult Function() signInWithGooglePressed,
+    required TResult Function() signInWithFacebookPressed,
   }) {
     return registerWithEmailAndPasswordPressed();
   }
@@ -438,6 +461,7 @@ class _$_RegisterWithEmailAndPasswordPressed
     TResult Function()? registerWithEmailAndPasswordPressed,
     TResult Function()? signInWithEmailAndPasswordPressed,
     TResult Function()? signInWithGooglePressed,
+    TResult Function()? signInWithFacebookPressed,
     required TResult orElse(),
   }) {
     if (registerWithEmailAndPasswordPressed != null) {
@@ -457,6 +481,8 @@ class _$_RegisterWithEmailAndPasswordPressed
         signInWithEmailAndPasswordPressed,
     required TResult Function(_SignInWithGooglePressed value)
         signInWithGooglePressed,
+    required TResult Function(_SignInWithFacebookPressed value)
+        signInWithFacebookPressed,
   }) {
     return registerWithEmailAndPasswordPressed(this);
   }
@@ -471,6 +497,8 @@ class _$_RegisterWithEmailAndPasswordPressed
     TResult Function(_SignInWithEmailAndPasswordPressed value)?
         signInWithEmailAndPasswordPressed,
     TResult Function(_SignInWithGooglePressed value)? signInWithGooglePressed,
+    TResult Function(_SignInWithFacebookPressed value)?
+        signInWithFacebookPressed,
     required TResult orElse(),
   }) {
     if (registerWithEmailAndPasswordPressed != null) {
@@ -535,6 +563,7 @@ class _$_SignInWithEmailAndPasswordPressed
     required TResult Function() registerWithEmailAndPasswordPressed,
     required TResult Function() signInWithEmailAndPasswordPressed,
     required TResult Function() signInWithGooglePressed,
+    required TResult Function() signInWithFacebookPressed,
   }) {
     return signInWithEmailAndPasswordPressed();
   }
@@ -547,6 +576,7 @@ class _$_SignInWithEmailAndPasswordPressed
     TResult Function()? registerWithEmailAndPasswordPressed,
     TResult Function()? signInWithEmailAndPasswordPressed,
     TResult Function()? signInWithGooglePressed,
+    TResult Function()? signInWithFacebookPressed,
     required TResult orElse(),
   }) {
     if (signInWithEmailAndPasswordPressed != null) {
@@ -566,6 +596,8 @@ class _$_SignInWithEmailAndPasswordPressed
         signInWithEmailAndPasswordPressed,
     required TResult Function(_SignInWithGooglePressed value)
         signInWithGooglePressed,
+    required TResult Function(_SignInWithFacebookPressed value)
+        signInWithFacebookPressed,
   }) {
     return signInWithEmailAndPasswordPressed(this);
   }
@@ -580,6 +612,8 @@ class _$_SignInWithEmailAndPasswordPressed
     TResult Function(_SignInWithEmailAndPasswordPressed value)?
         signInWithEmailAndPasswordPressed,
     TResult Function(_SignInWithGooglePressed value)? signInWithGooglePressed,
+    TResult Function(_SignInWithFacebookPressed value)?
+        signInWithFacebookPressed,
     required TResult orElse(),
   }) {
     if (signInWithEmailAndPasswordPressed != null) {
@@ -640,6 +674,7 @@ class _$_SignInWithGooglePressed implements _SignInWithGooglePressed {
     required TResult Function() registerWithEmailAndPasswordPressed,
     required TResult Function() signInWithEmailAndPasswordPressed,
     required TResult Function() signInWithGooglePressed,
+    required TResult Function() signInWithFacebookPressed,
   }) {
     return signInWithGooglePressed();
   }
@@ -652,6 +687,7 @@ class _$_SignInWithGooglePressed implements _SignInWithGooglePressed {
     TResult Function()? registerWithEmailAndPasswordPressed,
     TResult Function()? signInWithEmailAndPasswordPressed,
     TResult Function()? signInWithGooglePressed,
+    TResult Function()? signInWithFacebookPressed,
     required TResult orElse(),
   }) {
     if (signInWithGooglePressed != null) {
@@ -671,6 +707,8 @@ class _$_SignInWithGooglePressed implements _SignInWithGooglePressed {
         signInWithEmailAndPasswordPressed,
     required TResult Function(_SignInWithGooglePressed value)
         signInWithGooglePressed,
+    required TResult Function(_SignInWithFacebookPressed value)
+        signInWithFacebookPressed,
   }) {
     return signInWithGooglePressed(this);
   }
@@ -685,6 +723,8 @@ class _$_SignInWithGooglePressed implements _SignInWithGooglePressed {
     TResult Function(_SignInWithEmailAndPasswordPressed value)?
         signInWithEmailAndPasswordPressed,
     TResult Function(_SignInWithGooglePressed value)? signInWithGooglePressed,
+    TResult Function(_SignInWithFacebookPressed value)?
+        signInWithFacebookPressed,
     required TResult orElse(),
   }) {
     if (signInWithGooglePressed != null) {
@@ -696,6 +736,116 @@ class _$_SignInWithGooglePressed implements _SignInWithGooglePressed {
 
 abstract class _SignInWithGooglePressed implements SignInFormEvent {
   const factory _SignInWithGooglePressed() = _$_SignInWithGooglePressed;
+}
+
+/// @nodoc
+abstract class _$SignInWithFacebookPressedCopyWith<$Res> {
+  factory _$SignInWithFacebookPressedCopyWith(_SignInWithFacebookPressed value,
+          $Res Function(_SignInWithFacebookPressed) then) =
+      __$SignInWithFacebookPressedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$SignInWithFacebookPressedCopyWithImpl<$Res>
+    extends _$SignInFormEventCopyWithImpl<$Res>
+    implements _$SignInWithFacebookPressedCopyWith<$Res> {
+  __$SignInWithFacebookPressedCopyWithImpl(_SignInWithFacebookPressed _value,
+      $Res Function(_SignInWithFacebookPressed) _then)
+      : super(_value, (v) => _then(v as _SignInWithFacebookPressed));
+
+  @override
+  _SignInWithFacebookPressed get _value =>
+      super._value as _SignInWithFacebookPressed;
+}
+
+/// @nodoc
+
+class _$_SignInWithFacebookPressed implements _SignInWithFacebookPressed {
+  const _$_SignInWithFacebookPressed();
+
+  @override
+  String toString() {
+    return 'SignInFormEvent.signInWithFacebookPressed()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _SignInWithFacebookPressed);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String emailStr) emailChanged,
+    required TResult Function(String passwordStr) passwordChanged,
+    required TResult Function() registerWithEmailAndPasswordPressed,
+    required TResult Function() signInWithEmailAndPasswordPressed,
+    required TResult Function() signInWithGooglePressed,
+    required TResult Function() signInWithFacebookPressed,
+  }) {
+    return signInWithFacebookPressed();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String emailStr)? emailChanged,
+    TResult Function(String passwordStr)? passwordChanged,
+    TResult Function()? registerWithEmailAndPasswordPressed,
+    TResult Function()? signInWithEmailAndPasswordPressed,
+    TResult Function()? signInWithGooglePressed,
+    TResult Function()? signInWithFacebookPressed,
+    required TResult orElse(),
+  }) {
+    if (signInWithFacebookPressed != null) {
+      return signInWithFacebookPressed();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_EmailChanged value) emailChanged,
+    required TResult Function(_PasswordChanged value) passwordChanged,
+    required TResult Function(_RegisterWithEmailAndPasswordPressed value)
+        registerWithEmailAndPasswordPressed,
+    required TResult Function(_SignInWithEmailAndPasswordPressed value)
+        signInWithEmailAndPasswordPressed,
+    required TResult Function(_SignInWithGooglePressed value)
+        signInWithGooglePressed,
+    required TResult Function(_SignInWithFacebookPressed value)
+        signInWithFacebookPressed,
+  }) {
+    return signInWithFacebookPressed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_EmailChanged value)? emailChanged,
+    TResult Function(_PasswordChanged value)? passwordChanged,
+    TResult Function(_RegisterWithEmailAndPasswordPressed value)?
+        registerWithEmailAndPasswordPressed,
+    TResult Function(_SignInWithEmailAndPasswordPressed value)?
+        signInWithEmailAndPasswordPressed,
+    TResult Function(_SignInWithGooglePressed value)? signInWithGooglePressed,
+    TResult Function(_SignInWithFacebookPressed value)?
+        signInWithFacebookPressed,
+    required TResult orElse(),
+  }) {
+    if (signInWithFacebookPressed != null) {
+      return signInWithFacebookPressed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SignInWithFacebookPressed implements SignInFormEvent {
+  const factory _SignInWithFacebookPressed() = _$_SignInWithFacebookPressed;
 }
 
 /// @nodoc

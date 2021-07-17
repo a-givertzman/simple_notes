@@ -1,10 +1,12 @@
+import 'dart:developer';
+
+import 'package:auth_app/application/auth/auth_bloc.dart';
 import 'package:auth_app/presentation/routes/app_router.gr.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:auth_app/application/auth/auth_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class InitialPage extends StatelessWidget {
+class SplashPage extends StatelessWidget {
   // const InitialPage({required Key key}) : super(key: key);
 
   @override
@@ -13,14 +15,16 @@ class InitialPage extends StatelessWidget {
       listener: (context, state) {
         state.map(
           initial: (_) {
-            // debugger(message: "Initial Page: initial");
+            print("Splash Page: initial");
           }, 
-          signed: (_) {
+          authenticated: (_) {
             // debugger(message: "Initial Page: Autonticated");
-            AutoRouter.of(context).push(const HomePageRoute());
+            print("Splash Page: Autonticated");
+            context.router.push(const HomePageRoute());
           }, 
-          unSigned: (_) {
+          unauthenticated: (_) {
             // debugger(message: "Initial Page: Un autonticated");
+            print("Splash Page: Un autonticated");
             context.router.push(const SignInPageRoute());
           },
         );

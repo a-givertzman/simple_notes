@@ -1,19 +1,18 @@
 import 'dart:async';
 
-import 'package:auth_app/domain/core/error/failure.dart';
 import 'package:auth_app/domain/auth/email_address.dart';
 import 'package:auth_app/domain/auth/i_auth_repository.dart';
 import 'package:auth_app/domain/auth/password.dart';
+import 'package:auth_app/domain/core/error/failure.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
+part 'sign_in_form_bloc.freezed.dart';
 part 'sign_in_form_event.dart';
 part 'sign_in_form_state.dart';
-
-part 'sign_in_form_bloc.freezed.dart';
 
 // 
 // run builder
@@ -71,6 +70,10 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
             emailAddress: state.emailAddress, 
             password: state.password,
           );
+
+          print( "[BLOCK registerWithEmailAndPasswordPressed] failureOrSUccess:" );
+          print(failureOrSUccess);
+          
           yield state.copyWith(
             isSubmiting: false,
             authFailureOrSuccessOption: some(failureOrSUccess),
@@ -95,7 +98,7 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
             authFailureOrSuccessOption: none(),
           );
 
-          final failureOrSUccess = await _authRepository.registerWithEmailAndPassword(
+          final failureOrSUccess = await _authRepository.signInWithEmailAndPassword(
             emailAddress: state.emailAddress, 
             password: state.password,
           );

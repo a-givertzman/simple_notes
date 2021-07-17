@@ -1,4 +1,6 @@
 import 'package:another_flushbar/flushbar_helper.dart';
+import 'package:auth_app/application/auth/auth_bloc.dart';
+import 'package:auth_app/application/auth/sign_in_form/bloc/sign_in_form_bloc.dart';
 import 'package:auth_app/application/user_profile/user_profile_bloc.dart';
 import 'package:auth_app/domain/core/error/failure.dart';
 import 'package:flutter/material.dart';
@@ -30,15 +32,6 @@ class HomeForm extends StatelessWidget {
           child: ListView(
             padding: const EdgeInsets.all(paddingValue),
             children: [
-              if(state.isSubmiting) ...[
-                const LinearProgressIndicator(),
-                const SizedBox(height: paddingValue,),
-              ],
-              const Text(
-                'your home,\npage!',
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 30),
-              ),
               const SizedBox(height: paddingValue),
               TextFormField(
                 decoration: const InputDecoration(
@@ -49,13 +42,13 @@ class HomeForm extends StatelessWidget {
                 onChanged: (value) => context
                   .read<UserProfileBloc>()
                   .add(UserProfileEvent.nameChanged(value)),
-                  validator: (value) => context
-                    .read<UserProfileBloc>().state.userName.value.fold(
-                      (l) {
-                        return l is Failure ? l.props[0].toString() : null;  // Invalid Email
-                      }, 
-                      (r) => null,
-                    ),
+                validator: (value) => context
+                  .read<UserProfileBloc>().state.userName.value.fold(
+                    (l) {
+                      return l is Failure ? l.props[0].toString() : null;  // Invalid Email
+                    }, 
+                    (r) => null,
+                  ),
               ),
               const SizedBox(height: paddingValue),
               TextFormField(
@@ -67,13 +60,13 @@ class HomeForm extends StatelessWidget {
                 onChanged: (value) => context
                   .read<UserProfileBloc>()
                   .add(UserProfileEvent.emailChanged(value)),
-                  validator: (value) => context
-                    .read<UserProfileBloc>().state.emailAddress.value.fold(
-                      (l) {
-                        return l is Failure ? l.props[0].toString() : null;  // Invalid Email
-                      }, 
-                      (r) => null,
-                    ),
+                validator: (value) => context
+                  .read<UserProfileBloc>().state.emailAddress.value.fold(
+                    (l) {
+                      return l is Failure ? l.props[0].toString() : null;  // Invalid Email
+                    }, 
+                    (r) => null,
+                  ),
               ),
               const SizedBox(height: paddingValue),
               TextFormField(
@@ -120,7 +113,22 @@ class HomeForm extends StatelessWidget {
                     child: const Text('Apply'),
                   ),
                 ),
+                Expanded(child:
+                  TextButton( // Sign Out button
+                    //TODO implement this signing out event
+                    onPressed: () {
+                      context.read<AuthBloc>().add(
+                        const AuthEvent.signedOut()
+                      );
+                    },
+                    child: const Text('Sign out'),
+                  ),
+                ),
               ],),
+              if(state.isSubmiting) ...[
+                const SizedBox(height: paddingValue,),
+                const LinearProgressIndicator(),
+              ],
             ],
           ),
         );

@@ -12,6 +12,7 @@ class SignInPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Sign In'),
+        automaticallyImplyLeading: false,
       ),
       body: BlocProvider(
         create: (context) => getIt<SignInFormBloc>(),

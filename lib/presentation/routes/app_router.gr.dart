@@ -8,8 +8,8 @@ import 'package:auto_route/auto_route.dart' as _i1;
 import 'package:flutter/material.dart' as _i2;
 
 import '../home/home_page.dart' as _i5;
-import '../initial/initial_page.dart' as _i3;
 import '../sign_in/sign_in_page.dart' as _i4;
+import '../splash/splash_page.dart' as _i3;
 
 class AppRouter extends _i1.RootStackRouter {
   AppRouter([_i2.GlobalKey<_i2.NavigatorState>? navigatorKey])
@@ -17,10 +17,10 @@ class AppRouter extends _i1.RootStackRouter {
 
   @override
   final Map<String, _i1.PageFactory> pagesMap = {
-    InitialPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
+    SplashPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i3.InitialPage();
+          return _i3.SplashPage();
         }),
     SignInPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
@@ -36,16 +36,16 @@ class AppRouter extends _i1.RootStackRouter {
 
   @override
   List<_i1.RouteConfig> get routes => [
-        _i1.RouteConfig(InitialPageRoute.name, path: '/'),
+        _i1.RouteConfig(SplashPageRoute.name, path: '/'),
         _i1.RouteConfig(SignInPageRoute.name, path: '/sign-in-page'),
         _i1.RouteConfig(HomePageRoute.name, path: '/home-page')
       ];
 }
 
-class InitialPageRoute extends _i1.PageRouteInfo {
-  const InitialPageRoute() : super(name, path: '/');
+class SplashPageRoute extends _i1.PageRouteInfo {
+  const SplashPageRoute() : super(name, path: '/');
 
-  static const String name = 'InitialPageRoute';
+  static const String name = 'SplashPageRoute';
 }
 
 class SignInPageRoute extends _i1.PageRouteInfo {

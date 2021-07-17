@@ -10,7 +10,10 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('You Home Page'),),
+      appBar: AppBar(
+        title: const Text('You Home Page'),
+        automaticallyImplyLeading: false,
+      ),
       body: BlocProvider(
         create: (context) => getIt<UserProfileBloc>(),
         child: HomeForm(),

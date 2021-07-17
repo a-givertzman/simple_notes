@@ -34,35 +34,32 @@ class SignInForm extends StatelessWidget {
           child: ListView(
             padding: const EdgeInsets.all(paddingValue),
             children: [
-              if(state.isSubmiting) ...[
-                const LinearProgressIndicator(),
-                const SizedBox(height: paddingValue,),
-              ],
               const Text(
                 'Hello,\nWelcome!',
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 40),
               ),
               const SizedBox(height: paddingValue),
-              TextFormField(
+              TextFormField(                                                    // Email field
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.email),
                   labelText: 'Email',
                 ),
                 autocorrect: false,
                 onChanged: (value) => context
+
                   .read<SignInFormBloc>()
                   .add(SignInFormEvent.emailChanged(value)),
                   validator: (value) => context
                     .read<SignInFormBloc>().state.emailAddress.value.fold(
                       (l) {
-                        return l is Failure ? l.props[0].toString() : null;  // Invalid Email
+                        return l is Failure ? l.props[0].toString() : null;     // Invalid Email
                       }, 
                       (r) => null,
                     ),
               ),
               const SizedBox(height: paddingValue),
-              TextFormField(
+              TextFormField(                                                    // Password field
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.lock),
                   labelText: 'Password',
@@ -79,7 +76,7 @@ class SignInForm extends StatelessWidget {
                 validator: (value) => context
                   .read<SignInFormBloc>().state.password.value.fold(
                     (l) {
-                      return l is Failure ? l.props[0].toString() : null; // Invalid Password
+                      return l is Failure ? l.props[0].toString() : null;       // Invalid Password
                     }, 
                     (r) => null,
                   ),
@@ -87,7 +84,7 @@ class SignInForm extends StatelessWidget {
               const SizedBox(height: paddingValue),
               Row(children: [
                 Expanded(child:
-                  TextButton( // Sign In Button
+                  TextButton(                                                   // Sign In Button
                     onPressed: () {
                       context.read<SignInFormBloc>().add(
                         const SignInFormEvent.signInWithEmailAndPasswordPressed()
@@ -97,7 +94,7 @@ class SignInForm extends StatelessWidget {
                   ),
                 ),
                 Expanded(child:
-                  TextButton( // Register Button
+                  TextButton(                                                   // Register Button
                     onPressed: () {
                       context.read<SignInFormBloc>().add(
                         const SignInFormEvent.registerWithEmailAndPasswordPressed()
@@ -107,7 +104,7 @@ class SignInForm extends StatelessWidget {
                   ),
                 ),
               ],),
-              ElevatedButton(
+              ElevatedButton(                                                   // Sign In with Google
                 onPressed: () {
                   context.read<SignInFormBloc>().add(
                     const SignInFormEvent.signInWithGooglePressed()
@@ -141,6 +138,10 @@ class SignInForm extends StatelessWidget {
                   ),
                 ),
               ),
+              if(state.isSubmiting) ...[
+                const SizedBox(height: paddingValue,),
+                const LinearProgressIndicator(),
+              ],
             ],
           ),
         );

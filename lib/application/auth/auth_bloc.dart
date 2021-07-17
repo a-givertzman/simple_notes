@@ -13,7 +13,7 @@ part 'auth_bloc.freezed.dart';
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final IAuthRepository _authRepository;
   
-  AuthBloc(this._authRepository) : super(const _Initial());
+  AuthBloc(this._authRepository) : super(const AuthState.initial());
 
   AuthState initialState = const AuthState.initial();
 
@@ -23,17 +23,17 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   ) async* {
     yield* event.map(
 
-      checkSignedIn: (e) async* {
-        final userOption =_authRepository.currentUser();
+      authCheckRequested: (e) async* {
+        final userOption =_authRepository.getCurrentUser();
         yield userOption.fold(
-          () => const AuthState.unSigned(), 
-          (domainUser) => const AuthState.signed()
+          () => const AuthState.unauthenticated(),                // if NONE then unauthenticated
+          (domainUser) => const AuthState.authenticated()         // if SOME then user is authenticated
         );
       },
 
-      signingOut: (e) async* {
+      signedOut: (e) async* {
         await _authRepository.signOut();
-        yield const AuthState.unSigned();
+        yield const AuthState.unauthenticated();
       },
     );
   }

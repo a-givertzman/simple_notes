@@ -1,17 +1,18 @@
 import 'package:auth_app/domain/auth/domain_user.dart';
-import 'package:auth_app/domain/auth/user_name.dart';
-import 'package:auth_app/domain/auth/user_photo_url.dart';
-import 'package:auth_app/domain/core/error/failure.dart';
 import 'package:auth_app/domain/auth/email_address.dart';
 import 'package:auth_app/domain/auth/i_auth_repository.dart';
 import 'package:auth_app/domain/auth/password.dart';
+import 'package:auth_app/domain/auth/user_name.dart';
+import 'package:auth_app/domain/auth/user_photo_url.dart';
+import 'package:auth_app/domain/core/error/failure.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
-import 'firebase_user_mapper.dart';
+
+import './firebase_user_mapper.dart';
 
 //
 // implementing of domain/auth/i_auth_repository.dart interface
@@ -27,13 +28,13 @@ class FirebaseAuthRepository implements IAuthRepository {
     this._googleSignIn,
     this._facebookAuth,
   );
-
+  //
   @override
-  Option<DomainUser> currentUser() {
+  Option<DomainUser> getCurrentUser() {
     final User? firebaseUser = _firebaseAuth.currentUser;
     return optionOf(firebaseUser?.toDomainUser());
   }
-
+  //
   @override
   Future<Either<Failure, String>> registerWithEmailAndPassword({
     required EmailAddress emailAddress, 
@@ -43,6 +44,9 @@ class FirebaseAuthRepository implements IAuthRepository {
     final emailStr = emailAddress.getOrCrush();
     final passwordStr = password.getOrCrush();
 
+    print( "[registerWithEmailAndPassword] emailAddress: $emailStr" );
+    print( "[registerWithEmailAndPassword] password: $passwordStr" );
+
     try {
       await _firebaseAuth.createUserWithEmailAndPassword(
         email: emailStr, 
@@ -50,9 +54,16 @@ class FirebaseAuthRepository implements IAuthRepository {
       );
       // TODO "OK" reply from server has to be defined
       return const Right('OK');
-    } on PlatformException catch (e) {
+    } on FirebaseAuthException catch (e) {
+        
+      print( "[registerWithEmailAndPassword] Exception:" );
+      print( e );
+
       switch (e.code) {
         case 'email-already-in-use':
+        
+        print( "[registerWithEmailAndPassword] emailAddress: $emailStr already in use" );
+
           return const Left( EmailAlreadyInUseFailure('Firebase: Email already in use'));
         // break;
         case 'invalid-email':
@@ -67,7 +78,7 @@ class FirebaseAuthRepository implements IAuthRepository {
       }
     }
   }
-  
+  //
   @override
   Future<Either<Failure, String>> signInWithEmailAndPassword({
     required EmailAddress emailAddress, 
@@ -95,7 +106,7 @@ class FirebaseAuthRepository implements IAuthRepository {
       }
     }  
   }
-
+  //
   @override
   Future<Either<Failure, String>> signInWithGoogle() async {
     try {
@@ -131,7 +142,7 @@ class FirebaseAuthRepository implements IAuthRepository {
     }
 
   }
-
+  //
   @override
   Future<Either<Failure, String>> signInWithFacebook() async {
     try {
@@ -160,14 +171,7 @@ class FirebaseAuthRepository implements IAuthRepository {
     }
 
   }
-
-  @override
-  Future<void> signOut() => Future.wait([
-      _googleSignIn.signOut(),
-      _firebaseAuth.signOut(),
-      _facebookAuth.logOut(),
-  ]);
-
+  //
   @override
   Future<Either<Failure, String>> resetPassword({
     required EmailAddress emailAddress, 
@@ -181,7 +185,7 @@ class FirebaseAuthRepository implements IAuthRepository {
       return const Left(AuthFailureOnServerSide("Firebase: something's wrong"));
     }
   }
-
+  //
   @override
   Future<Either<Failure, String>> updateEmailAddress({
     required EmailAddress emailAddress
@@ -200,7 +204,7 @@ class FirebaseAuthRepository implements IAuthRepository {
       }
     }
   }
-
+  //
   @override
   Future<Either<Failure, String>> updatePassword({
     required Password password
@@ -219,7 +223,7 @@ class FirebaseAuthRepository implements IAuthRepository {
       }
     }
   }
-
+  //
   @override
   Future<Either<Failure, String>> updateProfile({
     required UserName displayName, 
@@ -244,4 +248,11 @@ class FirebaseAuthRepository implements IAuthRepository {
       }
     }
   }
+  //
+  @override
+  Future<void> signOut() => Future.wait([
+      _googleSignIn.signOut(),
+      _firebaseAuth.signOut(),
+      // _facebookAuth.logOut(),
+  ]);
 }

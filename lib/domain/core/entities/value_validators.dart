@@ -1,7 +1,56 @@
 import 'package:auth_app/domain/core/error/failure.dart';
 import 'package:dartz/dartz.dart';
-
-
+import 'package:kt_dart/collection.dart';
+//
+//
+//
+Either<Failure, String> validateMaxStringLength(
+  String input,
+  int maxLength,
+) {
+  if (input.length <= maxLength) {
+    return Right(input);
+  } else {
+    return Left(ExceedingLength(input, maxLength));
+  }
+}
+//
+//
+Either<Failure, String> validateStringNotEmpty(String input) {
+  if (input.isEmpty) {
+    return Right(input);
+  } else {
+    return Left(EmptyValueFailure(input));
+  }
+}
+//
+//
+Either<Failure, String> validateStringSingleLine(
+  String input,
+  int maxLength,
+) {
+  if (!input.contains('\n')) {
+    return Right(input);
+  } else {
+    return Left(MultylineValueFailure(input));
+  }
+}
+//
+//
+Either<Failure, KtList<T>> validateMaxListLength<T>(
+  KtList<T> input, 
+  int maxLength
+) {
+  if (input.size <= maxLength) {
+    return Right(input);
+  } else {
+    return Left(
+      ListTooLongFailure(input, maxLength)
+      );
+  }
+}
+//
+//
 Either<Failure, String> validdateEmailAddress(String input) {
   const emailRegexp = r"""^\S+@\S+\.\S+$""";
   dynamic _message;
@@ -14,8 +63,8 @@ Either<Failure, String> validdateEmailAddress(String input) {
   }
   return Left(EmailFailure(_message));
 }
-
-
+//
+//
 Either<Failure, String> validdatePassword(String input) {
   const emailRegexp = r"""(?=^.{8,}$)""";
   dynamic _message;
@@ -28,7 +77,8 @@ Either<Failure, String> validdatePassword(String input) {
   }
   return Left(EmailFailure(_message));
 }
-
+//
+//
 Either<Failure, String> validdateUserName(String input) {
   const nameRegexp = r"""(?=^.{2,}$)""";
   dynamic _message;
@@ -40,7 +90,8 @@ Either<Failure, String> validdateUserName(String input) {
   }
   return Left(UserNameFailure(_message));
 }
-
+//
+//
 Either<Failure, String> validdateURL(String input) {
   const nameRegexp = r"""#((https?://|ftp://|www\.|[^\s:=]+@www\.).*?[a-z_\/0-9\-\#=&])(?=(\.|,|;|\?|\!)?("|'|«|»|\[|\s|\r|\n|$))#iS""";
   dynamic _message;

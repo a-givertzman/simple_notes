@@ -7,3 +7,4 @@ analyser:
     missing_required_param: error
     missing_return: error
     must_be_imutable: error
+    sort_unnamed_constructors_first: ignore

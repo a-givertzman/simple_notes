@@ -1,6 +1,5 @@
 import 'package:another_flushbar/flushbar_helper.dart';
 import 'package:auth_app/application/auth/auth_bloc.dart';
-import 'package:auth_app/application/auth/sign_in_form/bloc/sign_in_form_bloc.dart';
 import 'package:auth_app/application/user_profile/user_profile_bloc.dart';
 import 'package:auth_app/domain/core/error/failure.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +18,7 @@ class HomeForm extends StatelessWidget {
           (either) => either.fold(
             (failure) {
               FlushbarHelper.createError(
-                message: failure.props[0].toString(),
+                message: failure.message,
               ).show(context);
             }, 
             (r) {},
@@ -45,7 +44,7 @@ class HomeForm extends StatelessWidget {
                 validator: (value) => context
                   .read<UserProfileBloc>().state.userName.value.fold(
                     (l) {
-                      return l is Failure ? l.props[0].toString() : null;  // Invalid Email
+                      return l is ValueFailure ? l.toString() : null;  // Invalid Email
                     }, 
                     (r) => null,
                   ),
@@ -63,7 +62,7 @@ class HomeForm extends StatelessWidget {
                 validator: (value) => context
                   .read<UserProfileBloc>().state.emailAddress.value.fold(
                     (l) {
-                      return l is Failure ? l.props[0].toString() : null;  // Invalid Email
+                      return l is ValueFailure ? l.toString() : null;  // Invalid Email
                     }, 
                     (r) => null,
                   ),
@@ -86,7 +85,7 @@ class HomeForm extends StatelessWidget {
                 validator: (value) => context
                   .read<UserProfileBloc>().state.password.value.fold(
                     (l) {
-                      return l is Failure ? l.props[0].toString() : null; // Invalid Password
+                      return l is ValueFailure ? l.toString() : null; // Invalid Password
                     }, 
                     (r) => null,
                   ),

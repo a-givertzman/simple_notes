@@ -18,7 +18,7 @@ class UserProfileState with _$UserProfileState {
     required bool passwordChanged,
     required bool isSubmiting,
     required AutovalidateMode showErrorMessages,
-    required Option<Either<Failure, String>> applyFailureOrSuccessOption,
+    required Option<Either<AuthFailure, String>> applyFailureOrSuccessOption,
     required bool goBack,
   }) = _UserProfileState;
 

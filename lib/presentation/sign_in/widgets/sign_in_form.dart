@@ -19,7 +19,7 @@ class SignInForm extends StatelessWidget {
           (either) => either.fold(
             (failure) {
               FlushbarHelper.createError(
-                message: failure.props[0].toString(),
+                message: failure.message,
               ).show(context);
             }, 
             (r) {
@@ -52,9 +52,7 @@ class SignInForm extends StatelessWidget {
                   .add(SignInFormEvent.emailChanged(value)),
                   validator: (value) => context
                     .read<SignInFormBloc>().state.emailAddress.value.fold(
-                      (l) {
-                        return l is Failure ? l.props[0].toString() : null;     // Invalid Email
-                      }, 
+                      (l) => l is ValueFailure ? l.toString() : null,     // Invalid Email 
                       (r) => null,
                     ),
               ),
@@ -75,9 +73,7 @@ class SignInForm extends StatelessWidget {
                   .add(SignInFormEvent.passwordChanged(value)),
                 validator: (value) => context
                   .read<SignInFormBloc>().state.password.value.fold(
-                    (l) {
-                      return l is Failure ? l.props[0].toString() : null;       // Invalid Password
-                    }, 
+                    (l) => l is ValueFailure ? l.toString() : null,      // Invalid Password
                     (r) => null,
                   ),
               ),

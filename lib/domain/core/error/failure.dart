@@ -1,120 +1,47 @@
 import 'package:equatable/equatable.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+//
+part 'failure.freezed.dart';
 //
 //
-// General Failures
-abstract class Failure extends Equatable {
-  const Failure() : super();
-
-  List<Object?> get properties => <dynamic>[];
-}
-//
-// General Email failure
-class EmailFailure extends Failure {
-  final dynamic message;
-
-  const EmailFailure(this.message);
-  @override
-  List<Object?> get props => [message];
-}
-//
-// General Password failure
-class PasswordFailure extends Failure {
-  final dynamic message;
-
-  const PasswordFailure(this.message);
-  @override
-  List<Object?> get props => [message];
-}
-//
-// General User Name failure
-class UserNameFailure extends Failure {
-  final dynamic message;
-
-  const UserNameFailure(this.message);
-  @override
-  List<Object?> get props => [message];
-}
-//
-// Autentication/registration canceled by user
-class AuthCanceledByUserFailure extends Failure {
-  final dynamic message;
-
-  const AuthCanceledByUserFailure(this.message);
-  @override
-  List<Object?> get props => [message];
-}
-//
-// Autentication/registration error on server side
-class AuthFailureOnServerSide extends Failure {
-  final dynamic message;
-
-  const AuthFailureOnServerSide(this.message);
-  @override
-  List<Object?> get props => [message];
-}
-//
-// Registration error Email already in use
-class EmailAlreadyInUseFailure extends Failure {
-  final dynamic message;
-
-  const EmailAlreadyInUseFailure(this.message);
-  @override
-  List<Object?> get props => [message];
-}
-//
-// Sign in error Invalid Email & password combination
-class InvalidEmailAndPasswordFailure extends Failure {
-  final dynamic message;
-
-  const InvalidEmailAndPasswordFailure(this.message);
-  @override
-  List<Object?> get props => [message];
-}
-//
-// Exceeding Notes length
-class ExceedingLength extends Failure {
-  final dynamic failedValue;
-  final dynamic maxLength;
-
-  const ExceedingLength(
-    this.failedValue,
-    this.maxLength,
-  );
-  @override
-  List<Object?> get props => [failedValue, maxLength];
-}
-//
-// Empty value failure
-class EmptyValueFailure extends Failure {
-  final dynamic failedValue;
-
-  const EmptyValueFailure(
-    this.failedValue,
-  );
-  @override
-  List<Object?> get props => [failedValue];
-}
-//
-// Multiline failure
-class MultylineValueFailure extends Failure {
-  final dynamic failedValue;
-
-  const MultylineValueFailure(
-    this.failedValue,
-  );
-  @override
-  List<Object?> get props => [failedValue];
-}
-//
-// ListTooLong failure
-class ListTooLongFailure extends Failure {
-  final dynamic failedValue;
-  final dynamic maxLength;
-
-  const ListTooLongFailure(
-    this.failedValue,
-    this.maxLength,
-  );
-  @override
-  List<Object?> get props => [failedValue, maxLength];
+// Ganeral Value Failures
+@freezed
+abstract class ValueFailure<T> with _$ValueFailure<T> {
+  //
+  // Email failure
+  const factory ValueFailure.emailFailure({
+    required T message,
+  }) = _EmailFailure<T>;
+  //
+  // Password failure
+  const factory ValueFailure.passwordFailure({
+    required T message,
+  }) = _PasswordFailure<T>;
+  //
+  // User Name failure
+  const factory ValueFailure.userNameFailure({
+    required T message,
+  }) = _UserNameFailure<T>;
+  //
+  // Exceeding Notes length
+  const factory ValueFailure.exceedingLength({
+    required T failedValue,
+    required int maxLength,
+  }) = _ExceedingLength<T>;
+  //
+  // Empty value failure
+  const factory ValueFailure.emptyValueFailure({
+    required T failedValue,
+  }) = _EmptyValueFailure<T>;
+  //
+  // Multiline failure
+  const factory ValueFailure.multylineValueFailure({
+    required T failedValue,
+  }) = _MultylineValueFailure<T>;
+  //
+  // ListTooLong failure
+  const factory ValueFailure.listTooLongFailure({
+    required T failedValue,
+    required int maxLength,
+  }) = _ListTooLongFailure<T>;
 }

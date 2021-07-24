@@ -3,7 +3,7 @@ import 'package:auth_app/domain/core/error/failure.dart';
 class NotAuthenticatedError extends Error {}
 
 class UnecpectedValueError extends Error {
-  final Failure valueFailure;
+  final ValueFailure valueFailure;
 
   UnecpectedValueError(this.valueFailure);
 

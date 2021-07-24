@@ -701,7 +701,7 @@ class _$UserProfileStateTearOff {
       required bool passwordChanged,
       required bool isSubmiting,
       required AutovalidateMode showErrorMessages,
-      required Option<Either<Failure, String>> applyFailureOrSuccessOption,
+      required Option<Either<AuthFailure, String>> applyFailureOrSuccessOption,
       required bool goBack}) {
     return _UserProfileState(
       userName: userName,
@@ -731,7 +731,7 @@ mixin _$UserProfileState {
   bool get passwordChanged => throw _privateConstructorUsedError;
   bool get isSubmiting => throw _privateConstructorUsedError;
   AutovalidateMode get showErrorMessages => throw _privateConstructorUsedError;
-  Option<Either<Failure, String>> get applyFailureOrSuccessOption =>
+  Option<Either<AuthFailure, String>> get applyFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
   bool get goBack => throw _privateConstructorUsedError;
 
@@ -754,7 +754,7 @@ abstract class $UserProfileStateCopyWith<$Res> {
       bool passwordChanged,
       bool isSubmiting,
       AutovalidateMode showErrorMessages,
-      Option<Either<Failure, String>> applyFailureOrSuccessOption,
+      Option<Either<AuthFailure, String>> applyFailureOrSuccessOption,
       bool goBack});
 }
 
@@ -816,7 +816,7 @@ class _$UserProfileStateCopyWithImpl<$Res>
       applyFailureOrSuccessOption: applyFailureOrSuccessOption == freezed
           ? _value.applyFailureOrSuccessOption
           : applyFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<Failure, String>>,
+              as Option<Either<AuthFailure, String>>,
       goBack: goBack == freezed
           ? _value.goBack
           : goBack // ignore: cast_nullable_to_non_nullable
@@ -841,7 +841,7 @@ abstract class _$UserProfileStateCopyWith<$Res>
       bool passwordChanged,
       bool isSubmiting,
       AutovalidateMode showErrorMessages,
-      Option<Either<Failure, String>> applyFailureOrSuccessOption,
+      Option<Either<AuthFailure, String>> applyFailureOrSuccessOption,
       bool goBack});
 }
 
@@ -905,7 +905,7 @@ class __$UserProfileStateCopyWithImpl<$Res>
       applyFailureOrSuccessOption: applyFailureOrSuccessOption == freezed
           ? _value.applyFailureOrSuccessOption
           : applyFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<Failure, String>>,
+              as Option<Either<AuthFailure, String>>,
       goBack: goBack == freezed
           ? _value.goBack
           : goBack // ignore: cast_nullable_to_non_nullable
@@ -946,7 +946,7 @@ class _$_UserProfileState implements _UserProfileState {
   @override
   final AutovalidateMode showErrorMessages;
   @override
-  final Option<Either<Failure, String>> applyFailureOrSuccessOption;
+  final Option<Either<AuthFailure, String>> applyFailureOrSuccessOption;
   @override
   final bool goBack;
 
@@ -1022,7 +1022,7 @@ abstract class _UserProfileState implements UserProfileState {
       required bool passwordChanged,
       required bool isSubmiting,
       required AutovalidateMode showErrorMessages,
-      required Option<Either<Failure, String>> applyFailureOrSuccessOption,
+      required Option<Either<AuthFailure, String>> applyFailureOrSuccessOption,
       required bool goBack}) = _$_UserProfileState;
 
   @override
@@ -1042,7 +1042,7 @@ abstract class _UserProfileState implements UserProfileState {
   @override
   AutovalidateMode get showErrorMessages => throw _privateConstructorUsedError;
   @override
-  Option<Either<Failure, String>> get applyFailureOrSuccessOption =>
+  Option<Either<AuthFailure, String>> get applyFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
   @override
   bool get goBack => throw _privateConstructorUsedError;

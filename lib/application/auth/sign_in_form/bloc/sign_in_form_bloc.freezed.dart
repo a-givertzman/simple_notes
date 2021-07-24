@@ -857,7 +857,8 @@ class _$SignInFormStateTearOff {
       required Password password,
       required bool isSubmiting,
       required AutovalidateMode showErrorMessages,
-      required Option<Either<Failure, String>> authFailureOrSuccessOption}) {
+      required Option<Either<AuthFailure, String>>
+          authFailureOrSuccessOption}) {
     return _SignInFormState(
       emailAddress: emailAddress,
       password: password,
@@ -877,7 +878,7 @@ mixin _$SignInFormState {
   Password get password => throw _privateConstructorUsedError;
   bool get isSubmiting => throw _privateConstructorUsedError;
   AutovalidateMode get showErrorMessages => throw _privateConstructorUsedError;
-  Option<Either<Failure, String>> get authFailureOrSuccessOption =>
+  Option<Either<AuthFailure, String>> get authFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -895,7 +896,7 @@ abstract class $SignInFormStateCopyWith<$Res> {
       Password password,
       bool isSubmiting,
       AutovalidateMode showErrorMessages,
-      Option<Either<Failure, String>> authFailureOrSuccessOption});
+      Option<Either<AuthFailure, String>> authFailureOrSuccessOption});
 }
 
 /// @nodoc
@@ -935,7 +936,7 @@ class _$SignInFormStateCopyWithImpl<$Res>
       authFailureOrSuccessOption: authFailureOrSuccessOption == freezed
           ? _value.authFailureOrSuccessOption
           : authFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<Failure, String>>,
+              as Option<Either<AuthFailure, String>>,
     ));
   }
 }
@@ -952,7 +953,7 @@ abstract class _$SignInFormStateCopyWith<$Res>
       Password password,
       bool isSubmiting,
       AutovalidateMode showErrorMessages,
-      Option<Either<Failure, String>> authFailureOrSuccessOption});
+      Option<Either<AuthFailure, String>> authFailureOrSuccessOption});
 }
 
 /// @nodoc
@@ -994,7 +995,7 @@ class __$SignInFormStateCopyWithImpl<$Res>
       authFailureOrSuccessOption: authFailureOrSuccessOption == freezed
           ? _value.authFailureOrSuccessOption
           : authFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<Failure, String>>,
+              as Option<Either<AuthFailure, String>>,
     ));
   }
 }
@@ -1018,7 +1019,7 @@ class _$_SignInFormState implements _SignInFormState {
   @override
   final AutovalidateMode showErrorMessages;
   @override
-  final Option<Either<Failure, String>> authFailureOrSuccessOption;
+  final Option<Either<AuthFailure, String>> authFailureOrSuccessOption;
 
   @override
   String toString() {
@@ -1069,7 +1070,7 @@ abstract class _SignInFormState implements SignInFormState {
       required Password password,
       required bool isSubmiting,
       required AutovalidateMode showErrorMessages,
-      required Option<Either<Failure, String>>
+      required Option<Either<AuthFailure, String>>
           authFailureOrSuccessOption}) = _$_SignInFormState;
 
   @override
@@ -1081,7 +1082,7 @@ abstract class _SignInFormState implements SignInFormState {
   @override
   AutovalidateMode get showErrorMessages => throw _privateConstructorUsedError;
   @override
-  Option<Either<Failure, String>> get authFailureOrSuccessOption =>
+  Option<Either<AuthFailure, String>> get authFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)

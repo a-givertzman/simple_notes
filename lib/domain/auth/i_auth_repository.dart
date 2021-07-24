@@ -3,39 +3,40 @@ import 'package:auth_app/domain/auth/email_address.dart';
 import 'package:auth_app/domain/auth/password.dart';
 import 'package:auth_app/domain/auth/user_name.dart';
 import 'package:auth_app/domain/auth/user_photo_url.dart';
-import 'package:auth_app/domain/core/error/failure.dart';
 import 'package:dartz/dartz.dart';
+
+import 'auth_failure.dart';
 
 abstract class IAuthRepository {
   Option<DomainUser> getCurrentUser();
 
-  Future<Either<Failure, String>> registerWithEmailAndPassword({
+  Future<Either<AuthFailure, String>> registerWithEmailAndPassword({
     required EmailAddress emailAddress,
     required Password password,
   });
 
-  Future<Either<Failure, String>> signInWithEmailAndPassword({
+  Future<Either<AuthFailure, String>> signInWithEmailAndPassword({
     required EmailAddress emailAddress,
     required Password password,
   });
 
-  Future<Either<Failure, String>> signInWithGoogle();
+  Future<Either<AuthFailure, String>> signInWithGoogle();
   
-  Future<Either<Failure, String>> signInWithFacebook();
+  Future<Either<AuthFailure, String>> signInWithFacebook();
 
-  Future<Either<Failure, String>> resetPassword({
+  Future<Either<AuthFailure, String>> resetPassword({
     required EmailAddress emailAddress,
   });
 
-  Future<Either<Failure, String>> updateEmailAddress({
+  Future<Either<AuthFailure, String>> updateEmailAddress({
     required EmailAddress emailAddress,
   });
 
-  Future<Either<Failure, String>> updatePassword({
+  Future<Either<AuthFailure, String>> updatePassword({
     required Password password,
   });
 
-  Future<Either<Failure, String>> updateProfile({
+  Future<Either<AuthFailure, String>> updateProfile({
     required UserName displayName,
     required UserPhotoURL photoURL
   });

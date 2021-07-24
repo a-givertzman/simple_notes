@@ -1,10 +1,10 @@
+import 'package:auth_app/domain/auth/auth_failure.dart';
 import 'package:auth_app/domain/auth/domain_user.dart';
 import 'package:auth_app/domain/auth/email_address.dart';
 import 'package:auth_app/domain/auth/i_auth_repository.dart';
 import 'package:auth_app/domain/auth/password.dart';
 import 'package:auth_app/domain/auth/user_name.dart';
 import 'package:auth_app/domain/auth/user_photo_url.dart';
-import 'package:auth_app/domain/core/error/failure.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
@@ -36,7 +36,7 @@ class FirebaseAuthRepository implements IAuthRepository {
   }
   //
   @override
-  Future<Either<Failure, String>> registerWithEmailAndPassword({
+  Future<Either<AuthFailure, String>> registerWithEmailAndPassword({
     required EmailAddress emailAddress, 
     required Password password,
   }) async {
@@ -64,23 +64,23 @@ class FirebaseAuthRepository implements IAuthRepository {
         
         print( "[registerWithEmailAndPassword] emailAddress: $emailStr already in use" );
 
-          return const Left( EmailAlreadyInUseFailure('Firebase: Email already in use'));
+          return const Left(AuthFailure.emailAlreadyInUseFailure(message: 'Firebase: Email already in use'));
         // break;
         case 'invalid-email':
-          return const Left(InvalidEmailAndPasswordFailure('Firebase: invalid email'));
+          return const Left(AuthFailure.invalidEmailAndPasswordFailure(message: 'Firebase: invalid email'));
         // break;
         case 'weak-password':
-          return const Left(AuthFailureOnServerSide('Firebase: The password is not strong enough'));
+          return const Left(AuthFailure.authFailureOnServerSide(message: 'Firebase: The password is not strong enough'));
         // break;
         default: { // 'operation-not-allowed' or whatewer
-          return const Left(AuthFailureOnServerSide('Firebase: Operation not allowed'));
+          return const Left(AuthFailure.authFailureOnServerSide(message: 'Firebase: Operation not allowed'));
         }
       }
     }
   }
   //
   @override
-  Future<Either<Failure, String>> signInWithEmailAndPassword({
+  Future<Either<AuthFailure, String>> signInWithEmailAndPassword({
     required EmailAddress emailAddress, 
     required Password password,
   }) async {
@@ -100,20 +100,20 @@ class FirebaseAuthRepository implements IAuthRepository {
       if (e.code == 'invalid-email' ||
           e.code == 'user-disabled' ||
           e.code == 'user-not-found') {
-          return const Left(InvalidEmailAndPasswordFailure('Firebase: Wrong email or password'));
+          return const Left(AuthFailure.invalidEmailAndPasswordFailure(message: 'Firebase: Wrong email or password'));
       } else { // 'wrong-password' or whatewer
-          return const Left(AuthFailureOnServerSide('Firebase: Authorization error'));
+          return const Left(AuthFailure.authFailureOnServerSide(message: 'Firebase: Authorization error'));
       }
     }  
   }
   //
   @override
-  Future<Either<Failure, String>> signInWithGoogle() async {
+  Future<Either<AuthFailure, String>> signInWithGoogle() async {
     try {
       // Starts the interactive sign-in process.
       final googleUser = await _googleSignIn.signIn();
       if (googleUser == null) {
-        return const Left(AuthCanceledByUserFailure('Google: Authorization canceled'));
+        return const Left(AuthFailure.authCanceledByUserFailure(message: 'Google: Authorization canceled'));
       }
 
       // Get specific [GoogleSignInAuthentication] for the account.
@@ -135,21 +135,21 @@ class FirebaseAuthRepository implements IAuthRepository {
       if (e.code == 'invalid-credential' ||
           e.code == 'user-disabled' ||
           e.code == 'user-not-found') {
-          return const Left(InvalidEmailAndPasswordFailure('Firebase: Wrong credintals'));
+          return const Left(AuthFailure.invalidEmailAndPasswordFailure(message: 'Firebase: Wrong credintals'));
       } else { // 'all ather errors
-          return const Left(AuthFailureOnServerSide('Firebase: Authorization error'));
+          return const Left(AuthFailure.authFailureOnServerSide(message: 'Firebase: Authorization error'));
       }
     }
 
   }
   //
   @override
-  Future<Either<Failure, String>> signInWithFacebook() async {
+  Future<Either<AuthFailure, String>> signInWithFacebook() async {
     try {
       // Trigger the sign-in flow
       final loginResult = await _facebookAuth.login();
       if (loginResult.status != LoginStatus.success) {
-        return const Left(AuthCanceledByUserFailure('Facebook: Authorization canceled'));
+        return const Left(AuthFailure.authCanceledByUserFailure(message: 'Facebook: Authorization canceled'));
       }
 
       // Create a credential from the access token
@@ -164,16 +164,16 @@ class FirebaseAuthRepository implements IAuthRepository {
       if (e.code == 'invalid-credential' ||
           e.code == 'user-disabled' ||
           e.code == 'user-not-found') {
-          return const Left(InvalidEmailAndPasswordFailure('Facebook: Wrong credintals'));
+          return const Left(AuthFailure.invalidEmailAndPasswordFailure(message: 'Facebook: Wrong credintals'));
       } else { // 'all ather errors
-          return const Left(AuthFailureOnServerSide('Facebook: Authorization error'));
+          return const Left(AuthFailure.authFailureOnServerSide(message: 'Facebook: Authorization error'));
       }
     }
 
   }
   //
   @override
-  Future<Either<Failure, String>> resetPassword({
+  Future<Either<AuthFailure, String>> resetPassword({
     required EmailAddress emailAddress, 
   }) async {
     final emailStr = emailAddress.getOrCrush();
@@ -182,50 +182,50 @@ class FirebaseAuthRepository implements IAuthRepository {
       return Right('Email was sent to $emailStr');
     } catch (e) {
       // TODO All authentication errors should be logged herer
-      return const Left(AuthFailureOnServerSide("Firebase: something's wrong"));
+      return const Left(AuthFailure.authFailureOnServerSide(message: "Firebase: something's wrong"));
     }
   }
   //
   @override
-  Future<Either<Failure, String>> updateEmailAddress({
+  Future<Either<AuthFailure, String>> updateEmailAddress({
     required EmailAddress emailAddress
   }) async {
     final User? _firebaseUser = _firebaseAuth.currentUser;
     if (_firebaseUser == null) {
-      return const Left(AuthFailureOnServerSide('Firebase: Empty Current user'));
+      return const Left(AuthFailure.authFailureOnServerSide(message: 'Firebase: Empty Current user'));
     } else {
       try {
         await _firebaseUser.updateEmail(emailAddress.getOrCrush());
         return const Right('Successfully changed email address');
       } on PlatformException catch (e) {
         return Left(
-          AuthFailureOnServerSide("Firebase: Email address can't be changed. ${e.message}")
+          AuthFailure.authFailureOnServerSide(message: "Firebase: Email address can't be changed. ${e.message}")
         );
       }
     }
   }
   //
   @override
-  Future<Either<Failure, String>> updatePassword({
+  Future<Either<AuthFailure, String>> updatePassword({
     required Password password
   }) async {
     final User? _firebaseUser = _firebaseAuth.currentUser;
     if (_firebaseUser == null) {
-      return const Left(AuthFailureOnServerSide('Firebase: Empty Current user'));
+      return const Left(AuthFailure.authFailureOnServerSide(message: 'Firebase: Empty Current user'));
     } else {
       try {
         await _firebaseUser.updatePassword(password.getOrCrush());
         return const Right('Successfully changed password');
       } on PlatformException catch (e) {
         return Left(
-          AuthFailureOnServerSide("Firebase: Password can't be changed. ${e.message}")
+          AuthFailure.authFailureOnServerSide(message: "Firebase: Password can't be changed. ${e.message}")
         );
       }
     }
   }
   //
   @override
-  Future<Either<Failure, String>> updateProfile({
+  Future<Either<AuthFailure, String>> updateProfile({
     required UserName displayName, 
     required UserPhotoURL photoURL,
   }) async {
@@ -233,7 +233,7 @@ class FirebaseAuthRepository implements IAuthRepository {
     final _photoURL = photoURL.getOrCrush();
     final User? _firebaseUser = _firebaseAuth.currentUser;
     if (_firebaseUser == null) {
-      return const Left(AuthFailureOnServerSide('Firebase: Empty Current user'));
+      return const Left(AuthFailure.authFailureOnServerSide(message: 'Firebase: Empty Current user'));
     } else {
       try {
         await _firebaseUser.updateProfile(
@@ -243,7 +243,7 @@ class FirebaseAuthRepository implements IAuthRepository {
         return const Right('Successfully updated user profile');
       } on PlatformException catch (e) {
         return Left(
-          AuthFailureOnServerSide("Firebase: User profile can't be updated. ${e.message}")
+          AuthFailure.authFailureOnServerSide(message: "Firebase: User profile can't be updated. ${e.message}")
         );
       }
     }

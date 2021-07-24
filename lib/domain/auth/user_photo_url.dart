@@ -6,7 +6,7 @@ import 'package:dartz/dartz.dart';
 
 class UserPhotoURL extends ValueObject<String>{
   @override
-  final Either<Failure, String> value;
+  final Either<ValueFailure, String> value;
 
   factory UserPhotoURL(String input) {
     return UserPhotoURL._(

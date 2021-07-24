@@ -6,7 +6,7 @@ import 'package:dartz/dartz.dart';
 
 class EmailAddress extends ValueObject<String>{
   @override
-  final Either<Failure, String> value;
+  final Either<ValueFailure, String> value;
 
   factory EmailAddress(String input) {
     return EmailAddress._(

@@ -5,7 +5,7 @@ import 'package:uuid/uuid.dart';
 
 class UniqueId extends ValueObject<String> {
   @override
-  final Either<Failure, String> value;
+  final Either<ValueFailure, String> value;
 
   factory UniqueId() {
     return UniqueId._(

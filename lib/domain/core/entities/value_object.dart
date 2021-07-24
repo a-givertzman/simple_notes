@@ -7,7 +7,7 @@ import 'package:flutter/foundation.dart';
 @immutable
 abstract class ValueObject<T> {
   const ValueObject();
-  Either<Failure, T> get value;
+  Either<ValueFailure, T> get value;
 
   T getOrCrush() {
     return value.fold(

@@ -1,11 +1,11 @@
 import 'dart:async';
 
+import 'package:auth_app/domain/auth/auth_failure.dart';
 import 'package:auth_app/domain/auth/email_address.dart';
 import 'package:auth_app/domain/auth/i_auth_repository.dart';
 import 'package:auth_app/domain/auth/password.dart';
 import 'package:auth_app/domain/auth/user_name.dart';
 import 'package:auth_app/domain/auth/user_photo_url.dart';
-import 'package:auth_app/domain/core/error/failure.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/widgets.dart';

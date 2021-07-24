@@ -12,7 +12,7 @@ class SignInFormState with _$SignInFormState {
     required Password password,
     required bool isSubmiting,
     required AutovalidateMode showErrorMessages,
-    required Option<Either<Failure, String>> authFailureOrSuccessOption,
+    required Option<Either<AuthFailure, String>> authFailureOrSuccessOption,
   }) = _SignInFormState;
 
   factory SignInFormState.initial() => SignInFormState(

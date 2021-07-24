@@ -6,7 +6,7 @@ import 'package:dartz/dartz.dart';
 
 class Password extends ValueObject<String>{
   @override
-  final Either<Failure, String> value;
+  final Either<ValueFailure, String> value;
 
   factory Password(String input) {
     return Password._(

@@ -6,7 +6,7 @@ import 'package:dartz/dartz.dart';
 
 class UserName extends ValueObject<String>{
   @override
-  final Either<Failure, String> value;
+  final Either<ValueFailure, String> value;
 
   factory UserName(String input) {
     return UserName._(

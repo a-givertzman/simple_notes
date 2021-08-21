@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'user_profile_bloc.dart';
 
@@ -58,6 +59,15 @@ mixin _$UserProfileEvent {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String userNameStr)? nameChanged,
+    TResult Function(String emailStr)? emailChanged,
+    TResult Function(String passwordStr)? passwordChanged,
+    TResult Function()? applyPressed,
+    TResult Function()? goBackPressed,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String userNameStr)? nameChanged,
     TResult Function(String emailStr)? emailChanged,
@@ -74,6 +84,15 @@ mixin _$UserProfileEvent {
     required TResult Function(_PasswordChanged value) passwordChanged,
     required TResult Function(_ApplyPressed value) applyPressed,
     required TResult Function(_GoBackPressed value) goBackPressed,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_NameChanged value)? nameChanged,
+    TResult Function(_EmailChanged value)? emailChanged,
+    TResult Function(_PasswordChanged value)? passwordChanged,
+    TResult Function(_ApplyPressed value)? applyPressed,
+    TResult Function(_GoBackPressed value)? goBackPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -182,6 +201,18 @@ class _$_NameChanged implements _NameChanged {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String userNameStr)? nameChanged,
+    TResult Function(String emailStr)? emailChanged,
+    TResult Function(String passwordStr)? passwordChanged,
+    TResult Function()? applyPressed,
+    TResult Function()? goBackPressed,
+  }) {
+    return nameChanged?.call(userNameStr);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String userNameStr)? nameChanged,
     TResult Function(String emailStr)? emailChanged,
@@ -206,6 +237,18 @@ class _$_NameChanged implements _NameChanged {
     required TResult Function(_GoBackPressed value) goBackPressed,
   }) {
     return nameChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_NameChanged value)? nameChanged,
+    TResult Function(_EmailChanged value)? emailChanged,
+    TResult Function(_PasswordChanged value)? passwordChanged,
+    TResult Function(_ApplyPressed value)? applyPressed,
+    TResult Function(_GoBackPressed value)? goBackPressed,
+  }) {
+    return nameChanged?.call(this);
   }
 
   @override
@@ -311,6 +354,18 @@ class _$_EmailChanged implements _EmailChanged {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String userNameStr)? nameChanged,
+    TResult Function(String emailStr)? emailChanged,
+    TResult Function(String passwordStr)? passwordChanged,
+    TResult Function()? applyPressed,
+    TResult Function()? goBackPressed,
+  }) {
+    return emailChanged?.call(emailStr);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String userNameStr)? nameChanged,
     TResult Function(String emailStr)? emailChanged,
@@ -335,6 +390,18 @@ class _$_EmailChanged implements _EmailChanged {
     required TResult Function(_GoBackPressed value) goBackPressed,
   }) {
     return emailChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_NameChanged value)? nameChanged,
+    TResult Function(_EmailChanged value)? emailChanged,
+    TResult Function(_PasswordChanged value)? passwordChanged,
+    TResult Function(_ApplyPressed value)? applyPressed,
+    TResult Function(_GoBackPressed value)? goBackPressed,
+  }) {
+    return emailChanged?.call(this);
   }
 
   @override
@@ -440,6 +507,18 @@ class _$_PasswordChanged implements _PasswordChanged {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String userNameStr)? nameChanged,
+    TResult Function(String emailStr)? emailChanged,
+    TResult Function(String passwordStr)? passwordChanged,
+    TResult Function()? applyPressed,
+    TResult Function()? goBackPressed,
+  }) {
+    return passwordChanged?.call(passwordStr);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String userNameStr)? nameChanged,
     TResult Function(String emailStr)? emailChanged,
@@ -464,6 +543,18 @@ class _$_PasswordChanged implements _PasswordChanged {
     required TResult Function(_GoBackPressed value) goBackPressed,
   }) {
     return passwordChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_NameChanged value)? nameChanged,
+    TResult Function(_EmailChanged value)? emailChanged,
+    TResult Function(_PasswordChanged value)? passwordChanged,
+    TResult Function(_ApplyPressed value)? applyPressed,
+    TResult Function(_GoBackPressed value)? goBackPressed,
+  }) {
+    return passwordChanged?.call(this);
   }
 
   @override
@@ -543,6 +634,18 @@ class _$_ApplyPressed implements _ApplyPressed {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String userNameStr)? nameChanged,
+    TResult Function(String emailStr)? emailChanged,
+    TResult Function(String passwordStr)? passwordChanged,
+    TResult Function()? applyPressed,
+    TResult Function()? goBackPressed,
+  }) {
+    return applyPressed?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String userNameStr)? nameChanged,
     TResult Function(String emailStr)? emailChanged,
@@ -567,6 +670,18 @@ class _$_ApplyPressed implements _ApplyPressed {
     required TResult Function(_GoBackPressed value) goBackPressed,
   }) {
     return applyPressed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_NameChanged value)? nameChanged,
+    TResult Function(_EmailChanged value)? emailChanged,
+    TResult Function(_PasswordChanged value)? passwordChanged,
+    TResult Function(_ApplyPressed value)? applyPressed,
+    TResult Function(_GoBackPressed value)? goBackPressed,
+  }) {
+    return applyPressed?.call(this);
   }
 
   @override
@@ -641,6 +756,18 @@ class _$_GoBackPressed implements _GoBackPressed {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String userNameStr)? nameChanged,
+    TResult Function(String emailStr)? emailChanged,
+    TResult Function(String passwordStr)? passwordChanged,
+    TResult Function()? applyPressed,
+    TResult Function()? goBackPressed,
+  }) {
+    return goBackPressed?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String userNameStr)? nameChanged,
     TResult Function(String emailStr)? emailChanged,
@@ -665,6 +792,18 @@ class _$_GoBackPressed implements _GoBackPressed {
     required TResult Function(_GoBackPressed value) goBackPressed,
   }) {
     return goBackPressed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_NameChanged value)? nameChanged,
+    TResult Function(_EmailChanged value)? emailChanged,
+    TResult Function(_PasswordChanged value)? passwordChanged,
+    TResult Function(_ApplyPressed value)? applyPressed,
+    TResult Function(_GoBackPressed value)? goBackPressed,
+  }) {
+    return goBackPressed?.call(this);
   }
 
   @override

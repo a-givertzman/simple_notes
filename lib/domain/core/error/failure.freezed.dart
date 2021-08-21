@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'failure.dart';
 
@@ -80,6 +81,17 @@ mixin _$ValueFailure<T> {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(T message)? emailFailure,
+    TResult Function(T message)? passwordFailure,
+    TResult Function(T message)? userNameFailure,
+    TResult Function(T failedValue, int maxLength)? exceedingLength,
+    TResult Function(T failedValue)? emptyValueFailure,
+    TResult Function(T failedValue)? multylineValueFailure,
+    TResult Function(T failedValue, int maxLength)? listTooLongFailure,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T message)? emailFailure,
     TResult Function(T message)? passwordFailure,
@@ -101,6 +113,17 @@ mixin _$ValueFailure<T> {
     required TResult Function(_MultylineValueFailure<T> value)
         multylineValueFailure,
     required TResult Function(_ListTooLongFailure<T> value) listTooLongFailure,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_EmailFailure<T> value)? emailFailure,
+    TResult Function(_PasswordFailure<T> value)? passwordFailure,
+    TResult Function(_UserNameFailure<T> value)? userNameFailure,
+    TResult Function(_ExceedingLength<T> value)? exceedingLength,
+    TResult Function(_EmptyValueFailure<T> value)? emptyValueFailure,
+    TResult Function(_MultylineValueFailure<T> value)? multylineValueFailure,
+    TResult Function(_ListTooLongFailure<T> value)? listTooLongFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -212,6 +235,20 @@ class _$_EmailFailure<T> implements _EmailFailure<T> {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(T message)? emailFailure,
+    TResult Function(T message)? passwordFailure,
+    TResult Function(T message)? userNameFailure,
+    TResult Function(T failedValue, int maxLength)? exceedingLength,
+    TResult Function(T failedValue)? emptyValueFailure,
+    TResult Function(T failedValue)? multylineValueFailure,
+    TResult Function(T failedValue, int maxLength)? listTooLongFailure,
+  }) {
+    return emailFailure?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T message)? emailFailure,
     TResult Function(T message)? passwordFailure,
@@ -241,6 +278,20 @@ class _$_EmailFailure<T> implements _EmailFailure<T> {
     required TResult Function(_ListTooLongFailure<T> value) listTooLongFailure,
   }) {
     return emailFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_EmailFailure<T> value)? emailFailure,
+    TResult Function(_PasswordFailure<T> value)? passwordFailure,
+    TResult Function(_UserNameFailure<T> value)? userNameFailure,
+    TResult Function(_ExceedingLength<T> value)? exceedingLength,
+    TResult Function(_EmptyValueFailure<T> value)? emptyValueFailure,
+    TResult Function(_MultylineValueFailure<T> value)? multylineValueFailure,
+    TResult Function(_ListTooLongFailure<T> value)? listTooLongFailure,
+  }) {
+    return emailFailure?.call(this);
   }
 
   @override
@@ -349,6 +400,20 @@ class _$_PasswordFailure<T> implements _PasswordFailure<T> {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(T message)? emailFailure,
+    TResult Function(T message)? passwordFailure,
+    TResult Function(T message)? userNameFailure,
+    TResult Function(T failedValue, int maxLength)? exceedingLength,
+    TResult Function(T failedValue)? emptyValueFailure,
+    TResult Function(T failedValue)? multylineValueFailure,
+    TResult Function(T failedValue, int maxLength)? listTooLongFailure,
+  }) {
+    return passwordFailure?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T message)? emailFailure,
     TResult Function(T message)? passwordFailure,
@@ -378,6 +443,20 @@ class _$_PasswordFailure<T> implements _PasswordFailure<T> {
     required TResult Function(_ListTooLongFailure<T> value) listTooLongFailure,
   }) {
     return passwordFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_EmailFailure<T> value)? emailFailure,
+    TResult Function(_PasswordFailure<T> value)? passwordFailure,
+    TResult Function(_UserNameFailure<T> value)? userNameFailure,
+    TResult Function(_ExceedingLength<T> value)? exceedingLength,
+    TResult Function(_EmptyValueFailure<T> value)? emptyValueFailure,
+    TResult Function(_MultylineValueFailure<T> value)? multylineValueFailure,
+    TResult Function(_ListTooLongFailure<T> value)? listTooLongFailure,
+  }) {
+    return passwordFailure?.call(this);
   }
 
   @override
@@ -486,6 +565,20 @@ class _$_UserNameFailure<T> implements _UserNameFailure<T> {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(T message)? emailFailure,
+    TResult Function(T message)? passwordFailure,
+    TResult Function(T message)? userNameFailure,
+    TResult Function(T failedValue, int maxLength)? exceedingLength,
+    TResult Function(T failedValue)? emptyValueFailure,
+    TResult Function(T failedValue)? multylineValueFailure,
+    TResult Function(T failedValue, int maxLength)? listTooLongFailure,
+  }) {
+    return userNameFailure?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T message)? emailFailure,
     TResult Function(T message)? passwordFailure,
@@ -515,6 +608,20 @@ class _$_UserNameFailure<T> implements _UserNameFailure<T> {
     required TResult Function(_ListTooLongFailure<T> value) listTooLongFailure,
   }) {
     return userNameFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_EmailFailure<T> value)? emailFailure,
+    TResult Function(_PasswordFailure<T> value)? passwordFailure,
+    TResult Function(_UserNameFailure<T> value)? userNameFailure,
+    TResult Function(_ExceedingLength<T> value)? exceedingLength,
+    TResult Function(_EmptyValueFailure<T> value)? emptyValueFailure,
+    TResult Function(_MultylineValueFailure<T> value)? multylineValueFailure,
+    TResult Function(_ListTooLongFailure<T> value)? listTooLongFailure,
+  }) {
+    return userNameFailure?.call(this);
   }
 
   @override
@@ -637,6 +744,20 @@ class _$_ExceedingLength<T> implements _ExceedingLength<T> {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(T message)? emailFailure,
+    TResult Function(T message)? passwordFailure,
+    TResult Function(T message)? userNameFailure,
+    TResult Function(T failedValue, int maxLength)? exceedingLength,
+    TResult Function(T failedValue)? emptyValueFailure,
+    TResult Function(T failedValue)? multylineValueFailure,
+    TResult Function(T failedValue, int maxLength)? listTooLongFailure,
+  }) {
+    return exceedingLength?.call(failedValue, maxLength);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T message)? emailFailure,
     TResult Function(T message)? passwordFailure,
@@ -666,6 +787,20 @@ class _$_ExceedingLength<T> implements _ExceedingLength<T> {
     required TResult Function(_ListTooLongFailure<T> value) listTooLongFailure,
   }) {
     return exceedingLength(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_EmailFailure<T> value)? emailFailure,
+    TResult Function(_PasswordFailure<T> value)? passwordFailure,
+    TResult Function(_UserNameFailure<T> value)? userNameFailure,
+    TResult Function(_ExceedingLength<T> value)? exceedingLength,
+    TResult Function(_EmptyValueFailure<T> value)? emptyValueFailure,
+    TResult Function(_MultylineValueFailure<T> value)? multylineValueFailure,
+    TResult Function(_ListTooLongFailure<T> value)? listTooLongFailure,
+  }) {
+    return exceedingLength?.call(this);
   }
 
   @override
@@ -778,6 +913,20 @@ class _$_EmptyValueFailure<T> implements _EmptyValueFailure<T> {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(T message)? emailFailure,
+    TResult Function(T message)? passwordFailure,
+    TResult Function(T message)? userNameFailure,
+    TResult Function(T failedValue, int maxLength)? exceedingLength,
+    TResult Function(T failedValue)? emptyValueFailure,
+    TResult Function(T failedValue)? multylineValueFailure,
+    TResult Function(T failedValue, int maxLength)? listTooLongFailure,
+  }) {
+    return emptyValueFailure?.call(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T message)? emailFailure,
     TResult Function(T message)? passwordFailure,
@@ -807,6 +956,20 @@ class _$_EmptyValueFailure<T> implements _EmptyValueFailure<T> {
     required TResult Function(_ListTooLongFailure<T> value) listTooLongFailure,
   }) {
     return emptyValueFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_EmailFailure<T> value)? emailFailure,
+    TResult Function(_PasswordFailure<T> value)? passwordFailure,
+    TResult Function(_UserNameFailure<T> value)? userNameFailure,
+    TResult Function(_ExceedingLength<T> value)? exceedingLength,
+    TResult Function(_EmptyValueFailure<T> value)? emptyValueFailure,
+    TResult Function(_MultylineValueFailure<T> value)? multylineValueFailure,
+    TResult Function(_ListTooLongFailure<T> value)? listTooLongFailure,
+  }) {
+    return emptyValueFailure?.call(this);
   }
 
   @override
@@ -919,6 +1082,20 @@ class _$_MultylineValueFailure<T> implements _MultylineValueFailure<T> {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(T message)? emailFailure,
+    TResult Function(T message)? passwordFailure,
+    TResult Function(T message)? userNameFailure,
+    TResult Function(T failedValue, int maxLength)? exceedingLength,
+    TResult Function(T failedValue)? emptyValueFailure,
+    TResult Function(T failedValue)? multylineValueFailure,
+    TResult Function(T failedValue, int maxLength)? listTooLongFailure,
+  }) {
+    return multylineValueFailure?.call(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T message)? emailFailure,
     TResult Function(T message)? passwordFailure,
@@ -948,6 +1125,20 @@ class _$_MultylineValueFailure<T> implements _MultylineValueFailure<T> {
     required TResult Function(_ListTooLongFailure<T> value) listTooLongFailure,
   }) {
     return multylineValueFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_EmailFailure<T> value)? emailFailure,
+    TResult Function(_PasswordFailure<T> value)? passwordFailure,
+    TResult Function(_UserNameFailure<T> value)? userNameFailure,
+    TResult Function(_ExceedingLength<T> value)? exceedingLength,
+    TResult Function(_EmptyValueFailure<T> value)? emptyValueFailure,
+    TResult Function(_MultylineValueFailure<T> value)? multylineValueFailure,
+    TResult Function(_ListTooLongFailure<T> value)? listTooLongFailure,
+  }) {
+    return multylineValueFailure?.call(this);
   }
 
   @override
@@ -1072,6 +1263,20 @@ class _$_ListTooLongFailure<T> implements _ListTooLongFailure<T> {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(T message)? emailFailure,
+    TResult Function(T message)? passwordFailure,
+    TResult Function(T message)? userNameFailure,
+    TResult Function(T failedValue, int maxLength)? exceedingLength,
+    TResult Function(T failedValue)? emptyValueFailure,
+    TResult Function(T failedValue)? multylineValueFailure,
+    TResult Function(T failedValue, int maxLength)? listTooLongFailure,
+  }) {
+    return listTooLongFailure?.call(failedValue, maxLength);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T message)? emailFailure,
     TResult Function(T message)? passwordFailure,
@@ -1101,6 +1306,20 @@ class _$_ListTooLongFailure<T> implements _ListTooLongFailure<T> {
     required TResult Function(_ListTooLongFailure<T> value) listTooLongFailure,
   }) {
     return listTooLongFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_EmailFailure<T> value)? emailFailure,
+    TResult Function(_PasswordFailure<T> value)? passwordFailure,
+    TResult Function(_UserNameFailure<T> value)? userNameFailure,
+    TResult Function(_ExceedingLength<T> value)? exceedingLength,
+    TResult Function(_EmptyValueFailure<T> value)? emptyValueFailure,
+    TResult Function(_MultylineValueFailure<T> value)? multylineValueFailure,
+    TResult Function(_ListTooLongFailure<T> value)? listTooLongFailure,
+  }) {
+    return listTooLongFailure?.call(this);
   }
 
   @override

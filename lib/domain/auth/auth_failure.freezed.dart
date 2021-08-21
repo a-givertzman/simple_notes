@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'auth_failure.dart';
 
@@ -61,6 +62,14 @@ mixin _$AuthFailure<T> {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String message)? authCanceledByUserFailure,
+    TResult Function(String message)? authFailureOnServerSide,
+    TResult Function(String message)? emailAlreadyInUseFailure,
+    TResult Function(String message)? invalidEmailAndPasswordFailure,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String message)? authCanceledByUserFailure,
     TResult Function(String message)? authFailureOnServerSide,
@@ -78,6 +87,18 @@ mixin _$AuthFailure<T> {
     required TResult Function(_EmailAlreadyInUseFailure<T> value)
         emailAlreadyInUseFailure,
     required TResult Function(_InvalidEmailAndPasswordFailure<T> value)
+        invalidEmailAndPasswordFailure,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_AuthCanceledByUserFailure<T> value)?
+        authCanceledByUserFailure,
+    TResult Function(_AuthFailureOnServerSide<T> value)?
+        authFailureOnServerSide,
+    TResult Function(_EmailAlreadyInUseFailure<T> value)?
+        emailAlreadyInUseFailure,
+    TResult Function(_InvalidEmailAndPasswordFailure<T> value)?
         invalidEmailAndPasswordFailure,
   }) =>
       throw _privateConstructorUsedError;
@@ -210,6 +231,17 @@ class _$_AuthCanceledByUserFailure<T> implements _AuthCanceledByUserFailure<T> {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String message)? authCanceledByUserFailure,
+    TResult Function(String message)? authFailureOnServerSide,
+    TResult Function(String message)? emailAlreadyInUseFailure,
+    TResult Function(String message)? invalidEmailAndPasswordFailure,
+  }) {
+    return authCanceledByUserFailure?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String message)? authCanceledByUserFailure,
     TResult Function(String message)? authFailureOnServerSide,
@@ -236,6 +268,21 @@ class _$_AuthCanceledByUserFailure<T> implements _AuthCanceledByUserFailure<T> {
         invalidEmailAndPasswordFailure,
   }) {
     return authCanceledByUserFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_AuthCanceledByUserFailure<T> value)?
+        authCanceledByUserFailure,
+    TResult Function(_AuthFailureOnServerSide<T> value)?
+        authFailureOnServerSide,
+    TResult Function(_EmailAlreadyInUseFailure<T> value)?
+        emailAlreadyInUseFailure,
+    TResult Function(_InvalidEmailAndPasswordFailure<T> value)?
+        invalidEmailAndPasswordFailure,
+  }) {
+    return authCanceledByUserFailure?.call(this);
   }
 
   @override
@@ -349,6 +396,17 @@ class _$_AuthFailureOnServerSide<T> implements _AuthFailureOnServerSide<T> {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String message)? authCanceledByUserFailure,
+    TResult Function(String message)? authFailureOnServerSide,
+    TResult Function(String message)? emailAlreadyInUseFailure,
+    TResult Function(String message)? invalidEmailAndPasswordFailure,
+  }) {
+    return authFailureOnServerSide?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String message)? authCanceledByUserFailure,
     TResult Function(String message)? authFailureOnServerSide,
@@ -375,6 +433,21 @@ class _$_AuthFailureOnServerSide<T> implements _AuthFailureOnServerSide<T> {
         invalidEmailAndPasswordFailure,
   }) {
     return authFailureOnServerSide(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_AuthCanceledByUserFailure<T> value)?
+        authCanceledByUserFailure,
+    TResult Function(_AuthFailureOnServerSide<T> value)?
+        authFailureOnServerSide,
+    TResult Function(_EmailAlreadyInUseFailure<T> value)?
+        emailAlreadyInUseFailure,
+    TResult Function(_InvalidEmailAndPasswordFailure<T> value)?
+        invalidEmailAndPasswordFailure,
+  }) {
+    return authFailureOnServerSide?.call(this);
   }
 
   @override
@@ -488,6 +561,17 @@ class _$_EmailAlreadyInUseFailure<T> implements _EmailAlreadyInUseFailure<T> {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String message)? authCanceledByUserFailure,
+    TResult Function(String message)? authFailureOnServerSide,
+    TResult Function(String message)? emailAlreadyInUseFailure,
+    TResult Function(String message)? invalidEmailAndPasswordFailure,
+  }) {
+    return emailAlreadyInUseFailure?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String message)? authCanceledByUserFailure,
     TResult Function(String message)? authFailureOnServerSide,
@@ -514,6 +598,21 @@ class _$_EmailAlreadyInUseFailure<T> implements _EmailAlreadyInUseFailure<T> {
         invalidEmailAndPasswordFailure,
   }) {
     return emailAlreadyInUseFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_AuthCanceledByUserFailure<T> value)?
+        authCanceledByUserFailure,
+    TResult Function(_AuthFailureOnServerSide<T> value)?
+        authFailureOnServerSide,
+    TResult Function(_EmailAlreadyInUseFailure<T> value)?
+        emailAlreadyInUseFailure,
+    TResult Function(_InvalidEmailAndPasswordFailure<T> value)?
+        invalidEmailAndPasswordFailure,
+  }) {
+    return emailAlreadyInUseFailure?.call(this);
   }
 
   @override
@@ -589,7 +688,7 @@ class __$InvalidEmailAndPasswordFailureCopyWithImpl<T, $Res>
 
 class _$_InvalidEmailAndPasswordFailure<T>
     implements _InvalidEmailAndPasswordFailure<T> {
-  const _$_InvalidEmailAndPasswordFailure({required this.message});
+  _$_InvalidEmailAndPasswordFailure({required this.message});
 
   @override
   final String message;
@@ -631,6 +730,17 @@ class _$_InvalidEmailAndPasswordFailure<T>
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String message)? authCanceledByUserFailure,
+    TResult Function(String message)? authFailureOnServerSide,
+    TResult Function(String message)? emailAlreadyInUseFailure,
+    TResult Function(String message)? invalidEmailAndPasswordFailure,
+  }) {
+    return invalidEmailAndPasswordFailure?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String message)? authCanceledByUserFailure,
     TResult Function(String message)? authFailureOnServerSide,
@@ -661,6 +771,21 @@ class _$_InvalidEmailAndPasswordFailure<T>
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_AuthCanceledByUserFailure<T> value)?
+        authCanceledByUserFailure,
+    TResult Function(_AuthFailureOnServerSide<T> value)?
+        authFailureOnServerSide,
+    TResult Function(_EmailAlreadyInUseFailure<T> value)?
+        emailAlreadyInUseFailure,
+    TResult Function(_InvalidEmailAndPasswordFailure<T> value)?
+        invalidEmailAndPasswordFailure,
+  }) {
+    return invalidEmailAndPasswordFailure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AuthCanceledByUserFailure<T> value)?
         authCanceledByUserFailure,
@@ -680,7 +805,7 @@ class _$_InvalidEmailAndPasswordFailure<T>
 }
 
 abstract class _InvalidEmailAndPasswordFailure<T> implements AuthFailure<T> {
-  const factory _InvalidEmailAndPasswordFailure({required String message}) =
+  factory _InvalidEmailAndPasswordFailure({required String message}) =
       _$_InvalidEmailAndPasswordFailure<T>;
 
   @override

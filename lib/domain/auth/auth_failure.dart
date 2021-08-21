@@ -23,7 +23,7 @@ abstract class AuthFailure<T> with _$AuthFailure<T> {
   }) = _EmailAlreadyInUseFailure<T>;
   //
   // Sign in error Invalid Email & password combination
-  const factory AuthFailure.invalidEmailAndPasswordFailure({
+  factory AuthFailure.invalidEmailAndPasswordFailure({
     required String message,
   }) = _InvalidEmailAndPasswordFailure<T>;
 }

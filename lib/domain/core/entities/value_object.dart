@@ -16,6 +16,13 @@ abstract class ValueObject<T> {
     ); // shold return correct value because of validator, but error handler already used
   }
 
+  Either<ValueFailure<dynamic>, Unit> get failureOrUnit {
+    return value.fold(
+      (l) => left(l), 
+      (r) => right(unit),
+    );
+  }
+
   bool isValid() => value.isRight();
 
   @override

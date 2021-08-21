@@ -1,5 +1,4 @@
 import 'package:auth_app/domain/core/entities/unique_id.dart';
-import 'package:auth_app/domain/core/entities/value_object.dart';
 import 'package:auth_app/domain/core/error/failure.dart';
 import 'package:auth_app/domain/notes/vaue_object.dart';
 import 'package:dartz/dartz.dart';

@@ -67,13 +67,13 @@ class FirebaseAuthRepository implements IAuthRepository {
           return const Left(AuthFailure.emailAlreadyInUseFailure(message: 'Firebase: Email already in use'));
         // break;
         case 'invalid-email':
-          return const Left(AuthFailure.invalidEmailAndPasswordFailure(message: 'Firebase: invalid email'));
+          return Left(AuthFailure.invalidEmailAndPasswordFailure(message: 'Firebase: invalid email'));
         // break;
         case 'weak-password':
           return const Left(AuthFailure.authFailureOnServerSide(message: 'Firebase: The password is not strong enough'));
         // break;
         default: { // 'operation-not-allowed' or whatewer
-          return const Left(AuthFailure.authFailureOnServerSide(message: 'Firebase: Operation not allowed'));
+          return Left(AuthFailure.authFailureOnServerSide(message: 'Firebase exeption: ${e.message??'no message'}'));
         }
       }
     }
@@ -96,13 +96,16 @@ class FirebaseAuthRepository implements IAuthRepository {
       // TODO "OK" reply from server has to be implemented
       // TODO .then((value) => value.user.uid)
       return const Right('OK');
-    } on PlatformException catch (e) {
+    } on FirebaseAuthException catch (e) {
+      
+      print( "[signInWithEmailAndPassword] Exception:" );
+      print( e );
       if (e.code == 'invalid-email' ||
           e.code == 'user-disabled' ||
           e.code == 'user-not-found') {
-          return const Left(AuthFailure.invalidEmailAndPasswordFailure(message: 'Firebase: Wrong email or password'));
+          return Left(AuthFailure.invalidEmailAndPasswordFailure(message: 'Firebase exeption: ${e.message??'no message'}'));
       } else { // 'wrong-password' or whatewer
-          return const Left(AuthFailure.authFailureOnServerSide(message: 'Firebase: Authorization error'));
+          return Left(AuthFailure.authFailureOnServerSide(message: 'Firebase exeption: ${e.message??'no message'}'));
       }
     }  
   }
@@ -135,7 +138,7 @@ class FirebaseAuthRepository implements IAuthRepository {
       if (e.code == 'invalid-credential' ||
           e.code == 'user-disabled' ||
           e.code == 'user-not-found') {
-          return const Left(AuthFailure.invalidEmailAndPasswordFailure(message: 'Firebase: Wrong credintals'));
+          return Left(AuthFailure.invalidEmailAndPasswordFailure(message: 'Firebase: Wrong credintals'));
       } else { // 'all ather errors
           return const Left(AuthFailure.authFailureOnServerSide(message: 'Firebase: Authorization error'));
       }
@@ -164,7 +167,7 @@ class FirebaseAuthRepository implements IAuthRepository {
       if (e.code == 'invalid-credential' ||
           e.code == 'user-disabled' ||
           e.code == 'user-not-found') {
-          return const Left(AuthFailure.invalidEmailAndPasswordFailure(message: 'Facebook: Wrong credintals'));
+          return Left(AuthFailure.invalidEmailAndPasswordFailure(message: 'Facebook: Wrong credintals'));
       } else { // 'all ather errors
           return const Left(AuthFailure.authFailureOnServerSide(message: 'Facebook: Authorization error'));
       }
@@ -197,7 +200,7 @@ class FirebaseAuthRepository implements IAuthRepository {
       try {
         await _firebaseUser.updateEmail(emailAddress.getOrCrush());
         return const Right('Successfully changed email address');
-      } on PlatformException catch (e) {
+      } on FirebaseAuthException catch (e) {
         return Left(
           AuthFailure.authFailureOnServerSide(message: "Firebase: Email address can't be changed. ${e.message}")
         );
@@ -216,7 +219,7 @@ class FirebaseAuthRepository implements IAuthRepository {
       try {
         await _firebaseUser.updatePassword(password.getOrCrush());
         return const Right('Successfully changed password');
-      } on PlatformException catch (e) {
+      } on FirebaseAuthException catch (e) {
         return Left(
           AuthFailure.authFailureOnServerSide(message: "Firebase: Password can't be changed. ${e.message}")
         );
@@ -241,7 +244,7 @@ class FirebaseAuthRepository implements IAuthRepository {
           photoURL: _photoURL,
         );
         return const Right('Successfully updated user profile');
-      } on PlatformException catch (e) {
+      } on FirebaseAuthException catch (e) {
         return Left(
           AuthFailure.authFailureOnServerSide(message: "Firebase: User profile can't be updated. ${e.message}")
         );

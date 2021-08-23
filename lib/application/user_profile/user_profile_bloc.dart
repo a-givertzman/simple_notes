@@ -6,15 +6,15 @@ import 'package:auth_app/domain/auth/i_auth_repository.dart';
 import 'package:auth_app/domain/auth/password.dart';
 import 'package:auth_app/domain/auth/user_name.dart';
 import 'package:auth_app/domain/auth/user_photo_url.dart';
-import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
+part 'user_profile_bloc.freezed.dart';
 part 'user_profile_event.dart';
 part 'user_profile_state.dart';
-part 'user_profile_bloc.freezed.dart';
 
 @injectable
 class UserProfileBloc extends Bloc<UserProfileEvent, UserProfileState> {
@@ -79,7 +79,7 @@ class UserProfileBloc extends Bloc<UserProfileEvent, UserProfileState> {
 
           if (state.emailChanged) {
             final failureOrSuccess = await _authRepository.updateEmailAddress(
-              emailAddress: state.emailAddress
+              emailAddress: state.emailAddress,
             );
             yield state.copyWith(
               isSubmiting: false,
@@ -89,7 +89,7 @@ class UserProfileBloc extends Bloc<UserProfileEvent, UserProfileState> {
 
           if (state.passwordChanged) {
             final failureOrSuccess = await _authRepository.updatePassword(
-              password: state.password
+              password: state.password,
             );
             yield state.copyWith(
               isSubmiting: false,

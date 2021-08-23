@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:auth_app/domain/auth/i_auth_repository.dart';
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
@@ -27,7 +27,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         final userOption =_authRepository.getCurrentUser();
         yield userOption.fold(
           () => const AuthState.unauthenticated(),                // if NONE then unauthenticated
-          (domainUser) => const AuthState.authenticated()         // if SOME then user is authenticated
+          (domainUser) => const AuthState.authenticated(),        // if SOME then user is authenticated
         );
       },
 

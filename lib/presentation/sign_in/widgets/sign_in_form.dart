@@ -83,7 +83,7 @@ class SignInForm extends StatelessWidget {
                   TextButton(                                                   // Sign In Button
                     onPressed: () {
                       context.read<SignInFormBloc>().add(
-                        const SignInFormEvent.signInWithEmailAndPasswordPressed()
+                        const SignInFormEvent.signInWithEmailAndPasswordPressed(),
                       );
                     },
                     child: const Text('Sign in'),
@@ -93,7 +93,7 @@ class SignInForm extends StatelessWidget {
                   TextButton(                                                   // Register Button
                     onPressed: () {
                       context.read<SignInFormBloc>().add(
-                        const SignInFormEvent.registerWithEmailAndPasswordPressed()
+                        const SignInFormEvent.registerWithEmailAndPasswordPressed(),
                       );
                     },
                     child: const Text('Register'),
@@ -103,7 +103,7 @@ class SignInForm extends StatelessWidget {
               ElevatedButton(                                                   // Sign In with Google
                 onPressed: () {
                   context.read<SignInFormBloc>().add(
-                    const SignInFormEvent.signInWithGooglePressed()
+                    const SignInFormEvent.signInWithGooglePressed(),
                   );
                 },
                 style: ElevatedButton.styleFrom(
@@ -120,7 +120,7 @@ class SignInForm extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {
                   context.read<SignInFormBloc>().add(
-                    const SignInFormEvent.signInWithFacebookPressed()
+                    const SignInFormEvent.signInWithFacebookPressed(),
                   );
                 },
                 style: ElevatedButton.styleFrom(

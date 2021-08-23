@@ -11,20 +11,23 @@ part 'note.freezed.dart';
 //
 @freezed
 abstract class Note implements _$Note {
-  const Note._();
 
   const factory Note({
     required UniqueId id,
     required NoteBody body,
     required NoteColor color,
     required List3<TodoItem> todos,
+    required DateTime lastUpdateTimeStamp,
   }) = _Note;
 
+  const Note._();
+  
   factory Note.empty() => Note(
     id: UniqueId(), 
     body: NoteBody('new note'), 
     color: NoteColor(NoteColor.predefinedColors[0]),
     todos: List3(emptyList()),
+    lastUpdateTimeStamp: DateTime.now(),
   );
 
   Option<ValueFailure<dynamic>> get failureOption {

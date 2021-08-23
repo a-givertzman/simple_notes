@@ -21,12 +21,14 @@ class _$NoteTearOff {
       {required UniqueId id,
       required NoteBody body,
       required NoteColor color,
-      required List3<TodoItem> todos}) {
+      required List3<TodoItem> todos,
+      required DateTime lastUpdateTimeStamp}) {
     return _Note(
       id: id,
       body: body,
       color: color,
       todos: todos,
+      lastUpdateTimeStamp: lastUpdateTimeStamp,
     );
   }
 }
@@ -40,6 +42,7 @@ mixin _$Note {
   NoteBody get body => throw _privateConstructorUsedError;
   NoteColor get color => throw _privateConstructorUsedError;
   List3<TodoItem> get todos => throw _privateConstructorUsedError;
+  DateTime get lastUpdateTimeStamp => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $NoteCopyWith<Note> get copyWith => throw _privateConstructorUsedError;
@@ -50,7 +53,11 @@ abstract class $NoteCopyWith<$Res> {
   factory $NoteCopyWith(Note value, $Res Function(Note) then) =
       _$NoteCopyWithImpl<$Res>;
   $Res call(
-      {UniqueId id, NoteBody body, NoteColor color, List3<TodoItem> todos});
+      {UniqueId id,
+      NoteBody body,
+      NoteColor color,
+      List3<TodoItem> todos,
+      DateTime lastUpdateTimeStamp});
 }
 
 /// @nodoc
@@ -67,6 +74,7 @@ class _$NoteCopyWithImpl<$Res> implements $NoteCopyWith<$Res> {
     Object? body = freezed,
     Object? color = freezed,
     Object? todos = freezed,
+    Object? lastUpdateTimeStamp = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -85,6 +93,10 @@ class _$NoteCopyWithImpl<$Res> implements $NoteCopyWith<$Res> {
           ? _value.todos
           : todos // ignore: cast_nullable_to_non_nullable
               as List3<TodoItem>,
+      lastUpdateTimeStamp: lastUpdateTimeStamp == freezed
+          ? _value.lastUpdateTimeStamp
+          : lastUpdateTimeStamp // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 }
@@ -95,7 +107,11 @@ abstract class _$NoteCopyWith<$Res> implements $NoteCopyWith<$Res> {
       __$NoteCopyWithImpl<$Res>;
   @override
   $Res call(
-      {UniqueId id, NoteBody body, NoteColor color, List3<TodoItem> todos});
+      {UniqueId id,
+      NoteBody body,
+      NoteColor color,
+      List3<TodoItem> todos,
+      DateTime lastUpdateTimeStamp});
 }
 
 /// @nodoc
@@ -113,6 +129,7 @@ class __$NoteCopyWithImpl<$Res> extends _$NoteCopyWithImpl<$Res>
     Object? body = freezed,
     Object? color = freezed,
     Object? todos = freezed,
+    Object? lastUpdateTimeStamp = freezed,
   }) {
     return _then(_Note(
       id: id == freezed
@@ -131,6 +148,10 @@ class __$NoteCopyWithImpl<$Res> extends _$NoteCopyWithImpl<$Res>
           ? _value.todos
           : todos // ignore: cast_nullable_to_non_nullable
               as List3<TodoItem>,
+      lastUpdateTimeStamp: lastUpdateTimeStamp == freezed
+          ? _value.lastUpdateTimeStamp
+          : lastUpdateTimeStamp // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 }
@@ -142,7 +163,8 @@ class _$_Note extends _Note {
       {required this.id,
       required this.body,
       required this.color,
-      required this.todos})
+      required this.todos,
+      required this.lastUpdateTimeStamp})
       : super._();
 
   @override
@@ -153,10 +175,12 @@ class _$_Note extends _Note {
   final NoteColor color;
   @override
   final List3<TodoItem> todos;
+  @override
+  final DateTime lastUpdateTimeStamp;
 
   @override
   String toString() {
-    return 'Note(id: $id, body: $body, color: $color, todos: $todos)';
+    return 'Note(id: $id, body: $body, color: $color, todos: $todos, lastUpdateTimeStamp: $lastUpdateTimeStamp)';
   }
 
   @override
@@ -170,7 +194,10 @@ class _$_Note extends _Note {
             (identical(other.color, color) ||
                 const DeepCollectionEquality().equals(other.color, color)) &&
             (identical(other.todos, todos) ||
-                const DeepCollectionEquality().equals(other.todos, todos)));
+                const DeepCollectionEquality().equals(other.todos, todos)) &&
+            (identical(other.lastUpdateTimeStamp, lastUpdateTimeStamp) ||
+                const DeepCollectionEquality()
+                    .equals(other.lastUpdateTimeStamp, lastUpdateTimeStamp)));
   }
 
   @override
@@ -179,7 +206,8 @@ class _$_Note extends _Note {
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(body) ^
       const DeepCollectionEquality().hash(color) ^
-      const DeepCollectionEquality().hash(todos);
+      const DeepCollectionEquality().hash(todos) ^
+      const DeepCollectionEquality().hash(lastUpdateTimeStamp);
 
   @JsonKey(ignore: true)
   @override
@@ -192,7 +220,8 @@ abstract class _Note extends Note {
       {required UniqueId id,
       required NoteBody body,
       required NoteColor color,
-      required List3<TodoItem> todos}) = _$_Note;
+      required List3<TodoItem> todos,
+      required DateTime lastUpdateTimeStamp}) = _$_Note;
   const _Note._() : super._();
 
   @override
@@ -203,6 +232,8 @@ abstract class _Note extends Note {
   NoteColor get color => throw _privateConstructorUsedError;
   @override
   List3<TodoItem> get todos => throw _privateConstructorUsedError;
+  @override
+  DateTime get lastUpdateTimeStamp => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$NoteCopyWith<_Note> get copyWith => throw _privateConstructorUsedError;

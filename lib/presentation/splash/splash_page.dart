@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:auth_app/application/auth/auth_bloc.dart';
 import 'package:auth_app/presentation/routes/app_router.gr.dart';
 import 'package:auto_route/auto_route.dart';

@@ -96,7 +96,7 @@ class HomeForm extends StatelessWidget {
                   TextButton( // Cancel button
                     onPressed: () {
                       context.read<UserProfileBloc>().add(
-                        const UserProfileEvent.applyPressed()
+                        const UserProfileEvent.applyPressed(),
                       );
                     },
                     child: const Text('Cancel'),
@@ -106,7 +106,7 @@ class HomeForm extends StatelessWidget {
                   TextButton( // Apply button
                     onPressed: () {
                       context.read<UserProfileBloc>().add(
-                        const UserProfileEvent.goBackPressed()
+                        const UserProfileEvent.goBackPressed(),
                       );
                     },
                     child: const Text('Apply'),
@@ -117,7 +117,7 @@ class HomeForm extends StatelessWidget {
                     //TODO implement this signing out event
                     onPressed: () {
                       context.read<AuthBloc>().add(
-                        const AuthEvent.signedOut()
+                        const AuthEvent.signedOut(),
                       );
                     },
                     child: const Text('Sign out'),

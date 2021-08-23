@@ -21,33 +21,37 @@ environment:
   sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
-  flutter:
-    sdk: flutter
   another_flushbar: ^1.10.24
   auto_route: ^2.3.0
+  cloud_firestore: ^2.5.0
   dartz: ^0.10.0-nullsafety.2
   equatable: ^2.0.3
   firebase_auth: ^3.0.2
   firebase_core: ^1.5.0
-  flutter_bloc: ^7.1.0
+  flutter:
+    sdk: flutter
+  flutter_bloc: ^7.2.0
   flutter_facebook_auth: ^3.5.0
   freezed_annotation: ^0.14.3
   get_it: ^7.2.0
   google_sign_in: ^5.0.4
   injectable: ^1.5.0
+  json_annotation: ^4.1.0
   kt_dart: ^0.9.1
   uuid: ^3.0.4
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
   auto_route_generator: ^2.3.0
 
   build_runner: ^2.1.1
+  flutter_test:
+    sdk: flutter
 
   # Code generation for immutable classes for flutter_bloc
   freezed: ^0.14.5
   injectable_generator: ^1.5.0
+
+  json_serializable: ^5.0.0
 
   # rooles for Effective Dart Style
   lint: ^1.5.3

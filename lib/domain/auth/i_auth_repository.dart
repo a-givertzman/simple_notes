@@ -38,7 +38,7 @@ abstract class IAuthRepository {
 
   Future<Either<AuthFailure, String>> updateProfile({
     required UserName displayName,
-    required UserPhotoURL photoURL
+    required UserPhotoURL photoURL,
   });
 
   Future<void> signOut();

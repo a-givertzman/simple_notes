@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppWidget extends StatelessWidget {
   final _appRouter = AppRouter();
+  final ThemeData theme = ThemeData();
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -21,9 +22,13 @@ class AppWidget extends StatelessWidget {
         routerDelegate: _appRouter.delegate(),
         routeInformationParser: _appRouter.defaultRouteParser(),
         debugShowCheckedModeBanner: false,
-        theme: ThemeData.light().copyWith(
-          primaryColor: Colors.blueGrey[800],
-          accentColor: Colors.indigo,
+        theme: theme.copyWith(
+          colorScheme: theme.colorScheme.copyWith(
+            primary: Colors.blueGrey[800],
+            secondary: Colors.indigo,
+          ),
+          // primaryColor: 
+          // accentColor: 
           inputDecorationTheme: InputDecorationTheme(
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),

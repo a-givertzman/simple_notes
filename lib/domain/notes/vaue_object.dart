@@ -16,7 +16,7 @@ class NoteBody extends ValueObject<String> {
   factory NoteBody(String input) {
     return NoteBody._(
       validateMaxStringLength(input, maxLength)
-        .flatMap((prevoseResult) => validateStringNotEmpty(prevoseResult))
+        .flatMap((prevoseResult) => validateStringNotEmpty(prevoseResult)),
     );
   }
 
@@ -34,7 +34,7 @@ class TodoName extends ValueObject<String> {
     return TodoName._(
       validateMaxStringLength(input, maxLength)
         .flatMap((prevoseResult) => validateStringNotEmpty(prevoseResult))
-        .flatMap((prevoseResult) => validateStringSingleLine(prevoseResult, maxLength))
+        .flatMap((prevoseResult) => validateStringSingleLine(prevoseResult, maxLength)),
     );
   }
 
@@ -61,8 +61,8 @@ class NoteColor extends ValueObject<Color> {
   factory NoteColor(Color input) {
     return NoteColor._(
       Right(
-        makeColorOpaque(input)
-      )
+        makeColorOpaque(input),
+      ),
     );
   }
 

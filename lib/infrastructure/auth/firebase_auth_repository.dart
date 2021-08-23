@@ -191,7 +191,7 @@ class FirebaseAuthRepository implements IAuthRepository {
   //
   @override
   Future<Either<AuthFailure, String>> updateEmailAddress({
-    required EmailAddress emailAddress
+    required EmailAddress emailAddress,
   }) async {
     final User? _firebaseUser = _firebaseAuth.currentUser;
     if (_firebaseUser == null) {
@@ -202,7 +202,7 @@ class FirebaseAuthRepository implements IAuthRepository {
         return const Right('Successfully changed email address');
       } on FirebaseAuthException catch (e) {
         return Left(
-          AuthFailure.authFailureOnServerSide(message: "Firebase: Email address can't be changed. ${e.message}")
+          AuthFailure.authFailureOnServerSide(message: "Firebase: Email address can't be changed. ${e.message}"),
         );
       }
     }
@@ -210,7 +210,7 @@ class FirebaseAuthRepository implements IAuthRepository {
   //
   @override
   Future<Either<AuthFailure, String>> updatePassword({
-    required Password password
+    required Password password,
   }) async {
     final User? _firebaseUser = _firebaseAuth.currentUser;
     if (_firebaseUser == null) {
@@ -221,7 +221,7 @@ class FirebaseAuthRepository implements IAuthRepository {
         return const Right('Successfully changed password');
       } on FirebaseAuthException catch (e) {
         return Left(
-          AuthFailure.authFailureOnServerSide(message: "Firebase: Password can't be changed. ${e.message}")
+          AuthFailure.authFailureOnServerSide(message: "Firebase: Password can't be changed. ${e.message}"),
         );
       }
     }
@@ -239,14 +239,12 @@ class FirebaseAuthRepository implements IAuthRepository {
       return const Left(AuthFailure.authFailureOnServerSide(message: 'Firebase: Empty Current user'));
     } else {
       try {
-        await _firebaseUser.updateProfile(
-          displayName: _displayName, 
-          photoURL: _photoURL,
-        );
+        await _firebaseUser.updatePhotoURL(_photoURL);
+        await _firebaseUser.updateDisplayName(_displayName);
         return const Right('Successfully updated user profile');
       } on FirebaseAuthException catch (e) {
         return Left(
-          AuthFailure.authFailureOnServerSide(message: "Firebase: User profile can't be updated. ${e.message}")
+          AuthFailure.authFailureOnServerSide(message: "Firebase: User profile can't be updated. ${e.message}"),
         );
       }
     }

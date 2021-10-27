@@ -5,6 +5,7 @@ import 'package:auth_app/domain/auth/i_auth_repository.dart';
 import 'package:auth_app/domain/auth/password.dart';
 import 'package:auth_app/domain/auth/user_name.dart';
 import 'package:auth_app/domain/auth/user_photo_url.dart';
+import 'package:auth_app/domain/debug/dprint.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
@@ -44,8 +45,8 @@ class FirebaseAuthRepository implements IAuthRepository {
     final emailStr = emailAddress.getOrCrush();
     final passwordStr = password.getOrCrush();
 
-    print( "[registerWithEmailAndPassword] emailAddress: $emailStr" );
-    print( "[registerWithEmailAndPassword] password: $passwordStr" );
+    dPrint.log( "[registerWithEmailAndPassword] emailAddress: $emailStr" );
+    dPrint.log( "[registerWithEmailAndPassword] password: $passwordStr" );
 
     try {
       await _firebaseAuth.createUserWithEmailAndPassword(
@@ -56,13 +57,13 @@ class FirebaseAuthRepository implements IAuthRepository {
       return const Right('OK');
     } on FirebaseAuthException catch (e) {
         
-      print( "[registerWithEmailAndPassword] Exception:" );
-      print( e );
+      dPrint.log( "[registerWithEmailAndPassword] Exception:" );
+      dPrint.log( e );
 
       switch (e.code) {
         case 'email-already-in-use':
         
-        print( "[registerWithEmailAndPassword] emailAddress: $emailStr already in use" );
+        dPrint.log( "[registerWithEmailAndPassword] emailAddress: $emailStr already in use" );
 
           return const Left(AuthFailure.emailAlreadyInUseFailure(message: 'Firebase: Email already in use'));
         // break;
@@ -87,6 +88,9 @@ class FirebaseAuthRepository implements IAuthRepository {
     final emailStr = emailAddress.getOrCrush();
     final passwordStr = password.getOrCrush();
 
+    dPrint.log( "[signInWithEmailAndPassword] emailStr: $emailStr" );
+    dPrint.log( "[signInWithEmailAndPassword] passwordStr: $passwordStr" );
+
     try {
       // TODO Have some code duplication here, needs to be refactored
       await _firebaseAuth.signInWithEmailAndPassword(
@@ -98,8 +102,8 @@ class FirebaseAuthRepository implements IAuthRepository {
       return const Right('OK');
     } on FirebaseAuthException catch (e) {
       
-      print( "[signInWithEmailAndPassword] Exception:" );
-      print( e );
+      dPrint.log( "[signInWithEmailAndPassword] Exception:" );
+      dPrint.log( e );
       if (e.code == 'invalid-email' ||
           e.code == 'user-disabled' ||
           e.code == 'user-not-found') {

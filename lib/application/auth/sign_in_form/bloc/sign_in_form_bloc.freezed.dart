@@ -190,15 +190,14 @@ class _$_EmailChanged implements _EmailChanged {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _EmailChanged &&
+        (other.runtimeType == runtimeType &&
+            other is _EmailChanged &&
             (identical(other.emailStr, emailStr) ||
-                const DeepCollectionEquality()
-                    .equals(other.emailStr, emailStr)));
+                other.emailStr == emailStr));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(emailStr);
+  int get hashCode => Object.hash(runtimeType, emailStr);
 
   @JsonKey(ignore: true)
   @override
@@ -305,7 +304,7 @@ class _$_EmailChanged implements _EmailChanged {
 abstract class _EmailChanged implements SignInFormEvent {
   const factory _EmailChanged(String emailStr) = _$_EmailChanged;
 
-  String get emailStr => throw _privateConstructorUsedError;
+  String get emailStr;
   @JsonKey(ignore: true)
   _$EmailChangedCopyWith<_EmailChanged> get copyWith =>
       throw _privateConstructorUsedError;
@@ -359,15 +358,14 @@ class _$_PasswordChanged implements _PasswordChanged {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _PasswordChanged &&
+        (other.runtimeType == runtimeType &&
+            other is _PasswordChanged &&
             (identical(other.passwordStr, passwordStr) ||
-                const DeepCollectionEquality()
-                    .equals(other.passwordStr, passwordStr)));
+                other.passwordStr == passwordStr));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(passwordStr);
+  int get hashCode => Object.hash(runtimeType, passwordStr);
 
   @JsonKey(ignore: true)
   @override
@@ -474,7 +472,7 @@ class _$_PasswordChanged implements _PasswordChanged {
 abstract class _PasswordChanged implements SignInFormEvent {
   const factory _PasswordChanged(String passwordStr) = _$_PasswordChanged;
 
-  String get passwordStr => throw _privateConstructorUsedError;
+  String get passwordStr;
   @JsonKey(ignore: true)
   _$PasswordChangedCopyWith<_PasswordChanged> get copyWith =>
       throw _privateConstructorUsedError;
@@ -516,7 +514,8 @@ class _$_RegisterWithEmailAndPasswordPressed
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _RegisterWithEmailAndPasswordPressed);
+        (other.runtimeType == runtimeType &&
+            other is _RegisterWithEmailAndPasswordPressed);
   }
 
   @override
@@ -660,7 +659,8 @@ class _$_SignInWithEmailAndPasswordPressed
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _SignInWithEmailAndPasswordPressed);
+        (other.runtimeType == runtimeType &&
+            other is _SignInWithEmailAndPasswordPressed);
   }
 
   @override
@@ -800,7 +800,8 @@ class _$_SignInWithGooglePressed implements _SignInWithGooglePressed {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _SignInWithGooglePressed);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _SignInWithGooglePressed);
   }
 
   @override
@@ -939,7 +940,9 @@ class _$_SignInWithFacebookPressed implements _SignInWithFacebookPressed {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _SignInWithFacebookPressed);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _SignInWithFacebookPressed);
   }
 
   @override
@@ -1227,34 +1230,25 @@ class _$_SignInFormState implements _SignInFormState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _SignInFormState &&
+        (other.runtimeType == runtimeType &&
+            other is _SignInFormState &&
             (identical(other.emailAddress, emailAddress) ||
-                const DeepCollectionEquality()
-                    .equals(other.emailAddress, emailAddress)) &&
+                other.emailAddress == emailAddress) &&
             (identical(other.password, password) ||
-                const DeepCollectionEquality()
-                    .equals(other.password, password)) &&
+                other.password == password) &&
             (identical(other.isSubmiting, isSubmiting) ||
-                const DeepCollectionEquality()
-                    .equals(other.isSubmiting, isSubmiting)) &&
+                other.isSubmiting == isSubmiting) &&
             (identical(other.showErrorMessages, showErrorMessages) ||
-                const DeepCollectionEquality()
-                    .equals(other.showErrorMessages, showErrorMessages)) &&
+                other.showErrorMessages == showErrorMessages) &&
             (identical(other.authFailureOrSuccessOption,
                     authFailureOrSuccessOption) ||
-                const DeepCollectionEquality().equals(
-                    other.authFailureOrSuccessOption,
-                    authFailureOrSuccessOption)));
+                other.authFailureOrSuccessOption ==
+                    authFailureOrSuccessOption));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(emailAddress) ^
-      const DeepCollectionEquality().hash(password) ^
-      const DeepCollectionEquality().hash(isSubmiting) ^
-      const DeepCollectionEquality().hash(showErrorMessages) ^
-      const DeepCollectionEquality().hash(authFailureOrSuccessOption);
+  int get hashCode => Object.hash(runtimeType, emailAddress, password,
+      isSubmiting, showErrorMessages, authFailureOrSuccessOption);
 
   @JsonKey(ignore: true)
   @override
@@ -1272,16 +1266,15 @@ abstract class _SignInFormState implements SignInFormState {
           authFailureOrSuccessOption}) = _$_SignInFormState;
 
   @override
-  EmailAddress get emailAddress => throw _privateConstructorUsedError;
+  EmailAddress get emailAddress;
   @override
-  Password get password => throw _privateConstructorUsedError;
+  Password get password;
   @override
-  bool get isSubmiting => throw _privateConstructorUsedError;
+  bool get isSubmiting;
   @override
-  AutovalidateMode get showErrorMessages => throw _privateConstructorUsedError;
+  AutovalidateMode get showErrorMessages;
   @override
-  Option<Either<AuthFailure, String>> get authFailureOrSuccessOption =>
-      throw _privateConstructorUsedError;
+  Option<Either<AuthFailure, String>> get authFailureOrSuccessOption;
   @override
   @JsonKey(ignore: true)
   _$SignInFormStateCopyWith<_SignInFormState> get copyWith =>

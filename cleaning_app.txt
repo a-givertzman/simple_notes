@@ -1,0 +1,27 @@
+flutter clean
+
+dart pub upgrade
+
+
+// run builder
+// flutter pub run build_runner watch --delete-conflicting-outputs
+// flutter pub run build_runner watch --delete-conflicting-outputs
+// or
+flutter pub run build_runner build --delete-conflicting-outputs
+
+
+/Users/antonlobanov/.pub-cache/hosted/pub.dartlang.org/auto_route-3.0.4/lib/src/router/provider/auto_route_information_provider.dart
+  void routerReportsNewRouteInformation(RouteInformation routeInformation,
+      {required RouteInformationReportingType type ,bool isNavigation = true}) {  //required RouteInformationReportingType type  - added by  Anton Lobanov
+
+/Users/antonlobanov/.pub-cache/hosted/pub.dartlang.org/auto_route-3.0.4/lib/src/router/delegate/auto_router_delegate.dart
+  static reportUrlChanged(BuildContext context, String url) {
+    Router.of(context)
+        .routeInformationProvider
+        ?.routerReportsNewRouteInformation(
+          RouteInformation(
+            location: url,
+          ),
+          type: RouteInformationReportingType.navigate, // added line by Anton Lobanov
+        );
+  }

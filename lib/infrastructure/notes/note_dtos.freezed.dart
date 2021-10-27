@@ -36,7 +36,7 @@ class _$NoteDtoTearOff {
     );
   }
 
-  NoteDto fromJson(Map<String, Object> json) {
+  NoteDto fromJson(Map<String, Object?> json) {
     return NoteDto.fromJson(json);
   }
 }
@@ -198,28 +198,19 @@ class _$_NoteDto extends _NoteDto {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _NoteDto &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.body, body) ||
-                const DeepCollectionEquality().equals(other.body, body)) &&
-            (identical(other.color, color) ||
-                const DeepCollectionEquality().equals(other.color, color)) &&
-            (identical(other.todos, todos) ||
-                const DeepCollectionEquality().equals(other.todos, todos)) &&
+        (other.runtimeType == runtimeType &&
+            other is _NoteDto &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.body, body) || other.body == body) &&
+            (identical(other.color, color) || other.color == color) &&
+            const DeepCollectionEquality().equals(other.todos, todos) &&
             (identical(other.lastUpdateTimeStamp, lastUpdateTimeStamp) ||
-                const DeepCollectionEquality()
-                    .equals(other.lastUpdateTimeStamp, lastUpdateTimeStamp)));
+                other.lastUpdateTimeStamp == lastUpdateTimeStamp));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(body) ^
-      const DeepCollectionEquality().hash(color) ^
-      const DeepCollectionEquality().hash(todos) ^
-      const DeepCollectionEquality().hash(lastUpdateTimeStamp);
+  int get hashCode => Object.hash(runtimeType, id, body, color,
+      const DeepCollectionEquality().hash(todos), lastUpdateTimeStamp);
 
   @JsonKey(ignore: true)
   @override
@@ -244,15 +235,15 @@ abstract class _NoteDto extends NoteDto {
   factory _NoteDto.fromJson(Map<String, dynamic> json) = _$_NoteDto.fromJson;
 
   @override
-  String? get id => throw _privateConstructorUsedError;
+  String? get id;
   @override
-  String get body => throw _privateConstructorUsedError;
+  String get body;
   @override
-  int get color => throw _privateConstructorUsedError;
+  int get color;
   @override
-  List<TodoItemDto> get todos => throw _privateConstructorUsedError;
+  List<TodoItemDto> get todos;
   @override
-  DateTime get lastUpdateTimeStamp => throw _privateConstructorUsedError;
+  DateTime get lastUpdateTimeStamp;
   @override
   @JsonKey(ignore: true)
   _$NoteDtoCopyWith<_NoteDto> get copyWith =>
@@ -276,7 +267,7 @@ class _$TodoItemDtoTearOff {
     );
   }
 
-  TodoItemDto fromJson(Map<String, Object> json) {
+  TodoItemDto fromJson(Map<String, Object?> json) {
     return TodoItemDto.fromJson(json);
   }
 }
@@ -403,21 +394,15 @@ class _$_TodoItemDto extends _TodoItemDto {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _TodoItemDto &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.done, done) ||
-                const DeepCollectionEquality().equals(other.done, done)));
+        (other.runtimeType == runtimeType &&
+            other is _TodoItemDto &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.done, done) || other.done == done));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(done);
+  int get hashCode => Object.hash(runtimeType, id, name, done);
 
   @JsonKey(ignore: true)
   @override
@@ -441,11 +426,11 @@ abstract class _TodoItemDto extends TodoItemDto {
       _$_TodoItemDto.fromJson;
 
   @override
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
-  bool get done => throw _privateConstructorUsedError;
+  bool get done;
   @override
   @JsonKey(ignore: true)
   _$TodoItemDtoCopyWith<_TodoItemDto> get copyWith =>

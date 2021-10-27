@@ -145,23 +145,17 @@ class _$_DomainUser implements _DomainUser {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _DomainUser &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
+        (other.runtimeType == runtimeType &&
+            other is _DomainUser &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.userName, userName) ||
-                const DeepCollectionEquality()
-                    .equals(other.userName, userName)) &&
+                other.userName == userName) &&
             (identical(other.userPhotoURL, userPhotoURL) ||
-                const DeepCollectionEquality()
-                    .equals(other.userPhotoURL, userPhotoURL)));
+                other.userPhotoURL == userPhotoURL));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(userName) ^
-      const DeepCollectionEquality().hash(userPhotoURL);
+  int get hashCode => Object.hash(runtimeType, id, userName, userPhotoURL);
 
   @JsonKey(ignore: true)
   @override
@@ -176,11 +170,11 @@ abstract class _DomainUser implements DomainUser {
       required UserPhotoURL userPhotoURL}) = _$_DomainUser;
 
   @override
-  UniqueId get id => throw _privateConstructorUsedError;
+  UniqueId get id;
   @override
-  UserName get userName => throw _privateConstructorUsedError;
+  UserName get userName;
   @override
-  UserPhotoURL get userPhotoURL => throw _privateConstructorUsedError;
+  UserPhotoURL get userPhotoURL;
   @override
   @JsonKey(ignore: true)
   _$DomainUserCopyWith<_DomainUser> get copyWith =>

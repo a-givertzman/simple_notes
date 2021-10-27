@@ -11,7 +11,9 @@ Either<ValueFailure, String> validateMaxStringLength(
   if (input.length <= maxLength) {
     return Right(input);
   } else {
-    return Left(ValueFailure.exceedingLength(failedValue: input,maxLength: maxLength));
+    return Left(
+      ValueFailure.exceedingLength(failedValue: input, maxLength: maxLength)
+    );
   }
 }
 //

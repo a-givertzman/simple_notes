@@ -172,15 +172,14 @@ class _$_NameChanged implements _NameChanged {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _NameChanged &&
+        (other.runtimeType == runtimeType &&
+            other is _NameChanged &&
             (identical(other.userNameStr, userNameStr) ||
-                const DeepCollectionEquality()
-                    .equals(other.userNameStr, userNameStr)));
+                other.userNameStr == userNameStr));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(userNameStr);
+  int get hashCode => Object.hash(runtimeType, userNameStr);
 
   @JsonKey(ignore: true)
   @override
@@ -271,7 +270,7 @@ class _$_NameChanged implements _NameChanged {
 abstract class _NameChanged implements UserProfileEvent {
   const factory _NameChanged(String userNameStr) = _$_NameChanged;
 
-  String get userNameStr => throw _privateConstructorUsedError;
+  String get userNameStr;
   @JsonKey(ignore: true)
   _$NameChangedCopyWith<_NameChanged> get copyWith =>
       throw _privateConstructorUsedError;
@@ -325,15 +324,14 @@ class _$_EmailChanged implements _EmailChanged {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _EmailChanged &&
+        (other.runtimeType == runtimeType &&
+            other is _EmailChanged &&
             (identical(other.emailStr, emailStr) ||
-                const DeepCollectionEquality()
-                    .equals(other.emailStr, emailStr)));
+                other.emailStr == emailStr));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(emailStr);
+  int get hashCode => Object.hash(runtimeType, emailStr);
 
   @JsonKey(ignore: true)
   @override
@@ -424,7 +422,7 @@ class _$_EmailChanged implements _EmailChanged {
 abstract class _EmailChanged implements UserProfileEvent {
   const factory _EmailChanged(String emailStr) = _$_EmailChanged;
 
-  String get emailStr => throw _privateConstructorUsedError;
+  String get emailStr;
   @JsonKey(ignore: true)
   _$EmailChangedCopyWith<_EmailChanged> get copyWith =>
       throw _privateConstructorUsedError;
@@ -478,15 +476,14 @@ class _$_PasswordChanged implements _PasswordChanged {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _PasswordChanged &&
+        (other.runtimeType == runtimeType &&
+            other is _PasswordChanged &&
             (identical(other.passwordStr, passwordStr) ||
-                const DeepCollectionEquality()
-                    .equals(other.passwordStr, passwordStr)));
+                other.passwordStr == passwordStr));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(passwordStr);
+  int get hashCode => Object.hash(runtimeType, passwordStr);
 
   @JsonKey(ignore: true)
   @override
@@ -577,7 +574,7 @@ class _$_PasswordChanged implements _PasswordChanged {
 abstract class _PasswordChanged implements UserProfileEvent {
   const factory _PasswordChanged(String passwordStr) = _$_PasswordChanged;
 
-  String get passwordStr => throw _privateConstructorUsedError;
+  String get passwordStr;
   @JsonKey(ignore: true)
   _$PasswordChangedCopyWith<_PasswordChanged> get copyWith =>
       throw _privateConstructorUsedError;
@@ -614,7 +611,8 @@ class _$_ApplyPressed implements _ApplyPressed {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _ApplyPressed);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _ApplyPressed);
   }
 
   @override
@@ -736,7 +734,8 @@ class _$_GoBackPressed implements _GoBackPressed {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _GoBackPressed);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _GoBackPressed);
   }
 
   @override
@@ -1097,53 +1096,44 @@ class _$_UserProfileState implements _UserProfileState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _UserProfileState &&
+        (other.runtimeType == runtimeType &&
+            other is _UserProfileState &&
             (identical(other.userName, userName) ||
-                const DeepCollectionEquality()
-                    .equals(other.userName, userName)) &&
+                other.userName == userName) &&
             (identical(other.emailAddress, emailAddress) ||
-                const DeepCollectionEquality()
-                    .equals(other.emailAddress, emailAddress)) &&
+                other.emailAddress == emailAddress) &&
             (identical(other.password, password) ||
-                const DeepCollectionEquality()
-                    .equals(other.password, password)) &&
+                other.password == password) &&
             (identical(other.nameChanged, nameChanged) ||
-                const DeepCollectionEquality()
-                    .equals(other.nameChanged, nameChanged)) &&
+                other.nameChanged == nameChanged) &&
             (identical(other.emailChanged, emailChanged) ||
-                const DeepCollectionEquality()
-                    .equals(other.emailChanged, emailChanged)) &&
+                other.emailChanged == emailChanged) &&
             (identical(other.passwordChanged, passwordChanged) ||
-                const DeepCollectionEquality()
-                    .equals(other.passwordChanged, passwordChanged)) &&
+                other.passwordChanged == passwordChanged) &&
             (identical(other.isSubmiting, isSubmiting) ||
-                const DeepCollectionEquality()
-                    .equals(other.isSubmiting, isSubmiting)) &&
+                other.isSubmiting == isSubmiting) &&
             (identical(other.showErrorMessages, showErrorMessages) ||
-                const DeepCollectionEquality()
-                    .equals(other.showErrorMessages, showErrorMessages)) &&
+                other.showErrorMessages == showErrorMessages) &&
             (identical(other.applyFailureOrSuccessOption,
                     applyFailureOrSuccessOption) ||
-                const DeepCollectionEquality().equals(
-                    other.applyFailureOrSuccessOption,
-                    applyFailureOrSuccessOption)) &&
-            (identical(other.goBack, goBack) ||
-                const DeepCollectionEquality().equals(other.goBack, goBack)));
+                other.applyFailureOrSuccessOption ==
+                    applyFailureOrSuccessOption) &&
+            (identical(other.goBack, goBack) || other.goBack == goBack));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(userName) ^
-      const DeepCollectionEquality().hash(emailAddress) ^
-      const DeepCollectionEquality().hash(password) ^
-      const DeepCollectionEquality().hash(nameChanged) ^
-      const DeepCollectionEquality().hash(emailChanged) ^
-      const DeepCollectionEquality().hash(passwordChanged) ^
-      const DeepCollectionEquality().hash(isSubmiting) ^
-      const DeepCollectionEquality().hash(showErrorMessages) ^
-      const DeepCollectionEquality().hash(applyFailureOrSuccessOption) ^
-      const DeepCollectionEquality().hash(goBack);
+  int get hashCode => Object.hash(
+      runtimeType,
+      userName,
+      emailAddress,
+      password,
+      nameChanged,
+      emailChanged,
+      passwordChanged,
+      isSubmiting,
+      showErrorMessages,
+      applyFailureOrSuccessOption,
+      goBack);
 
   @JsonKey(ignore: true)
   @override
@@ -1165,26 +1155,25 @@ abstract class _UserProfileState implements UserProfileState {
       required bool goBack}) = _$_UserProfileState;
 
   @override
-  UserName get userName => throw _privateConstructorUsedError;
+  UserName get userName;
   @override
-  EmailAddress get emailAddress => throw _privateConstructorUsedError;
+  EmailAddress get emailAddress;
   @override
-  Password get password => throw _privateConstructorUsedError;
+  Password get password;
   @override
-  bool get nameChanged => throw _privateConstructorUsedError;
+  bool get nameChanged;
   @override
-  bool get emailChanged => throw _privateConstructorUsedError;
+  bool get emailChanged;
   @override
-  bool get passwordChanged => throw _privateConstructorUsedError;
+  bool get passwordChanged;
   @override
-  bool get isSubmiting => throw _privateConstructorUsedError;
+  bool get isSubmiting;
   @override
-  AutovalidateMode get showErrorMessages => throw _privateConstructorUsedError;
+  AutovalidateMode get showErrorMessages;
   @override
-  Option<Either<AuthFailure, String>> get applyFailureOrSuccessOption =>
-      throw _privateConstructorUsedError;
+  Option<Either<AuthFailure, String>> get applyFailureOrSuccessOption;
   @override
-  bool get goBack => throw _privateConstructorUsedError;
+  bool get goBack;
   @override
   @JsonKey(ignore: true)
   _$UserProfileStateCopyWith<_UserProfileState> get copyWith =>

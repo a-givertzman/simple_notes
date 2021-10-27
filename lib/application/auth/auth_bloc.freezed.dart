@@ -1,6 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, require_trailing_commas
 
 part of 'auth_bloc.dart';
 
@@ -117,7 +117,8 @@ class _$_AuthCheckRequested implements _AuthCheckRequested {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _AuthCheckRequested);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _AuthCheckRequested);
   }
 
   @override
@@ -220,7 +221,8 @@ class _$_SigningOut implements _SigningOut {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _SigningOut);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _SigningOut);
   }
 
   @override
@@ -404,7 +406,8 @@ class _$_Initial implements _Initial {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Initial);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Initial);
   }
 
   @override
@@ -513,7 +516,8 @@ class _$_Authenticated implements _Authenticated {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Authenticated);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Authenticated);
   }
 
   @override
@@ -622,7 +626,8 @@ class _$_Unauthenticated implements _Unauthenticated {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Unauthenticated);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Unauthenticated);
   }
 
   @override

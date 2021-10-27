@@ -109,7 +109,8 @@ class _$_Unexpected<T> implements _Unexpected<T> {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Unexpected<T>);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Unexpected<T>);
   }
 
   @override

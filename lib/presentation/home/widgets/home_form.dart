@@ -1,7 +1,6 @@
 import 'package:another_flushbar/flushbar_helper.dart';
 import 'package:auth_app/application/auth/auth_bloc.dart';
 import 'package:auth_app/application/user_profile/user_profile_bloc.dart';
-import 'package:auth_app/domain/core/error/failure.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -44,7 +43,7 @@ class HomeForm extends StatelessWidget {
                 validator: (value) => context
                   .read<UserProfileBloc>().state.userName.value.fold(
                     (l) {
-                      return l is ValueFailure ? l.toString() : null;  // Invalid Email
+                      return l.toString();  // Invalid Email
                     }, 
                     (r) => null,
                   ),
@@ -62,7 +61,7 @@ class HomeForm extends StatelessWidget {
                 validator: (value) => context
                   .read<UserProfileBloc>().state.emailAddress.value.fold(
                     (l) {
-                      return l is ValueFailure ? l.toString() : null;  // Invalid Email
+                      return l.toString();  // Invalid Email
                     }, 
                     (r) => null,
                   ),
@@ -85,7 +84,7 @@ class HomeForm extends StatelessWidget {
                 validator: (value) => context
                   .read<UserProfileBloc>().state.password.value.fold(
                     (l) {
-                      return l is ValueFailure ? l.toString() : null; // Invalid Password
+                      return l.toString(); // Invalid Password
                     }, 
                     (r) => null,
                   ),

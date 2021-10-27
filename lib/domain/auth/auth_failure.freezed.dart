@@ -203,14 +203,13 @@ class _$_AuthCanceledByUserFailure<T> implements _AuthCanceledByUserFailure<T> {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _AuthCanceledByUserFailure<T> &&
-            (identical(other.message, message) ||
-                const DeepCollectionEquality().equals(other.message, message)));
+        (other.runtimeType == runtimeType &&
+            other is _AuthCanceledByUserFailure<T> &&
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(message);
+  int get hashCode => Object.hash(runtimeType, message);
 
   @JsonKey(ignore: true)
   @override
@@ -310,7 +309,7 @@ abstract class _AuthCanceledByUserFailure<T> implements AuthFailure<T> {
       _$_AuthCanceledByUserFailure<T>;
 
   @override
-  String get message => throw _privateConstructorUsedError;
+  String get message;
   @override
   @JsonKey(ignore: true)
   _$AuthCanceledByUserFailureCopyWith<T, _AuthCanceledByUserFailure<T>>
@@ -368,14 +367,13 @@ class _$_AuthFailureOnServerSide<T> implements _AuthFailureOnServerSide<T> {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _AuthFailureOnServerSide<T> &&
-            (identical(other.message, message) ||
-                const DeepCollectionEquality().equals(other.message, message)));
+        (other.runtimeType == runtimeType &&
+            other is _AuthFailureOnServerSide<T> &&
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(message);
+  int get hashCode => Object.hash(runtimeType, message);
 
   @JsonKey(ignore: true)
   @override
@@ -475,7 +473,7 @@ abstract class _AuthFailureOnServerSide<T> implements AuthFailure<T> {
       _$_AuthFailureOnServerSide<T>;
 
   @override
-  String get message => throw _privateConstructorUsedError;
+  String get message;
   @override
   @JsonKey(ignore: true)
   _$AuthFailureOnServerSideCopyWith<T, _AuthFailureOnServerSide<T>>
@@ -533,14 +531,13 @@ class _$_EmailAlreadyInUseFailure<T> implements _EmailAlreadyInUseFailure<T> {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _EmailAlreadyInUseFailure<T> &&
-            (identical(other.message, message) ||
-                const DeepCollectionEquality().equals(other.message, message)));
+        (other.runtimeType == runtimeType &&
+            other is _EmailAlreadyInUseFailure<T> &&
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(message);
+  int get hashCode => Object.hash(runtimeType, message);
 
   @JsonKey(ignore: true)
   @override
@@ -640,7 +637,7 @@ abstract class _EmailAlreadyInUseFailure<T> implements AuthFailure<T> {
       _$_EmailAlreadyInUseFailure<T>;
 
   @override
-  String get message => throw _privateConstructorUsedError;
+  String get message;
   @override
   @JsonKey(ignore: true)
   _$EmailAlreadyInUseFailureCopyWith<T, _EmailAlreadyInUseFailure<T>>
@@ -701,14 +698,13 @@ class _$_InvalidEmailAndPasswordFailure<T>
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _InvalidEmailAndPasswordFailure<T> &&
-            (identical(other.message, message) ||
-                const DeepCollectionEquality().equals(other.message, message)));
+        (other.runtimeType == runtimeType &&
+            other is _InvalidEmailAndPasswordFailure<T> &&
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(message);
+  int get hashCode => Object.hash(runtimeType, message);
 
   @JsonKey(ignore: true)
   @override
@@ -809,7 +805,7 @@ abstract class _InvalidEmailAndPasswordFailure<T> implements AuthFailure<T> {
       _$_InvalidEmailAndPasswordFailure<T>;
 
   @override
-  String get message => throw _privateConstructorUsedError;
+  String get message;
   @override
   @JsonKey(ignore: true)
   _$InvalidEmailAndPasswordFailureCopyWith<T,

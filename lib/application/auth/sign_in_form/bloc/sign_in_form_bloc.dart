@@ -71,8 +71,8 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
             password: state.password,
           );
 
-          print( "[BLOCK registerWithEmailAndPasswordPressed] failureOrSUccess:" );
-          print(failureOrSUccess);
+          // print( "[BLOCK registerWithEmailAndPasswordPressed] failureOrSUccess:" );
+          // print(failureOrSUccess);
           
           yield state.copyWith(
             isSubmiting: false,

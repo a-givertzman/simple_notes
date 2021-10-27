@@ -23,7 +23,7 @@ class SignInForm extends StatelessWidget {
               ).show(context);
             }, 
             (r) {
-              AutoRouter.of(context).push(const HomePageRoute());
+              AutoRouter.of(context).push(const SplashPageRoute());
             },
           ),
         ),

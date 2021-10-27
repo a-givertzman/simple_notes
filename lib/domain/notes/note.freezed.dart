@@ -186,28 +186,19 @@ class _$_Note extends _Note {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Note &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.body, body) ||
-                const DeepCollectionEquality().equals(other.body, body)) &&
-            (identical(other.color, color) ||
-                const DeepCollectionEquality().equals(other.color, color)) &&
-            (identical(other.todos, todos) ||
-                const DeepCollectionEquality().equals(other.todos, todos)) &&
+        (other.runtimeType == runtimeType &&
+            other is _Note &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.body, body) || other.body == body) &&
+            (identical(other.color, color) || other.color == color) &&
+            (identical(other.todos, todos) || other.todos == todos) &&
             (identical(other.lastUpdateTimeStamp, lastUpdateTimeStamp) ||
-                const DeepCollectionEquality()
-                    .equals(other.lastUpdateTimeStamp, lastUpdateTimeStamp)));
+                other.lastUpdateTimeStamp == lastUpdateTimeStamp));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(body) ^
-      const DeepCollectionEquality().hash(color) ^
-      const DeepCollectionEquality().hash(todos) ^
-      const DeepCollectionEquality().hash(lastUpdateTimeStamp);
+      Object.hash(runtimeType, id, body, color, todos, lastUpdateTimeStamp);
 
   @JsonKey(ignore: true)
   @override
@@ -225,15 +216,15 @@ abstract class _Note extends Note {
   const _Note._() : super._();
 
   @override
-  UniqueId get id => throw _privateConstructorUsedError;
+  UniqueId get id;
   @override
-  NoteBody get body => throw _privateConstructorUsedError;
+  NoteBody get body;
   @override
-  NoteColor get color => throw _privateConstructorUsedError;
+  NoteColor get color;
   @override
-  List3<TodoItem> get todos => throw _privateConstructorUsedError;
+  List3<TodoItem> get todos;
   @override
-  DateTime get lastUpdateTimeStamp => throw _privateConstructorUsedError;
+  DateTime get lastUpdateTimeStamp;
   @override
   @JsonKey(ignore: true)
   _$NoteCopyWith<_Note> get copyWith => throw _privateConstructorUsedError;

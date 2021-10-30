@@ -14,15 +14,15 @@ class SplashPage extends StatelessWidget {
       listener: (context, state) {
         state.map(
           initial: (_) {
-            dPrint.log("Splash Page: initial");
+            dPrint.log("[SplashPage.initial]");
           }, 
           authenticated: (_) {
-            dPrint.log("Splash Page: Autonticated");
+            dPrint.log("[SplashPage.Autonticated]");
             // context.router.push(const HomePageRoute());
-            AutoRouter.of(context).push(const HomePageRoute());
+            AutoRouter.of(context).push(const NotesOverviewPageRoute());
           }, 
           unauthenticated: (_) {
-            dPrint.log("Splash Page: Un autonticated");
+            dPrint.log("[SplashPage.Unautonticated]");
             context.router.push(const SignInPageRoute());
           },
         );

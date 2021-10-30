@@ -1,6 +1,7 @@
 import 'package:another_flushbar/flushbar_helper.dart';
 import 'package:auth_app/application/auth/auth_bloc.dart';
 import 'package:auth_app/application/user_profile/user_profile_bloc.dart';
+import 'package:auth_app/presentation/core/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,6 +18,7 @@ class HomeForm extends StatelessWidget {
           (either) => either.fold(
             (failure) {
               FlushbarHelper.createError(
+                duration: flushBarDuration,
                 message: failure.message,
               ).show(context);
             }, 

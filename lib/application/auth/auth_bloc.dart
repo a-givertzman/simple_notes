@@ -15,12 +15,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   
   AuthBloc(this._authRepository) : super(const AuthState.initial());
 
-  AuthState initialState = const AuthState.initial();
+  AuthState get initialState => const AuthState.initial();
 
   @override
-  Stream<AuthState> mapEventToState(
-    AuthEvent event,
-  ) async* {
+  Stream<AuthState> mapEventToState(AuthEvent event,) async* {
     yield* event.map(
 
       authCheckRequested: (e) async* {

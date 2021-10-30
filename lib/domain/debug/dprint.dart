@@ -1,5 +1,7 @@
 // import 'dart:io';
 
+// ignore_for_file: avoid_print
+
 DPrint dPrint = DPrint(inRelease: false);
 
 class DPrint {

@@ -12,7 +12,7 @@ Either<ValueFailure, String> validateMaxStringLength(
     return Right(input);
   } else {
     return Left(
-      ValueFailure.exceedingLength(failedValue: input, maxLength: maxLength)
+      ValueFailure.exceedingLength(failedValue: input, maxLength: maxLength),
     );
   }
 }
@@ -20,21 +20,20 @@ Either<ValueFailure, String> validateMaxStringLength(
 //
 Either<ValueFailure, String> validateStringNotEmpty(String input) {
   if (input.isEmpty) {
-    return Right(input);
-  } else {
     return Left(ValueFailure.emptyValueFailure(failedValue: input));
+  } else {
+    return Right(input);
   }
 }
 //
 //
 Either<ValueFailure, String> validateStringSingleLine(
   String input,
-  int maxLength,
 ) {
-  if (!input.contains('\n')) {
-    return Right(input);
-  } else {
+  if (input.contains('\n')) {
     return Left(ValueFailure.multylineValueFailure(failedValue: input));
+  } else {
+    return Right(input);
   }
 }
 //

@@ -23,6 +23,9 @@ class AppWidget extends StatelessWidget {
         routeInformationParser: _appRouter.defaultRouteParser(),
         debugShowCheckedModeBanner: false,
         theme: theme.copyWith(
+          floatingActionButtonTheme: const FloatingActionButtonThemeData(
+            backgroundColor: Colors.blueGrey,
+          ),
           colorScheme: theme.colorScheme.copyWith(
             primary: Colors.blueGrey[800],
             secondary: Colors.indigo,
@@ -34,8 +37,13 @@ class AppWidget extends StatelessWidget {
               borderRadius: BorderRadius.circular(8),
             ),
           ),
+          // textTheme: const TextTheme(
+          // ),
         ),
       ),
     );
   }
 }
+
+// ho to implement platform specific ui
+// https://medium.com/flutter/do-flutter-apps-dream-of-platform-aware-widgets-7d7ed7b4624d

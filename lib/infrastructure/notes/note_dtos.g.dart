@@ -7,14 +7,13 @@ part of 'note_dtos.dart';
 // **************************************************************************
 
 _$_NoteDto _$$_NoteDtoFromJson(Map<String, dynamic> json) => _$_NoteDto(
-      id: json['id'] as String?,
+      id: json['id'] as String,
       body: json['body'] as String,
       color: json['color'] as int,
       todos: (json['todos'] as List<dynamic>)
           .map((e) => TodoItemDto.fromJson(e as Map<String, dynamic>))
           .toList(),
-      lastUpdateTimeStamp:
-          DateTime.parse(json['lastUpdateTimeStamp'] as String),
+      updated: json['updated'] as String,
     );
 
 Map<String, dynamic> _$$_NoteDtoToJson(_$_NoteDto instance) =>
@@ -23,7 +22,7 @@ Map<String, dynamic> _$$_NoteDtoToJson(_$_NoteDto instance) =>
       'body': instance.body,
       'color': instance.color,
       'todos': instance.todos,
-      'lastUpdateTimeStamp': instance.lastUpdateTimeStamp.toIso8601String(),
+      'updated': instance.updated,
     };
 
 _$_TodoItemDto _$$_TodoItemDtoFromJson(Map<String, dynamic> json) =>

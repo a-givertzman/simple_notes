@@ -22,17 +22,17 @@ class _$NoteDtoTearOff {
   const _$NoteDtoTearOff();
 
   _NoteDto call(
-      {String? id,
+      {required String id,
       required String body,
       required int color,
       required List<TodoItemDto> todos,
-      required DateTime lastUpdateTimeStamp}) {
+      required String updated}) {
     return _NoteDto(
       id: id,
       body: body,
       color: color,
       todos: todos,
-      lastUpdateTimeStamp: lastUpdateTimeStamp,
+      updated: updated,
     );
   }
 
@@ -46,11 +46,11 @@ const $NoteDto = _$NoteDtoTearOff();
 
 /// @nodoc
 mixin _$NoteDto {
-  String? get id => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   String get body => throw _privateConstructorUsedError;
   int get color => throw _privateConstructorUsedError;
   List<TodoItemDto> get todos => throw _privateConstructorUsedError;
-  DateTime get lastUpdateTimeStamp => throw _privateConstructorUsedError;
+  String get updated => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -62,11 +62,11 @@ abstract class $NoteDtoCopyWith<$Res> {
   factory $NoteDtoCopyWith(NoteDto value, $Res Function(NoteDto) then) =
       _$NoteDtoCopyWithImpl<$Res>;
   $Res call(
-      {String? id,
+      {String id,
       String body,
       int color,
       List<TodoItemDto> todos,
-      DateTime lastUpdateTimeStamp});
+      String updated});
 }
 
 /// @nodoc
@@ -83,13 +83,13 @@ class _$NoteDtoCopyWithImpl<$Res> implements $NoteDtoCopyWith<$Res> {
     Object? body = freezed,
     Object? color = freezed,
     Object? todos = freezed,
-    Object? lastUpdateTimeStamp = freezed,
+    Object? updated = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       body: body == freezed
           ? _value.body
           : body // ignore: cast_nullable_to_non_nullable
@@ -102,10 +102,10 @@ class _$NoteDtoCopyWithImpl<$Res> implements $NoteDtoCopyWith<$Res> {
           ? _value.todos
           : todos // ignore: cast_nullable_to_non_nullable
               as List<TodoItemDto>,
-      lastUpdateTimeStamp: lastUpdateTimeStamp == freezed
-          ? _value.lastUpdateTimeStamp
-          : lastUpdateTimeStamp // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+      updated: updated == freezed
+          ? _value.updated
+          : updated // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -116,11 +116,11 @@ abstract class _$NoteDtoCopyWith<$Res> implements $NoteDtoCopyWith<$Res> {
       __$NoteDtoCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String? id,
+      {String id,
       String body,
       int color,
       List<TodoItemDto> todos,
-      DateTime lastUpdateTimeStamp});
+      String updated});
 }
 
 /// @nodoc
@@ -138,13 +138,13 @@ class __$NoteDtoCopyWithImpl<$Res> extends _$NoteDtoCopyWithImpl<$Res>
     Object? body = freezed,
     Object? color = freezed,
     Object? todos = freezed,
-    Object? lastUpdateTimeStamp = freezed,
+    Object? updated = freezed,
   }) {
     return _then(_NoteDto(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       body: body == freezed
           ? _value.body
           : body // ignore: cast_nullable_to_non_nullable
@@ -157,10 +157,10 @@ class __$NoteDtoCopyWithImpl<$Res> extends _$NoteDtoCopyWithImpl<$Res>
           ? _value.todos
           : todos // ignore: cast_nullable_to_non_nullable
               as List<TodoItemDto>,
-      lastUpdateTimeStamp: lastUpdateTimeStamp == freezed
-          ? _value.lastUpdateTimeStamp
-          : lastUpdateTimeStamp // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+      updated: updated == freezed
+          ? _value.updated
+          : updated // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -169,18 +169,18 @@ class __$NoteDtoCopyWithImpl<$Res> extends _$NoteDtoCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_NoteDto extends _NoteDto {
   const _$_NoteDto(
-      {this.id,
+      {required this.id,
       required this.body,
       required this.color,
       required this.todos,
-      required this.lastUpdateTimeStamp})
+      required this.updated})
       : super._();
 
   factory _$_NoteDto.fromJson(Map<String, dynamic> json) =>
       _$$_NoteDtoFromJson(json);
 
   @override
-  final String? id;
+  final String id;
   @override
   final String body;
   @override
@@ -188,11 +188,11 @@ class _$_NoteDto extends _NoteDto {
   @override
   final List<TodoItemDto> todos;
   @override
-  final DateTime lastUpdateTimeStamp;
+  final String updated;
 
   @override
   String toString() {
-    return 'NoteDto(id: $id, body: $body, color: $color, todos: $todos, lastUpdateTimeStamp: $lastUpdateTimeStamp)';
+    return 'NoteDto(id: $id, body: $body, color: $color, todos: $todos, updated: $updated)';
   }
 
   @override
@@ -204,13 +204,12 @@ class _$_NoteDto extends _NoteDto {
             (identical(other.body, body) || other.body == body) &&
             (identical(other.color, color) || other.color == color) &&
             const DeepCollectionEquality().equals(other.todos, todos) &&
-            (identical(other.lastUpdateTimeStamp, lastUpdateTimeStamp) ||
-                other.lastUpdateTimeStamp == lastUpdateTimeStamp));
+            (identical(other.updated, updated) || other.updated == updated));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, id, body, color,
-      const DeepCollectionEquality().hash(todos), lastUpdateTimeStamp);
+      const DeepCollectionEquality().hash(todos), updated);
 
   @JsonKey(ignore: true)
   @override
@@ -225,17 +224,17 @@ class _$_NoteDto extends _NoteDto {
 
 abstract class _NoteDto extends NoteDto {
   const factory _NoteDto(
-      {String? id,
+      {required String id,
       required String body,
       required int color,
       required List<TodoItemDto> todos,
-      required DateTime lastUpdateTimeStamp}) = _$_NoteDto;
+      required String updated}) = _$_NoteDto;
   const _NoteDto._() : super._();
 
   factory _NoteDto.fromJson(Map<String, dynamic> json) = _$_NoteDto.fromJson;
 
   @override
-  String? get id;
+  String get id;
   @override
   String get body;
   @override
@@ -243,7 +242,7 @@ abstract class _NoteDto extends NoteDto {
   @override
   List<TodoItemDto> get todos;
   @override
-  DateTime get lastUpdateTimeStamp;
+  String get updated;
   @override
   @JsonKey(ignore: true)
   _$NoteDtoCopyWith<_NoteDto> get copyWith =>

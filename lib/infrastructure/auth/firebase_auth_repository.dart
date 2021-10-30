@@ -32,8 +32,8 @@ class FirebaseAuthRepository implements IAuthRepository {
   //
   @override
   Option<DomainUser> getCurrentUser() {
-    final User? firebaseUser = _firebaseAuth.currentUser;
-    return optionOf(firebaseUser?.toDomainUser());
+    final userOption = optionOf(_firebaseAuth.currentUser?.toDomainUser());
+    return userOption; //optionOf(firebaseUser?.toDomainUser());
   }
   //
   @override
@@ -41,13 +41,10 @@ class FirebaseAuthRepository implements IAuthRepository {
     required EmailAddress emailAddress, 
     required Password password,
   }) async {
+    dPrint.log( "[FirebaseAuthRepository.registerWithEmailAndPassword]");
     // TODO Have some code duplication here, needs to be refactored
     final emailStr = emailAddress.getOrCrush();
     final passwordStr = password.getOrCrush();
-
-    dPrint.log( "[registerWithEmailAndPassword] emailAddress: $emailStr" );
-    dPrint.log( "[registerWithEmailAndPassword] password: $passwordStr" );
-
     try {
       await _firebaseAuth.createUserWithEmailAndPassword(
         email: emailStr, 
@@ -56,15 +53,11 @@ class FirebaseAuthRepository implements IAuthRepository {
       // TODO "OK" reply from server has to be defined
       return const Right('OK');
     } on FirebaseAuthException catch (e) {
-        
-      dPrint.log( "[registerWithEmailAndPassword] Exception:" );
+      dPrint.log( "[FirebaseAuthRepository.registerWithEmailAndPassword] Exception:" );
       dPrint.log( e );
-
       switch (e.code) {
         case 'email-already-in-use':
-        
-        dPrint.log( "[registerWithEmailAndPassword] emailAddress: $emailStr already in use" );
-
+        dPrint.log( "[FirebaseAuthRepository.registerWithEmailAndPassword] emailAddress: $emailStr already in use" );
           return const Left(AuthFailure.emailAlreadyInUseFailure(message: 'Firebase: Email already in use'));
         // break;
         case 'invalid-email':
@@ -85,12 +78,9 @@ class FirebaseAuthRepository implements IAuthRepository {
     required EmailAddress emailAddress, 
     required Password password,
   }) async {
+    dPrint.log( "[FirebaseAuthRepository.signInWithEmailAndPassword]" );
     final emailStr = emailAddress.getOrCrush();
     final passwordStr = password.getOrCrush();
-
-    dPrint.log( "[signInWithEmailAndPassword] emailStr: $emailStr" );
-    dPrint.log( "[signInWithEmailAndPassword] passwordStr: $passwordStr" );
-
     try {
       // TODO Have some code duplication here, needs to be refactored
       await _firebaseAuth.signInWithEmailAndPassword(
@@ -101,8 +91,7 @@ class FirebaseAuthRepository implements IAuthRepository {
       // TODO .then((value) => value.user.uid)
       return const Right('OK');
     } on FirebaseAuthException catch (e) {
-      
-      dPrint.log( "[signInWithEmailAndPassword] Exception:" );
+      dPrint.log( "[FirebaseAuthRepository.signInWithEmailAndPassword] Exception:" );
       dPrint.log( e );
       if (e.code == 'invalid-email' ||
           e.code == 'user-disabled' ||

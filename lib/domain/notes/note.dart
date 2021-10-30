@@ -1,5 +1,6 @@
 import 'package:auth_app/domain/core/entities/unique_id.dart';
 import 'package:auth_app/domain/core/error/failure.dart';
+import 'package:auth_app/domain/debug/dprint.dart';
 import 'package:auth_app/domain/notes/todo_item.dart';
 import 'package:auth_app/domain/notes/vaue_object.dart';
 import 'package:dartz/dartz.dart';
@@ -17,7 +18,7 @@ abstract class Note implements _$Note {
     required NoteBody body,
     required NoteColor color,
     required List3<TodoItem> todos,
-    required DateTime lastUpdateTimeStamp,
+    required DateTime updated,
   }) = _Note;
 
   const Note._();
@@ -27,15 +28,14 @@ abstract class Note implements _$Note {
     body: NoteBody('new note'), 
     color: NoteColor(NoteColor.predefinedColors[0]),
     todos: List3(emptyList()),
-    lastUpdateTimeStamp: DateTime.now(),
+    updated: DateTime.now(),
   );
 
   Option<ValueFailure<dynamic>> get failureOption {
+    dPrint.log('[Note.failureOption]');
     return body.failureOrUnit
-      // validating todos list
-      .andThen(todos.failureOrUnit)
-      // validating each todo Item in the todo list
-      .andThen(
+      .andThen(todos.failureOrUnit)   // validating todos list
+      .andThen(                 // validating each todo Item in the todo list
         todos.getOrCrush()            // getting KTList of todo items
           .map((todoItem) => todoItem.failureOption)  // extract a failureOption of each todo item
           .filter((todoItem) => todoItem.isSome())    // then takes only the faild todo items, wich are is some
@@ -45,8 +45,7 @@ abstract class Note implements _$Note {
             (failItem) => left(failItem),     // if even one item in the list is invalid return left side of todos.failureOrUnit - ValueFailure
           ),
       )
-      // folding the result of all falidates
-      .fold(
+      .fold(        // folding the result of all falidates
         (failure) => some(failure),
         (_) => none(),                // right side of option in OK value => returns none
       );

@@ -1,4 +1,5 @@
 import 'package:auth_app/domain/core/entities/unique_id.dart';
+import 'package:auth_app/domain/debug/dprint.dart';
 import 'package:auth_app/domain/notes/note.dart';
 import 'package:auth_app/domain/notes/todo_item.dart';
 import 'package:auth_app/domain/notes/vaue_object.dart';
@@ -22,11 +23,11 @@ part 'note_dtos.g.dart';  // to and from JSON convertion
 abstract class NoteDto implements _$NoteDto {
 
   const factory NoteDto({
-    String? id,
+    required String id,
     required String body,
     required int color,
     required List<TodoItemDto> todos,
-    required DateTime lastUpdateTimeStamp,
+    required String updated,
   }) = _NoteDto;
 
   const NoteDto._();
@@ -42,13 +43,14 @@ abstract class NoteDto implements _$NoteDto {
           (todoItem) => TodoItemDto.fromDomain(todoItem),
         )
         .asList(),
-      lastUpdateTimeStamp: note.lastUpdateTimeStamp,
+      updated: note.updated.toIso8601String(),
     );
   }
 
   Note toDomain() {
+    dPrint.log('[NoteDto.toDomain]');
     return Note(
-      id: UniqueId.fromString(id??'000'), 
+      id: UniqueId.fromString(id), 
       body: NoteBody(body), 
       color: NoteColor(Color(color)), 
       todos: List3(
@@ -56,17 +58,21 @@ abstract class NoteDto implements _$NoteDto {
             (todoItem) => todoItem.toDomain(),
           ).toImmutableList(),
       ),
-      lastUpdateTimeStamp: lastUpdateTimeStamp,
+      updated: DateTime.parse(updated),
     );
   }
 
+  // это делается при помощи пакета json_annotation и json_serializable
   factory NoteDto.fromJson(Map<String, dynamic> json) =>
     _$NoteDtoFromJson(json);
 
   factory NoteDto.fromFirestore(DocumentSnapshot<Map<String, dynamic>> doc) {
+    dPrint.log('[NoteDto.fromFirestore]');
     return NoteDto.fromJson(
-      doc.data()??{'error': 'no data'},
-    ).copyWith(id: doc.id);
+      doc.data() ?? {'error': 'no data'},
+    ).copyWith(
+      id: doc.id,
+    ); 
   }
 }
 //
@@ -109,12 +115,14 @@ class TimeStampConverter implements JsonConverter<DateTime, Object> {
   const TimeStampConverter();
 
   @override
-  DateTime fromJson(Object json) {
-    return DateTime.parse(json.toString());
-  }
+  DateTime fromJson(Object json) =>//{
+    // dPrint.log('[TimeStampConverter.fromJson]');
+    DateTime.parse(json.toString());
+  // }
 
   @override
-  Object toJson(DateTime dateTime) {
-    return dateTime.toIso8601String();
-  }
+  Object toJson(DateTime dateTime) =>
+    // dPrint.log('[TimeStampConverter.toJson]');
+    dateTime.toIso8601String();
+  // }
 }

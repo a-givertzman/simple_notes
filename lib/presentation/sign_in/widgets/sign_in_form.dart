@@ -1,6 +1,7 @@
 import 'package:another_flushbar/flushbar_helper.dart';
+import 'package:auth_app/application/auth/auth_bloc.dart';
 import 'package:auth_app/application/auth/sign_in_form/bloc/sign_in_form_bloc.dart';
-import 'package:auth_app/domain/core/error/failure.dart';
+import 'package:auth_app/presentation/core/constants.dart';
 import 'package:auth_app/presentation/routes/app_router.gr.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -15,15 +16,19 @@ class SignInForm extends StatelessWidget {
     return BlocConsumer<SignInFormBloc, SignInFormState>(
       listener: (context, state) => {
         state.authFailureOrSuccessOption.fold(
-          () {},   // if Option is none()
+          () {},   // if Option is none() ничего не происходит и ничего не делаем
           (either) => either.fold(
-            (failure) {
+            (failure) {   // если ошибка авторизации
               FlushbarHelper.createError(
+                duration: flushBarDuration,
                 message: failure.message,
               ).show(context);
             }, 
-            (r) {
+            (r) {         // если авторизация успешна
               AutoRouter.of(context).push(const SplashPageRoute());
+              context
+                .read<AuthBloc>()
+                .add(const AuthEvent.authCheckRequested());
             },
           ),
         ),
@@ -52,7 +57,7 @@ class SignInForm extends StatelessWidget {
                   .add(SignInFormEvent.emailChanged(value)),
                   validator: (value) => context
                     .read<SignInFormBloc>().state.emailAddress.value.fold(
-                      (l) => l is ValueFailure ? l.toString() : null,     // Invalid Email 
+                      (l) => l.toString(),     // Invalid Email 
                       (r) => null,
                     ),
               ),
@@ -73,7 +78,7 @@ class SignInForm extends StatelessWidget {
                   .add(SignInFormEvent.passwordChanged(value)),
                 validator: (value) => context
                   .read<SignInFormBloc>().state.password.value.fold(
-                    (l) => l is ValueFailure ? l.toString() : null,      // Invalid Password
+                    (l) => l.toString(),      // Invalid Password
                     (r) => null,
                   ),
               ),

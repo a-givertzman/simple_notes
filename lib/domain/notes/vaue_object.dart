@@ -27,12 +27,12 @@ class NoteBody extends ValueObject<String> {
 class TodoName extends ValueObject<String> {
   @override
   final Either<ValueFailure, String> value;
-  static int maxLength = 30;
+  static int maxLength = 100;
   factory TodoName(String input) {
     return TodoName._(
       validateMaxStringLength(input, maxLength)
         .flatMap((prevoseResult) => validateStringNotEmpty(prevoseResult))
-        .flatMap((prevoseResult) => validateStringSingleLine(prevoseResult, maxLength)),
+        .flatMap((prevoseResult) => validateStringSingleLine(prevoseResult)),
     );
   }
   const TodoName._(this.value);
@@ -49,9 +49,10 @@ class NoteColor extends ValueObject<Color> {
     Color(0xff997950), // tortilla
     Color(0xfffffdd0), // cream
   ];
+  //
+  //
   @override
   final Either<ValueFailure<Color>, Color> value;
-  static int maxLength = 30;
   factory NoteColor(Color input) {
     return NoteColor._(
       Right(

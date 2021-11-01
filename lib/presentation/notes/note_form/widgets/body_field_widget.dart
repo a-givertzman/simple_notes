@@ -32,7 +32,7 @@ class _NoteBodyFieldState extends State<NoteBodyField> {
               labelText: 'Заметка',
               counterText: '',
             ),
-            maxLength: NoteBody.maxLength + 1,
+            maxLength: NoteBody.maxLength,
             maxLines: null,
             minLines: 5,
             onChanged: (value) => context

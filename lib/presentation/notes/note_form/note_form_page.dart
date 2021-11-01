@@ -38,7 +38,7 @@ class NoteFormPage extends StatelessWidget {
                   message: failure.message,
                 ).show(context);
               }, 
-              (r) {         // если сохранено успешно
+              (_) {         // если сохранено успешно
                 AutoRouter.of(context).popUntilRouteWithName('NotesOverviewPageRoute');
               },
             ),
@@ -90,6 +90,7 @@ class NoteFormScafold extends StatelessWidget {
         ],
       ),
       body: BlocBuilder<NoteFormBloc, NoteFormState>(
+        buildWhen: (prev, curr) => prev.showErrorMessages != curr.showErrorMessages,
         builder: (context, state) {
           return Form(
             autovalidateMode: state.showErrorMessages,

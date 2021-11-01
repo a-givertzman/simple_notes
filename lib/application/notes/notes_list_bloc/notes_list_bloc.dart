@@ -25,7 +25,7 @@ class NotesListBloc extends Bloc<NotesListEvent, NotesListState> {
   @override
   Stream<NotesListState> mapEventToState(NotesListEvent event) async* {
     dPrint.log('[NotesListBloc.mapEventToState] event:');
-    dPrint.log(event);
+    // dPrint.log(event);
     yield* event.map(
       listAllStarted: (e) async* {
           dPrint.log('[NotesListBloc.listAllStarted]');

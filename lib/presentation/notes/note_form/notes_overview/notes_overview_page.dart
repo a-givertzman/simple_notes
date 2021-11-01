@@ -6,6 +6,7 @@ import 'package:auth_app/domain/debug/dprint.dart';
 import 'package:auth_app/injection.dart';
 import 'package:auth_app/presentation/core/constants.dart';
 import 'package:auth_app/presentation/notes/note_form/notes_overview/widgets/notes_overview_body_widget.dart';
+import 'package:auth_app/presentation/notes/note_form/notes_overview/widgets/uncompleted_switch.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -71,12 +72,7 @@ class NotesOverviewPage extends StatelessWidget {
                 },
               ),
               actions: <Widget>[
-                IconButton(
-                  icon: const Icon(Icons.indeterminate_check_box),
-                  onPressed: () {
-          
-                  },
-                )
+                UncompletedSwitch(),
               ],
               // automaticallyImplyLeading: false,
             ),

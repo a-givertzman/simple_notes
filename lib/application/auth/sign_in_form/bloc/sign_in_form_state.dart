@@ -1,10 +1,5 @@
 part of 'sign_in_form_bloc.dart';
 
-// 
-// run builder
-// flutter pub run build_runner watch --delete-conflicting-outputs
-// flutter pub run build_runner build --delete-conflicting-outputs
-//
 @freezed
 class SignInFormState with _$SignInFormState {
   const factory SignInFormState({

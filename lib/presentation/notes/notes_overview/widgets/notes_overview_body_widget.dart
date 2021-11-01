@@ -1,9 +1,9 @@
 import 'package:auth_app/application/notes/notes_list_bloc/notes_list_bloc.dart';
 import 'package:auth_app/domain/debug/dprint.dart';
 import 'package:auth_app/domain/notes/note.dart';
-import 'package:auth_app/presentation/notes/note_form/notes_overview/widgets/critical_error_widget.dart';
-import 'package:auth_app/presentation/notes/note_form/notes_overview/widgets/error_note_card.dart';
-import 'package:auth_app/presentation/notes/note_form/notes_overview/widgets/note_card_widget.dart';
+import 'package:auth_app/presentation/notes/notes_overview/widgets/critical_error_widget.dart';
+import 'package:auth_app/presentation/notes/notes_overview/widgets/error_note_card.dart';
+import 'package:auth_app/presentation/notes/notes_overview/widgets/note_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kt_dart/collection.dart';

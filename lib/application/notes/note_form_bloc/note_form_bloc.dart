@@ -2,7 +2,7 @@ import 'package:auth_app/domain/notes/i_note_repository.dart';
 import 'package:auth_app/domain/notes/note.dart';
 import 'package:auth_app/domain/notes/note_failure.dart';
 import 'package:auth_app/domain/notes/vaue_object.dart';
-import 'package:auth_app/presentation/notes/note_form/classes/todo_item_presentation_classes.dart';
+import 'package:auth_app/presentation/notes/classes/todo_item_presentation_classes.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,8 +19,6 @@ class NoteFormBloc extends Bloc<NoteFormEvent, NoteFormState> {
   final IFirebaseNoteRepository _noteRepository;
   
   NoteFormBloc(this._noteRepository) : super(NoteFormState.initial());
-
-  NoteFormState get initial => NoteFormState.initial();
 
   @override
   Stream<NoteFormState> mapEventToState(NoteFormEvent event) async* {

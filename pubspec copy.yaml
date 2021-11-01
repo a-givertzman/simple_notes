@@ -26,18 +26,18 @@ dependencies:
   cloud_firestore: ^2.5.4
   dartz: ^0.10.0-nullsafety.2
   equatable: ^2.0.3
-  firebase_auth: ^3.1.4
-  firebase_core: ^1.8.0
+  firebase_auth: ^3.0.2
+  firebase_core: ^1.5.0
   flutter:
     sdk: flutter
   flutter_bloc: ^7.3.1
-  flutter_facebook_auth: ^3.5.3
+  flutter_facebook_auth: ^3.5.0
   freezed_annotation: ^0.15.0
   get_it: ^7.2.0
-  google_sign_in: ^5.2.1
+  google_sign_in: ^5.0.4
   injectable: ^1.5.0
   json_annotation: ^4.3.0
-  kt_dart: ^0.10.0
+  kt_dart: ^0.9.1
   rxdart: ^0.27.2
   uuid: ^3.0.5
 

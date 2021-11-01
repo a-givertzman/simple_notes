@@ -5,7 +5,6 @@ import 'package:auth_app/domain/notes/i_note_repository.dart';
 import 'package:auth_app/domain/notes/note.dart';
 import 'package:auth_app/domain/notes/note_failure.dart';
 import 'package:dartz/dartz.dart';
-import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -21,9 +20,7 @@ class NotesListBloc extends Bloc<NotesListEvent, NotesListState> {
   
   StreamSubscription<Either<NoteFailure<dynamic>, KtList<Note>>>? _noteStreamSubscription;
 
-  NotesListBloc(this._iNoteRepository) : super(NotesListState.initial());
-
-  NotesListState get initialState => NotesListState.initial();
+  NotesListBloc(this._iNoteRepository) : super(const NotesListState.initial());
 
   @override
   Stream<NotesListState> mapEventToState(NotesListEvent event) async* {

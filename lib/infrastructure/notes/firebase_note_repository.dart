@@ -27,21 +27,21 @@ class FirebaseNoteRepository implements IFirebaseNoteRepository {
   @override
   Future<Either<NoteFailure, Unit>> create(Note note) async {
     try {
-      final userDoc = _firestore.doc(note.id.getOrCrush());
+      final userDoc = await _firestore.userDocument();
       final noteDto = NoteDto.fromDomain(note);
       await userDoc.noteCollection.doc(noteDto.id).set(noteDto.toJson());
       return right(unit); // просто возвращаем пустой right
     } catch (error) {
       dPrint.log('FirebaseNoteRepository.create error');
       dPrint.log(error);
-      return left(_noteFailure(error));
+      return left(_noteFailure(error.toString()));
     }
   }
 
   @override
   Future<Either<NoteFailure, Unit>> update(Note note) async {
     try {
-      final userDoc = _firestore.doc(note.id.getOrCrush());
+      final userDoc = await _firestore.userDocument();
       final noteDto = NoteDto.fromDomain(note);
       await userDoc.noteCollection.doc(noteDto.id).update(noteDto.toJson());
       return right(unit); // просто возвращаем пустой right
@@ -55,9 +55,9 @@ class FirebaseNoteRepository implements IFirebaseNoteRepository {
   @override
   Future<Either<NoteFailure, Unit>> delete(Note note) async {
     try {
-      final userDoc = _firestore.doc(note.id.getOrCrush());
-      // final noteDto = NoteDto.fromDomain(note);
-      await userDoc.noteCollection.doc(note.id.getOrCrush()).delete();
+      final userDoc = await _firestore.userDocument();
+      final noteDto = NoteDto.fromDomain(note);
+      await userDoc.noteCollection.doc(noteDto.id).delete();
       return right(unit); // просто возвращаем пустой right
     } catch (error) {
       dPrint.log('FirebaseNoteRepository.delete error');

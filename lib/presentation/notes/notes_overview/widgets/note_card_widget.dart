@@ -2,6 +2,8 @@ import 'package:auth_app/application/notes/notes_events_bloc/notes_evens_bloc.da
 import 'package:auth_app/domain/notes/note.dart';
 import 'package:auth_app/domain/notes/todo_item.dart';
 import 'package:auth_app/presentation/core/constants.dart';
+import 'package:auth_app/presentation/routes/app_router.gr.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kt_dart/collection.dart';
@@ -32,7 +34,7 @@ class NoteCard extends StatelessWidget {
         },
         child: InkWell(
           onTap: () {
-            //TODO Route to NoteForm to be implemented
+            AutoRouter.of(context).push(NoteFormPageRoute(note: note));
           },
           child: Padding(
             padding: const EdgeInsets.all(commonPadding),

@@ -5,8 +5,10 @@ import 'package:auth_app/application/notes/notes_list_bloc/notes_list_bloc.dart'
 import 'package:auth_app/domain/debug/dprint.dart';
 import 'package:auth_app/injection.dart';
 import 'package:auth_app/presentation/core/constants.dart';
-import 'package:auth_app/presentation/notes/note_form/notes_overview/widgets/notes_overview_body_widget.dart';
-import 'package:auth_app/presentation/notes/note_form/notes_overview/widgets/uncompleted_switch.dart';
+import 'package:auth_app/presentation/notes/notes_overview/widgets/notes_overview_body_widget.dart';
+import 'package:auth_app/presentation/notes/notes_overview/widgets/uncompleted_switch.dart';
+import 'package:auth_app/presentation/routes/app_router.gr.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -32,7 +34,7 @@ class NotesOverviewPage extends StatelessWidget {
               state.maybeMap(
                 unauthenticated: (_) {
                   dPrint.log("Notes Overview Page: Unauthenticated");
-                  // context.router.push(const SignInPageRoute());
+                  context.router.push(const SignInPageRoute());
                 },
                 orElse: () {
                 },
@@ -71,14 +73,14 @@ class NotesOverviewPage extends StatelessWidget {
                   );
                 },
               ),
-              actions: <Widget>[
+              actions: const <Widget>[
                 UncompletedSwitch(),
               ],
               // automaticallyImplyLeading: false,
             ),
             floatingActionButton: FloatingActionButton(
               onPressed: () {
-                //TODO Navigate to NoteFormPage
+                AutoRouter.of(context).push(NoteFormPageRoute(note: null));
               },
               child: const Icon(Icons.add),
             ),

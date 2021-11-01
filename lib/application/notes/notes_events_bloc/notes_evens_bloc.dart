@@ -16,8 +16,6 @@ class NotesEvensBloc extends Bloc<NotesEvensEvent, NotesEvensState> {
   
   NotesEvensBloc(this._iNoteRepository) : super(const NotesEvensState.initial());
 
-  NotesEvensState get initialState => const NotesEvensState.initial();
-  
   @override
   Stream<NotesEvensState> mapEventToState(NotesEvensEvent event) async* {
     yield* event.map(

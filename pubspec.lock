@@ -463,7 +463,7 @@ packages:
       name: kt_dart
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.9.1"
+    version: "0.10.0"
   lint:
     dependency: "direct dev"
     description:

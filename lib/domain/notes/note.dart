@@ -25,7 +25,7 @@ abstract class Note implements _$Note {
   
   factory Note.empty() => Note(
     id: UniqueId(), 
-    body: NoteBody('new note'), 
+    body: NoteBody(''), 
     color: NoteColor(NoteColor.predefinedColors[0]),
     todos: List3(emptyList()),
     updated: DateTime.now(),

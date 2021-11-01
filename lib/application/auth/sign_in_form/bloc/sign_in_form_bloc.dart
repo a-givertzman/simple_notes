@@ -14,10 +14,6 @@ part 'sign_in_form_bloc.freezed.dart';
 part 'sign_in_form_event.dart';
 part 'sign_in_form_state.dart';
 
-// 
-// run builder
-// flutter pub run build_runner watch --delete-conflicting-outputs
-// flutter pub run build_runner build --delete-conflicting-outputs
 //
 // State maneger Bloc for Sign In form
 //
@@ -26,8 +22,6 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
   final IAuthRepository _authRepository;
   
   SignInFormBloc(this._authRepository) : super(SignInFormState.initial());
-
-  SignInFormState get initialState => SignInFormState.initial();
 
   @override
   Stream<SignInFormState> mapEventToState(

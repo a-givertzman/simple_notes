@@ -64,7 +64,7 @@ class NotesOverviewPage extends StatelessWidget {
         ],
         child: Scaffold(
             appBar: AppBar(
-              title: const Text('Notes overview'),
+              title: const Text('Ваши заметки'),
               leading: IconButton(
                 icon: const Icon(Icons.exit_to_app),
                 onPressed: () {

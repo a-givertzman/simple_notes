@@ -29,7 +29,7 @@ class _NoteBodyFieldState extends State<NoteBodyField> {
           child: TextFormField(
             controller: _noteBodyTextContrroller,
             decoration: const InputDecoration(
-              labelText: 'Заметка',
+              // labelText: 'Заметка',
               counterText: '',
             ),
             maxLength: NoteBody.maxLength,
@@ -42,7 +42,7 @@ class _NoteBodyFieldState extends State<NoteBodyField> {
               .read<NoteFormBloc>()
               .state.note.body.value.fold(
                 (f) => f.maybeMap(
-                  emptyValueFailure: (f) => 'Не может быть пустым',
+                  emptyValueFailure: (f) => 'Поле не может быть пустым',
                   exceedingLength: (f) => 'Максимум ${f.maxLength} символов',
                   orElse: () => null,
                 ),

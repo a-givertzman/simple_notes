@@ -28,17 +28,6 @@ class NotesOverviewBody extends StatelessWidget {
           loadUncompletedSuccess: (state) {
             dPrint.log('[NotesOverviewBody.loadSuccess]');
             return _buildListView(state.notes);
-            // ListView.builder(
-            //   itemCount: state.notes.size,
-            //   itemBuilder: (context, index) {
-            //     final note = state.notes[index];
-            //     if (note.failureOption.isSome()) {
-            //       return ErrorNoteCard(note: note);
-            //     } else {
-            //       return NoteCard(note: note);
-            //     }
-            //   },
-            // );
           }, 
           loadFailure: (state) {
             return CriticalErrorWidget(failure: state.noteFailure);
@@ -51,16 +40,16 @@ class NotesOverviewBody extends StatelessWidget {
 
 Widget _buildListView(KtList<Note> notes) {
   return ListView.builder(
-              itemCount: notes.size,
-              itemBuilder: (context, index) {
-                final note = notes[index];
-                if (note.failureOption.isSome()) {
-                  return ErrorNoteCard(note: note);
-                } else {
-                  return NoteCard(note: note);
-                }
-              },
-            );
+    itemCount: notes.size,
+    itemBuilder: (context, index) {
+      final note = notes[index];
+      if (note.failureOption.isSome()) {
+        return ErrorNoteCard(note: note);
+      } else {
+        return NoteCard(note: note);
+      }
+    },
+  );
 }
 
 // BlocProvider(

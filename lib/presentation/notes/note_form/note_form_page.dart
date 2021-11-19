@@ -5,7 +5,8 @@ import 'package:auth_app/domain/notes/note.dart';
 import 'package:auth_app/injection.dart';
 import 'package:auth_app/presentation/core/constants.dart';
 import 'package:auth_app/presentation/core/widgets/savingIn_pogress_overlay.dart';
-import 'package:auth_app/presentation/notes/note_form/widgets/body_field_widget.dart';
+import 'package:auth_app/presentation/notes/note_form/widgets/note_body_field.dart';
+import 'package:auth_app/presentation/notes/note_form/widgets/note_color_field.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
@@ -98,6 +99,7 @@ class NoteFormScafold extends StatelessWidget {
               child: Column(
                 children: <Widget>[
                   NoteBodyField(note: state.note),
+                  NoteColorField()
                 ],
               ),
             ),

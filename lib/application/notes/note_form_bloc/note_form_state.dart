@@ -16,6 +16,7 @@ abstract class NoteFormState with _$NoteFormState {
     isSaving: false, 
     showErrorMessages: AutovalidateMode.disabled, 
     saveFailureOrSuccessOption: none(),
+      // some(left(const NoteFailure.couldNotBeFound(message: 'NoteFailure.couldNotBeFound'))),
   );
 
   // const factory NoteFormBlocState.loading() = _Loading;

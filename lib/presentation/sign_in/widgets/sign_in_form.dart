@@ -39,12 +39,24 @@ class SignInForm extends StatelessWidget {
           child: ListView(
             padding: const EdgeInsets.all(paddingValue),
             children: [
+              const SizedBox(height: paddingValue),
               const Text(
-                'Hello,\nWelcome!',
+                'Привет,',
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 40),
               ),
               const SizedBox(height: paddingValue),
+              const Text(
+                'Добро пожаловать\nв Заметки!',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 30),
+              ),
+              const SizedBox(height: paddingValue * 5),
+              const Text(
+                'Авторизуйся что бы продолжить...',
+                textAlign: TextAlign.start,
+              ),
+              const SizedBox(height: paddingValue * 2),
               TextFormField(                                                    // Email field
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.email),
@@ -65,7 +77,7 @@ class SignInForm extends StatelessWidget {
               TextFormField(                                                    // Password field
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.lock),
-                  labelText: 'Password',
+                  labelText: 'Пароль',
                   errorStyle: TextStyle(
                     height: 1.1,
                   ),
@@ -91,7 +103,7 @@ class SignInForm extends StatelessWidget {
                         const SignInFormEvent.signInWithEmailAndPasswordPressed(),
                       );
                     },
-                    child: const Text('Sign in'),
+                    child: const Text('Вход'),
                   ),
                 ),
                 Expanded(child:
@@ -101,7 +113,7 @@ class SignInForm extends StatelessWidget {
                         const SignInFormEvent.registerWithEmailAndPasswordPressed(),
                       );
                     },
-                    child: const Text('Register'),
+                    child: const Text('Регистрация'),
                   ),
                 ),
               ],),
@@ -115,7 +127,7 @@ class SignInForm extends StatelessWidget {
                   primary: Colors.lightBlue,
                 ),
                 child: const Text(
-                  'Sign in with Google',
+                  'Войти через Google',
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
@@ -132,7 +144,7 @@ class SignInForm extends StatelessWidget {
                   primary: Colors.lightBlue,
                 ),
                 child: const Text(
-                  'Sign in with Facebook',
+                  'Войти через Facebook',
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,

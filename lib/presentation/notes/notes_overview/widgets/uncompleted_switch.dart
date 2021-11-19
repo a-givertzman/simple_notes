@@ -46,7 +46,7 @@ class _UncompletedSwitchState extends State<UncompletedSwitch> {
             )
             : const Icon(
               Icons.check_box_outlined, 
-              key: Key('indeterminate')
+              key: Key('indeterminate'),
             ),
         ),
       ),

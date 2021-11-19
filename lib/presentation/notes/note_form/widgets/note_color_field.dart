@@ -38,11 +38,11 @@ class NoteColorField extends StatelessWidget {
                       (color) => color == itemColor
                         ? const BorderSide(width: 1.5)
                         : BorderSide.none,
-                    )
+                    ),
                   ),
-                  child: Container(
-                    width: 60,
-                    height: 60,
+                  child: const SizedBox(
+                    width: 50,
+                    height: 50,
                   ),
                 ),
               );

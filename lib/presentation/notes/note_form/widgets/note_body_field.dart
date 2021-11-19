@@ -1,5 +1,4 @@
 import 'package:auth_app/application/notes/note_form_bloc/note_form_bloc.dart';
-import 'package:auth_app/domain/notes/note.dart';
 import 'package:auth_app/domain/notes/vaue_object.dart';
 import 'package:auth_app/presentation/core/constants.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +7,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class NoteBodyField extends StatefulWidget {
   const NoteBodyField({
     Key? key,
-    required Note note,
   }) : super(key: key);
 
   @override
@@ -29,7 +27,7 @@ class _NoteBodyFieldState extends State<NoteBodyField> {
           child: TextFormField(
             controller: _noteBodyTextContrroller,
             decoration: const InputDecoration(
-              // labelText: 'Заметка',
+              labelText: 'Заметка',
               counterText: '',
             ),
             maxLength: NoteBody.maxLength,

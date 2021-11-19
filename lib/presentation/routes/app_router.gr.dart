@@ -104,4 +104,9 @@ class NoteFormPageRouteArgs {
   final _i7.Key? key;
 
   final _i8.Note? note;
+
+  @override
+  String toString() {
+    return 'NoteFormPageRouteArgs{key: $key, note: $note}';
+  }
 }

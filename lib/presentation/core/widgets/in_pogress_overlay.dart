@@ -1,9 +1,9 @@
 import 'package:auth_app/presentation/core/constants.dart';
 import 'package:flutter/material.dart';
 
-class SavingInProgressOverlay extends StatelessWidget {
+class InProgressOverlay extends StatelessWidget {
   final bool isSaving;
-  const SavingInProgressOverlay({
+  const InProgressOverlay({
     Key? key,
     required this.isSaving,
   }) : super(key: key);

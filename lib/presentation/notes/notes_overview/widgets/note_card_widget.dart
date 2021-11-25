@@ -2,6 +2,7 @@ import 'package:auth_app/application/notes/notes_events_bloc/notes_evens_bloc.da
 import 'package:auth_app/domain/notes/note.dart';
 import 'package:auth_app/domain/notes/todo_item.dart';
 import 'package:auth_app/presentation/core/constants.dart';
+import 'package:auth_app/presentation/core/dialogs/delete_dialog.dart';
 import 'package:auth_app/presentation/routes/app_router.gr.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +27,15 @@ class NoteCard extends StatelessWidget {
         direction: DismissDirection.endToStart,
         confirmDismiss: (_) async {
           final notesEvensBloc = BlocProvider.of<NotesEvensBloc>(context);
-          return _showDeleteDialog(context, notesEvensBloc);
+          return showDeleteDialog(
+            context: context, 
+            title: const Text('Удалить заметку?'),
+            content: Text(
+              note.body.getOrCrush(),
+              maxLines: 2,
+              overflow: TextOverflow.clip,
+            )
+          );
         },
         onDismissed: (_) {
           final notesEvensBloc = BlocProvider.of<NotesEvensBloc>(context);
@@ -63,32 +72,6 @@ class NoteCard extends StatelessWidget {
       ),
     );
   }
-
-  Future<bool?> _showDeleteDialog(BuildContext context, NotesEvensBloc notesEvensBloc) {
-    return showDialog<bool>(
-      context: context, 
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('Удалить заметку?'),
-          content: Text(
-            note.body.getOrCrush(),
-            maxLines: 2,
-            overflow: TextOverflow.clip,
-          ),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () => Navigator.pop(context, false), 
-              child: const Text('Отмена'),
-            ),
-            TextButton(
-              onPressed: () => Navigator.pop(context, true), 
-              child: const Text('Удалить'),
-            ),
-          ],
-        );
-      },
-    );
-  }
 }
 
 class TodosNoteWidget extends StatelessWidget {
@@ -113,7 +96,12 @@ class TodosNoteWidget extends StatelessWidget {
             Icons.check_box_outline_blank,
             color: Theme.of(context).disabledColor,
           ),
-        Text(todo.name.getOrCrush())
+        Flexible(
+          child: Text(
+            todo.name.getOrCrush(),
+            overflow: TextOverflow.ellipsis,
+          ),
+        )
       ],
     );
   }

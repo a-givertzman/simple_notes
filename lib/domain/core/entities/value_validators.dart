@@ -12,7 +12,7 @@ Either<ValueFailure, String> validateMaxStringLength(
     return Right(input);
   } else {
     return Left(
-      ValueFailure.exceedingLength(failedValue: input, maxLength: maxLength),
+      ValueFailure<String>.exceedingLength(failedValue: input, maxLength: maxLength),
     );
   }
 }

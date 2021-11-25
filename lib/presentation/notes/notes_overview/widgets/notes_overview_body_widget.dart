@@ -51,21 +51,3 @@ Widget _buildListView(KtList<Note> notes) {
     },
   );
 }
-
-// BlocProvider(
-//               create: (context) => getIt<NotesListBloc>(),
-//               child: AspectRatio(
-//                 aspectRatio: 4/3,
-//                 child: Container(
-//                   color: Colors.blueGrey,
-//                   child: FadeInImage.assetNetwork(
-//                     placeholder: 'assets/images/circular_progress_indicator_small.gif',
-//                     image: 
-//                       'http://new.guslica.ru/image/cache/catalog/cuttings/perennial/Angel%20of%20Hope%201-600x600.jpg',
-                    
-//                     // fit: BoxFit.,
-//                     height: 450,
-//                   ),
-//                 ),
-//               ),
-//             );

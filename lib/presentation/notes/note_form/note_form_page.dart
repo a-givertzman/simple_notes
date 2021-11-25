@@ -103,6 +103,7 @@ class NoteFormScafold extends StatelessWidget {
             child: Form(
               autovalidateMode: state.showErrorMessages,
               child: SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
                 child: Column(
                   children: const <Widget>[
                     NoteBodyField(),

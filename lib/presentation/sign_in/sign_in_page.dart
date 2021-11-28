@@ -11,7 +11,7 @@ class SignInPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Авторизаци]'),
+        title: const Text('Авторизация'),
         automaticallyImplyLeading: false,
       ),
       body: BlocProvider(

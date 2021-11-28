@@ -40,17 +40,21 @@ class SignInForm extends StatelessWidget {
             padding: const EdgeInsets.all(paddingValue),
             children: [
               const SizedBox(height: paddingValue),
-              const Text(
-                'Привет,',
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 40),
+              Image.asset(
+                'assets/images/notes.png',
+                height: 128,
               ),
-              const SizedBox(height: paddingValue),
-              const Text(
-                'Добро пожаловать\nв Заметки!',
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 30),
-              ),
+              // const Text(
+              //   'Привет,',
+              //   textAlign: TextAlign.center,
+              //   style: TextStyle(fontSize: 40),
+              // ),
+              // const SizedBox(height: paddingValue),
+              // const Text(
+              //   'Добро пожаловать\nв Заметки!',
+              //   textAlign: TextAlign.center,
+              //   style: TextStyle(fontSize: 30),
+              // ),
               const SizedBox(height: paddingValue * 5),
               const Text(
                 'Авторизуйся что бы продолжить...',

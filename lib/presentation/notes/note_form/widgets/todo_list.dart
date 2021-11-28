@@ -32,28 +32,43 @@ class TodoList extends StatelessWidget {
          }
       },
       child: Consumer<FormTodos>(
-        builder: (context, formTodos, child) {
-          return ListView.builder(
+        builder: (BuildContext context, formTodos, child) {
+          return ReorderableListView.builder(
             physics: const NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
+            shrinkWrap: true, // необходимо потому что мы внутри другого Scrollable
             itemCount: formTodos.value.size,
+            onReorder: (oldIndex, newIndex) {
+              context.formTodos = moveKtListItem(newIndex, oldIndex, context.formTodos);
+              context.read<NoteFormBloc>().add(
+                NoteFormEvent.todosChanged(context.formTodos),
+              );
+            },
             itemBuilder: (context, index) {
               return TodoTile(
-                key: ValueKey(context.formTodos[index].id.getOrCrush()),
-                index: index,
+                  key: ValueKey(context.formTodos[index].id),
+                  index: index,
               );
-            }
+            },
           );
         },
       ),
     );
+  }
+
+  KtList<T> moveKtListItem<T>(int newIndex, int oldIndex, KtList<T> list) {
+    final _newIndex = oldIndex < newIndex ? newIndex - 1 : newIndex;
+    final item = list[oldIndex];
+    final mutableList = list.toMutableList();
+    mutableList.removeAt(oldIndex);
+    mutableList.addAt(_newIndex, item);
+    return mutableList.toList();
   }
 }
 
 class TodoTile extends StatefulWidget {
   final int index;
   const TodoTile({
-    Key? key,
+    required Key? key,
     required this.index,
   }) : super(key: key);
 
@@ -66,7 +81,7 @@ class _TodoTileState extends State<TodoTile> {
   Widget build(BuildContext context) {
     final todo = context.formTodos.getOrElse(widget.index, (_) => TodoItemPrimitive.empty());
     return Dismissible(
-      key: Key( todo.id.getOrCrush() ),
+      key: ValueKey( todo.id.getOrCrush() ),
       direction: DismissDirection.endToStart,
       confirmDismiss: (direction) => showDeleteDialog(
           context: context, 

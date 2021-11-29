@@ -44,17 +44,6 @@ class SignInForm extends StatelessWidget {
                 'assets/images/notes.png',
                 height: 128,
               ),
-              // const Text(
-              //   'Привет,',
-              //   textAlign: TextAlign.center,
-              //   style: TextStyle(fontSize: 40),
-              // ),
-              // const SizedBox(height: paddingValue),
-              // const Text(
-              //   'Добро пожаловать\nв Заметки!',
-              //   textAlign: TextAlign.center,
-              //   style: TextStyle(fontSize: 30),
-              // ),
               const SizedBox(height: paddingValue * 5),
               const Text(
                 'Авторизуйся что бы продолжить...',

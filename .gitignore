@@ -1,3 +1,5 @@
+design/
+
 # Miscellaneous
 *.class
 *.log
@@ -30,6 +32,9 @@
 .pub-cache/
 .pub/
 /build/
+
+# Visual Studio Code related
+.vscode/
 
 # Web related
 lib/generated_plugin_registrant.dart

@@ -44,9 +44,12 @@ class TodoList extends StatelessWidget {
               );
             },
             itemBuilder: (context, index) {
-              return TodoTile(
-                  key: ValueKey(context.formTodos[index].id),
-                  index: index,
+              return Provider(
+                create: (context) => TodoTile,
+                child: TodoTile(
+                    key: ValueKey(context.formTodos[index].id),
+                    index: index,
+                ),
               );
             },
           );

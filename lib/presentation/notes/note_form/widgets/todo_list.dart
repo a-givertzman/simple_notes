@@ -34,7 +34,7 @@ class TodoList extends StatelessWidget {
       },
       child: Consumer<FormTodos>(
         builder: (BuildContext context, formTodos, child) {
-          return _reorderable
+          return _reorderable // временно отключил сортировку
             ? ReorderableListView.builder(
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true, // необходимо потому что мы внутри другого Scrollable

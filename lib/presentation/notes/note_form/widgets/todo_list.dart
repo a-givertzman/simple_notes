@@ -9,6 +9,7 @@ import 'package:kt_dart/kt.dart';
 import 'package:provider/provider.dart';
 import 'package:auth_app/presentation/notes/classes/build_context_x.dart';
 
+const _reorderable = false;
 class TodoList extends StatelessWidget {
   const TodoList({Key? key}) : super(key: key);
 
@@ -33,26 +34,38 @@ class TodoList extends StatelessWidget {
       },
       child: Consumer<FormTodos>(
         builder: (BuildContext context, formTodos, child) {
-          return ReorderableListView.builder(
-            physics: const NeverScrollableScrollPhysics(),
-            shrinkWrap: true, // необходимо потому что мы внутри другого Scrollable
-            itemCount: formTodos.value.size,
-            onReorder: (oldIndex, newIndex) {
-              context.formTodos = moveKtListItem(newIndex, oldIndex, context.formTodos);
-              context.read<NoteFormBloc>().add(
-                NoteFormEvent.todosChanged(context.formTodos),
-              );
-            },
-            itemBuilder: (context, index) {
-              return Provider(
-                create: (context) => TodoTile,
-                child: TodoTile(
+          return _reorderable
+            ? ReorderableListView.builder(
+              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true, // необходимо потому что мы внутри другого Scrollable
+              onReorder: (oldIndex, newIndex) {
+                context.formTodos = moveKtListItem(newIndex, oldIndex, context.formTodos);
+                context.read<NoteFormBloc>().add(
+                  NoteFormEvent.todosChanged(context.formTodos),
+                );
+              },
+              itemCount: formTodos.value.size,
+              itemBuilder: (context, index) {
+                return ReorderableDragStartListener(
+                  key: ValueKey(index),
+                  index: index,
+                  child: TodoTile(
                     key: ValueKey(context.formTodos[index].id),
                     index: index,
-                ),
-              );
-            },
-          );
+                  ),
+                );
+              },
+            )
+            : ListView.builder(
+              shrinkWrap: true, // необходимо потому что мы внутри другого Scrollable
+              itemCount: formTodos.value.size,
+              itemBuilder: (context, index) {
+                return TodoTile(
+                    key: ValueKey(context.formTodos[index].id),
+                    index: index,
+                  );
+              },
+            );
         },
       ),
     );
@@ -71,7 +84,7 @@ class TodoList extends StatelessWidget {
 class TodoTile extends StatefulWidget {
   final int index;
   const TodoTile({
-    required Key? key,
+    Key? key,
     required this.index,
   }) : super(key: key);
 

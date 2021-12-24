@@ -57,14 +57,13 @@ class SignInForm extends StatelessWidget {
                 ),
                 autocorrect: false,
                 onChanged: (value) => context
-
                   .read<SignInFormBloc>()
                   .add(SignInFormEvent.emailChanged(value)),
-                  validator: (value) => context
-                    .read<SignInFormBloc>().state.emailAddress.value.fold(
-                      (l) => l.toString(),     // Invalid Email 
-                      (r) => null,
-                    ),
+                validator: (value) => context
+                  .read<SignInFormBloc>().state.emailAddress.value.fold(
+                    (l) => l.toString(),     // Invalid Email 
+                    (r) => null,
+                  ),
               ),
               const SizedBox(height: paddingValue),
               TextFormField(                                                    // Password field
@@ -127,23 +126,23 @@ class SignInForm extends StatelessWidget {
                   ),
                 ),
               ),
-              ElevatedButton(
-                onPressed: () {
-                  context.read<SignInFormBloc>().add(
-                    const SignInFormEvent.signInWithFacebookPressed(),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.lightBlue,
-                ),
-                child: const Text(
-                  'Войти через Facebook',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
+              // ElevatedButton(
+              //   onPressed: () {
+              //     context.read<SignInFormBloc>().add(
+              //       const SignInFormEvent.signInWithFacebookPressed(),
+              //     );
+              //   },
+              //   style: ElevatedButton.styleFrom(
+              //     primary: Colors.lightBlue,
+              //   ),
+              //   child: const Text(
+              //     'Войти через Facebook',
+              //     style: TextStyle(
+              //       color: Colors.white,
+              //       fontWeight: FontWeight.bold,
+              //     ),
+              //   ),
+              // ),
               if(state.isSubmiting) ...[
                 const SizedBox(height: paddingValue,),
                 const LinearProgressIndicator(),
